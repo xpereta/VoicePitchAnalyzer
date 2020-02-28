@@ -11,6 +11,7 @@ import Beethoven
 import Pitchy
 
 class RecordingViewController: UIViewController, PitchEngineDelegate {
+    
 
     var recordButton = UIButton(type: .custom)
     var textView = UITextView()
@@ -180,16 +181,14 @@ class RecordingViewController: UIViewController, PitchEngineDelegate {
     }
 
     // MARK:PitchEngineDelegate
-    func pitchEngineDidReceivePitch(_ pitchEngine: PitchEngine, pitch: Pitch)
-    {
-        //filtering the too high and too low values out
+    func pitchEngine(_ pitchEngine: PitchEngine, didReceivePitch pitch: Pitch) {
         if pitch.frequency < 340.0 && pitch.frequency > 65.0 {
             pitchArray.append(pitch.frequency)
         }
     }
-
-    func pitchEngineDidReceiveError(_ pitchEngine: PitchEngine, error: Error){
-        //  print(error)
+    
+    func pitchEngine(_ pitchEngine: PitchEngine, didReceiveError error: Error) {
+        print("pitchEngine didReceiveError: \(error.localizedDescription)")
     }
 
     func pitchEngineWentBelowLevelThreshold(_ pitchEngine: PitchEngine){

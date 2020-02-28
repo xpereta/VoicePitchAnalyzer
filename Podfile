@@ -6,6 +6,6 @@ target 'Voice Pitch Analyzer' do
   use_frameworks!
 
   # Pods for Voice Pitch Analyzer
-	pod 'Beethoven'
+	pod 'Beethoven', '~> 4.0.2'
 
 end
