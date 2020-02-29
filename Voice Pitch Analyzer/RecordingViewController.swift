@@ -33,6 +33,17 @@ class RecordingViewController: UIViewController, PitchEngineDelegate {
         presentIntroIfNeeded()
         setupSubviews()
         setupConstraints()
+        
+        if let identifierForVendor = UIDevice.current.identifierForVendor {
+            let uuid = identifierForVendor.uuidString
+            
+            FireStoreManager.shared.getLastResult(userID: uuid) { result in
+                
+                print("last result: \(result)")
+            }
+        }
+    
+        
     }
 
     func presentIntroIfNeeded(){

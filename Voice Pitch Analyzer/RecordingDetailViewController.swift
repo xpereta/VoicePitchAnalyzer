@@ -32,6 +32,14 @@ class RecordingDetailViewController: UIViewController {
 
             NSLayoutConstraint.activate(constraints)
         }
+        
+        if let identifierForVendor = UIDevice.current.identifierForVendor {
+            let uuid = identifierForVendor.uuidString
+            
+            FireStoreManager.shared.setLastResult(userID: uuid, result: "Test")
+        }
+        
+        
     }
 
     func calculateMinAverage() -> Double {
