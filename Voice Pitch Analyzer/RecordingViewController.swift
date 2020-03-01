@@ -10,7 +10,7 @@ import UIKit
 import Beethoven
 import Pitchy
 
-class RecordingViewController: UIViewController, PitchEngineDelegate {
+class RecordingViewController: UIViewController {
 
     var recordButton = UIButton(type: .custom)
     var textView = UITextView()
@@ -179,23 +179,6 @@ class RecordingViewController: UIViewController, PitchEngineDelegate {
         present(navigationvc, animated: true, completion: nil)
     }
 
-    // MARK:PitchEngineDelegate
-    func pitchEngineDidReceivePitch(_ pitchEngine: PitchEngine, pitch: Pitch)
-    {
-        //filtering the too high and too low values out
-        if pitch.frequency < 340.0 && pitch.frequency > 65.0 {
-            pitchArray.append(pitch.frequency)
-        }
-    }
-
-    func pitchEngineDidReceiveError(_ pitchEngine: PitchEngine, error: Error){
-        //  print(error)
-    }
-
-    func pitchEngineWentBelowLevelThreshold(_ pitchEngine: PitchEngine){
-        //intentionally left empty
-    }
-
     func imageFromColor(color:UIColor) -> UIImage {
         let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
         UIGraphicsBeginImageContext(rect.size)
@@ -207,4 +190,23 @@ class RecordingViewController: UIViewController, PitchEngineDelegate {
         return img!
     }
 
+}
+
+// MARK:PitchEngineDelegate
+
+extension RecordingViewController: PitchEngineDelegate {
+    func pitchEngine(_ pitchEngine: PitchEngine, didReceivePitch pitch: Pitch) {
+        //filtering the too high and too low values out
+        if pitch.frequency < 340.0 && pitch.frequency > 65.0 {
+            pitchArray.append(pitch.frequency)
+        }
+    }
+
+    func pitchEngine(_ pitchEngine: PitchEngine, didReceiveError error: Error) {
+        //  print(error)
+    }
+
+    func pitchEngineWentBelowLevelThreshold(_ pitchEngine: PitchEngine){
+        //intentionally left empty
+    }
 }

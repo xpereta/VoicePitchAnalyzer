@@ -1,15 +1,28 @@
 PODS:
-  - Beethoven (3.0.1):
-    - Pitchy
-  - Pitchy (2.0.1)
+  - Beethoven (4.0.2):
+    - Pitchy (~> 3.0)
+  - Pitchy (3.0.0)
 
 DEPENDENCIES:
-  - Beethoven
+  - Beethoven (from `https://github.com/fetzig/Beethoven.git`)
+
+SPEC REPOS:
+  trunk:
+    - Pitchy
+
+EXTERNAL SOURCES:
+  Beethoven:
+    :git: https://github.com/fetzig/Beethoven.git
+
+CHECKOUT OPTIONS:
+  Beethoven:
+    :commit: a9aab30e7eac04a4bf5aa8720300d63c8dc8a730
+    :git: https://github.com/fetzig/Beethoven.git
 
 SPEC CHECKSUMS:
-  Beethoven: 2530f27d1881f24f9e5d757aeb7f654b735f1080
-  Pitchy: 00dbe7cb7ac87fd9c32cb2aa6ce50d11f931289f
+  Beethoven: 39c45f803597d91756188876c109a2deac2baa05
+  Pitchy: 15407e4425b6d88fa3e7eef8927ba659fab52d7a
 
-PODFILE CHECKSUM: ddbe462beee693c103cb41ad0ed5f6c534e32784
+PODFILE CHECKSUM: 92c41aaca414065f694176f1c63546a31878ef45
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.9.0
