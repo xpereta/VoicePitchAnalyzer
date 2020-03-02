@@ -69,8 +69,10 @@ class InfoViewController: UIViewController {
     
     @objc func didPressAboutLabel(sender: UITapGestureRecognizer) {
         
-        if let url = URL(string: "https://github.com/purrprogramming/voice-pitch-analyzer/") {
-            UIApplication.shared.open(url)
+        guard let url = URL(string: "https://github.com/purrprogramming/voice-pitch-analyzer/") else {
+            return
         }
+        
+        UIApplication.shared.open(url)
     }
 }

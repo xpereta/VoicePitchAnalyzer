@@ -53,14 +53,6 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         setAppearance()
-        
-        if let identifierForVendor = UIDevice.current.identifierForVendor {
-            let uuid = identifierForVendor.uuidString
-            
-            fireStoreManager.getLastResult(userID: uuid) { result in
-                print("last result: \(result)")
-            }
-        }
     }
     
     @IBAction func didPressRecordButton(_ sender: Any) {

@@ -33,8 +33,9 @@ class ResultViewController: UIViewController {
         
         print("pitchArray: \(pitchArray)")
         
-        let maxAverage = resultCalculator.getAverage(of: pitchArray, getMax: true)
         let minAverage = resultCalculator.getAverage(of: pitchArray, getMax: false)
+        let maxAverage = resultCalculator.getAverage(of: pitchArray, getMax: true)
+        storeLastResult(min: minAverage, max: maxAverage)
         
         print("maxAverage: \(maxAverage)")
         print("minAverage: \(minAverage)")
@@ -53,11 +54,29 @@ class ResultViewController: UIViewController {
         ]
 
         NSLayoutConstraint.activate(constraints)
+    }
+    
+    // MARK: - Private
+    
+    private func storeLastResult(min minAverage: Double, max maxAverage: Double) {
         
-        if let identifierForVendor = UIDevice.current.identifierForVendor {
-            let uuid = identifierForVendor.uuidString
-            
-            fireStoreManager.setLastResult(userID: uuid, result: "Test")
+        guard let identifierForVendor = UIDevice.current.identifierForVendor else {
+            return
+        }
+        
+        let uuid = identifierForVendor.uuidString
+        fireStoreManager.setLastResult(userID: uuid, min: minAverage, max: maxAverage)
+    }
+    
+    private func getLastResults() {
+        
+        guard let identifierForVendor = UIDevice.current.identifierForVendor else {
+            return
+        }
+        
+        let uuid = identifierForVendor.uuidString
+        fireStoreManager.getLastResult(userID: uuid) { result in
+            print("last result: \(result)")
         }
     }
 }

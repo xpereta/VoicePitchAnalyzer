@@ -34,16 +34,17 @@ class FireStoreManager {
         })
     }
     
-    public func setLastResult(userID: String, result: String) {
+    public func setLastResult(userID: String, min minAverage: Double, max maxAverage: Double) {
         
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         
         let payload = [
             "userID": userID,
-            "result": result,
+            "minAverage": minAverage,
+            "maxAverage": maxAverage,
             "date": formatter.string(from: Date())
-        ]
+        ] as [String : Any]
         
         var reference: DocumentReference? = nil
         

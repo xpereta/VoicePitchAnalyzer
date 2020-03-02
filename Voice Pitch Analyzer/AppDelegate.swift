@@ -31,10 +31,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             timeManager: timeManager,
             resultCalculator: resultCalculator)
         
+        window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = home
         window?.makeKeyAndVisible()
         
         return true
     }
 }
-
