@@ -74,6 +74,7 @@ class HomeViewController: UIViewController {
     
     @IBAction func didPressHelpButton(_ sender: Any) {
         
+        Log.shared.event(.PressHelpButton)
         presentInfoController()
     }
     
@@ -115,11 +116,13 @@ class HomeViewController: UIViewController {
     
     private func startRecorder() {
         
+        Log.shared.event(.RecordStart)
         pitchEngine.start()
     }
     
     private func stopRecorder() {
         
+        Log.shared.event(.RecordStop)
         pitchEngine.stop()
         pitchArray = []
     }
@@ -169,7 +172,6 @@ class HomeViewController: UIViewController {
 }
 
 // MARK: - PitchEngineDelegate
-
 extension HomeViewController: PitchEngineDelegate {
     
     func pitchEngine(_ pitchEngine: PitchEngine, didReceivePitch pitch: Pitch) {

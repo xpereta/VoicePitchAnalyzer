@@ -283,6 +283,8 @@ PODS:
   - nanopb/encode (0.3.9011)
   - Pitchy (3.0.0)
   - PromisesObjC (1.2.8)
+  - SwiftyJSON (5.0.0)
+  - Wrap (3.0.0)
 
 DEPENDENCIES:
   - Beethoven (~> 4.0.2)
@@ -290,6 +292,8 @@ DEPENDENCIES:
   - Firebase/Crashlytics
   - Firebase/Firestore
   - FirebaseFirestoreSwift
+  - SwiftyJSON
+  - Wrap (from `https://github.com/JohnSundell/Wrap.git`)
 
 SPEC REPOS:
   trunk:
@@ -318,6 +322,16 @@ SPEC REPOS:
     - nanopb
     - Pitchy
     - PromisesObjC
+    - SwiftyJSON
+
+EXTERNAL SOURCES:
+  Wrap:
+    :git: https://github.com/JohnSundell/Wrap.git
+
+CHECKOUT OPTIONS:
+  Wrap:
+    :commit: 8085c925060b84a1fc0caef444c130da2c8154c3
+    :git: https://github.com/JohnSundell/Wrap.git
 
 SPEC CHECKSUMS:
   abseil: 18063d773f5366ff8736a050fe035a28f635fd27
@@ -345,7 +359,9 @@ SPEC CHECKSUMS:
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   Pitchy: 15407e4425b6d88fa3e7eef8927ba659fab52d7a
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+  Wrap: f6b75e1c9617d6671224401a543a8e0407ffb3c4
 
-PODFILE CHECKSUM: bec2a2e7c1efc133b4528ed980e985d70b7782ea
+PODFILE CHECKSUM: 0506990b5b2ad88f522b7e1fafce79fbbcb03fcb
 
-COCOAPODS: 1.8.3
+COCOAPODS: 1.8.4

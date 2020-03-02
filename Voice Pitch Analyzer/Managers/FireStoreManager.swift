@@ -8,6 +8,7 @@
 
 import Foundation
 import FirebaseFirestore
+import SwiftyJSON
 
 class FireStoreManager {
     
@@ -15,50 +16,45 @@ class FireStoreManager {
     
     // MARK: - Public
     
-    public func getLastResult(userID: String, completion: (String) -> ()) {
+    public func getLastResults(userID: String, completion: @escaping ([RecorderResult]) -> ()) {
         
-        var reference: DocumentReference? = nil
-        
-        reference = firestore
+        firestore
         .collection("Results")
         .document(userID)
+        .collection("Results")
+        .getDocuments { (querySnapshot, error) in
             
-        reference?.getDocument(completion: { (document, error) in
-                
-            if let document = document, document.exists {
-                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-                print("Document data: \(dataDescription)")
-            } else {
-                print("Document does not exist")
+            guard error == nil else {
+                Log.shared.record(error!, at: #function)
+                return
             }
-        })
+                
+            let results = querySnapshot!.documents.map { (element: QueryDocumentSnapshot) in
+                return RecorderResult(json: JSON(element.data()))
+            }
+            
+            completion(results)
+        }
     }
     
-    public func setLastResult(userID: String, min minAverage: Double, max maxAverage: Double) {
-        
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        
-        let payload = [
-            "userID": userID,
-            "minAverage": minAverage,
-            "maxAverage": maxAverage,
-            "date": formatter.string(from: Date())
-        ] as [String : Any]
-        
+    public func setLastResult(_ result: RecorderResult) {
+                
         var reference: DocumentReference? = nil
         
         reference = firestore
         .collection("Results")
-        .document(userID)
+        .document(result.userID)
+        .collection("Results")
+        .document(result.uuid)
             
-        reference?.setData(payload) { error in
+        reference?.setData(result.serialized) { error in
             
-            if let error = error {
-                print("Error adding document: \(error)")
-            } else {
-                print("Document added with ID: \(reference!.documentID)")
+            guard error == nil else {
+                Log.shared.record(error!, at: #function)
+                return
             }
+            
+            print("Document added with ID: \(reference!.documentID)")
         }
     }
 }

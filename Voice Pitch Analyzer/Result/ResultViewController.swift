@@ -31,19 +31,14 @@ class ResultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("pitchArray: \(pitchArray)")
+        getLastResults()
         
         let minAverage = resultCalculator.getAverage(of: pitchArray, getMax: false)
         let maxAverage = resultCalculator.getAverage(of: pitchArray, getMax: true)
         storeLastResult(min: minAverage, max: maxAverage)
         
-        print("maxAverage: \(maxAverage)")
-        print("minAverage: \(minAverage)")
-        
         let rangeView = RangeView(min:minAverage, max:maxAverage)
-
         rangeView.translatesAutoresizingMaskIntoConstraints = false
-
         view.addSubview(rangeView)
 
         let constraints = [
@@ -64,8 +59,12 @@ class ResultViewController: UIViewController {
             return
         }
         
-        let uuid = identifierForVendor.uuidString
-        fireStoreManager.setLastResult(userID: uuid, min: minAverage, max: maxAverage)
+        let result = RecorderResult(
+            minAverage: minAverage,
+            maxAverage: maxAverage,
+            userID: identifierForVendor.uuidString)
+        
+        fireStoreManager.setLastResult(result)
     }
     
     private func getLastResults() {
@@ -75,8 +74,8 @@ class ResultViewController: UIViewController {
         }
         
         let uuid = identifierForVendor.uuidString
-        fireStoreManager.getLastResult(userID: uuid) { result in
-            print("last result: \(result)")
+        fireStoreManager.getLastResults(userID: uuid) { results in
+            print("getLastResults: \(results)")
         }
     }
 }
