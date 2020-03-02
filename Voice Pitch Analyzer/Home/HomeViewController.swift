@@ -24,11 +24,11 @@ class HomeViewController: UIViewController {
     private let timeManager: TimeManager
     private let resultCalculator: ResultCalculator
     
-    //private var waveformView: SCSiriWaveformView?
     private var recorder: AVAudioRecorder?
     
     private var timer: Timer?
     private var pitchArray: Array<Double> = Array()
+    private var link: CADisplayLink?
     
     lazy var pitchEngine: PitchEngine = { [weak self] in
         var config = Config(bufferSize: 4096, estimationStrategy: .yin)
@@ -81,6 +81,7 @@ class HomeViewController: UIViewController {
     
     @IBAction func didPressRecordButton(_ sender: Any) {
         
+        print("didPressRecordButton")
         FeedbackManager.shared.giveFeedback()
         
         if timer === nil {
@@ -90,9 +91,9 @@ class HomeViewController: UIViewController {
             
         } else {
             
+            stopTimer()
             stopRecorder()
             presentResultController()
-            stopTimer()
         }
     }
     
@@ -142,18 +143,18 @@ class HomeViewController: UIViewController {
         
         Log.shared.event(.RecordStart)
         pitchEngine.start()
+        
         setWaveform()
-        setWareformRecorder()
     }
     
     private func stopRecorder() {
         
-        Log.shared.event(.RecordStop)
-        pitchEngine.stop()
-        pitchArray = []
-        
-        removeWaveform()
-        removeWaveformRecorder()
+        removeWaveform { [weak self] in
+            
+            Log.shared.event(.RecordStop)
+            self?.pitchEngine.stop()
+            self?.pitchArray = []
+        }
     }
     
     private func stopTimer() {
@@ -200,17 +201,6 @@ class HomeViewController: UIViewController {
     }
     
     private func setWaveform() {
-        
-        UIView.animate(withDuration: 0.3) { [weak self] in
-            self?.waveformView.alpha = 1
-        }
-    }
-    
-    private func removeWaveform() {
-        waveformView.alpha = 0
-    }
-    
-    private func setWareformRecorder() {
             
         do {
                 
@@ -224,17 +214,25 @@ class HomeViewController: UIViewController {
             
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayAndRecord)
             
-            guard let recorder = recorder else {
-                return
+            DispatchQueue.global(qos: .background).async { [weak self] in
+                
+                guard let self = self, let recorder = self.recorder else {
+                    return
+                }
+                    
+                recorder.prepareToRecord()
+                recorder.isMeteringEnabled = true
+                recorder.record()
+                
+                DispatchQueue.main.async {
+                    UIView.animate(withDuration: 0.3) { [weak self] in
+                        self?.waveformView.alpha = 1
+                    }
+                }
             }
-                
-            recorder.prepareToRecord()
-            recorder.isMeteringEnabled = true
-            recorder.record()
             
-                
-            let displayLink = CADisplayLink(target: self, selector: #selector(updateMeters))
-            displayLink.add(to: .current, forMode: .commonModes)
+            link = CADisplayLink(target: self, selector: #selector(updateMeters))
+            link?.add(to: .current, forMode: .commonModes)
                 
         } catch let error {
         
@@ -242,20 +240,32 @@ class HomeViewController: UIViewController {
         }
     }
     
-    private func removeWaveformRecorder() {
-        recorder = nil
+    private func removeWaveform(completion: @escaping () -> ()) {
+        
+        DispatchQueue.global(qos: .background).async { [weak self] in
+            
+            self?.link?.remove(from: .current, forMode: .commonModes)
+            self?.recorder?.isMeteringEnabled = false
+            self?.recorder?.stop()
+            self?.recorder = nil
+            
+            DispatchQueue.main.async { [weak self] in
+                self?.waveformView.alpha = 0
+                completion()
+            }
+        }
     }
     
     @objc func updateMeters() {
         
-        guard let recorder = recorder else {
+        guard let recorder = self.recorder else {
             return
         }
         
         recorder.updateMeters()
         
         let normalizedValue = pow(10, CGFloat(recorder.averagePower(forChannel: 0))/10)
-        waveformView.update(withLevel: normalizedValue)
+        self.waveformView.update(withLevel: normalizedValue)
     }
 }
 

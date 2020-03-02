@@ -31,7 +31,7 @@ class ResultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getLastResults()
+        //getLastResults()
         
         let minAverage = resultCalculator.getAverage(of: pitchArray, getMax: false)
         let maxAverage = resultCalculator.getAverage(of: pitchArray, getMax: true)
