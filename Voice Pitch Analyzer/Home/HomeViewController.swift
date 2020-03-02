@@ -9,12 +9,14 @@
 import UIKit
 import Beethoven
 import Pitchy
+import AVFoundation
 
 class HomeViewController: UIViewController {
 
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var recordButtonInnerView: UIButton!
+    @IBOutlet weak var waveformContainer: UIView!
     
     private let fireStoreManager: FireStoreManager
     private let themeManager: ThemeManager
@@ -22,12 +24,34 @@ class HomeViewController: UIViewController {
     private let timeManager: TimeManager
     private let resultCalculator: ResultCalculator
     
+    //private var waveformView: SCSiriWaveformView?
+    private var recorder: AVAudioRecorder?
+    
     private var timer: Timer?
     private var pitchArray: Array<Double> = Array()
     
     lazy var pitchEngine: PitchEngine = { [weak self] in
         var config = Config(bufferSize: 4096, estimationStrategy: .yin)
         return PitchEngine(config: config, delegate: self)
+    }()
+    
+    lazy var waveformView: SCSiriWaveformView = { [weak self] in
+        
+        let frame = CGRect(
+            x: 0,
+            y: 0,
+            width: waveformContainer.frame.width,
+            height: waveformContainer.frame.height)
+        
+        let view = SCSiriWaveformView(frame: frame)
+
+        view.waveColor = themeManager.getWaveformColor()
+        view.backgroundColor = .clear
+        view.primaryWaveLineWidth = waveformContainer.frame.height - 100
+        view.secondaryWaveLineWidth = (waveformContainer.frame.height - 100) / 2
+        view.alpha = 0
+        self?.waveformContainer.addSubview(view)
+        return view
     }()
     
     init(fireStoreManager: FireStoreManager,
@@ -66,9 +90,9 @@ class HomeViewController: UIViewController {
             
         } else {
             
+            stopRecorder()
             presentResultController()
             stopTimer()
-            stopRecorder()
         }
     }
     
@@ -118,6 +142,8 @@ class HomeViewController: UIViewController {
         
         Log.shared.event(.RecordStart)
         pitchEngine.start()
+        setWaveform()
+        setWareformRecorder()
     }
     
     private func stopRecorder() {
@@ -125,6 +151,9 @@ class HomeViewController: UIViewController {
         Log.shared.event(.RecordStop)
         pitchEngine.stop()
         pitchArray = []
+        
+        removeWaveform()
+        removeWaveformRecorder()
     }
     
     private func stopTimer() {
@@ -169,6 +198,65 @@ class HomeViewController: UIViewController {
         
         present(controller, animated: true)
     }
+    
+    private func setWaveform() {
+        
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            self?.waveformView.alpha = 1
+        }
+    }
+    
+    private func removeWaveform() {
+        waveformView.alpha = 0
+    }
+    
+    private func setWareformRecorder() {
+            
+        do {
+                
+            let url = URL(fileURLWithPath: "/dev/null")
+            recorder = try AVAudioRecorder(url: url, settings: [
+                AVSampleRateKey: 44100.0,
+                AVFormatIDKey: kAudioFormatAppleLossless,
+                AVNumberOfChannelsKey: 2,
+                AVEncoderAudioQualityKey: AVAudioQuality.min.rawValue
+            ])
+            
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayAndRecord)
+            
+            guard let recorder = recorder else {
+                return
+            }
+                
+            recorder.prepareToRecord()
+            recorder.isMeteringEnabled = true
+            recorder.record()
+            
+                
+            let displayLink = CADisplayLink(target: self, selector: #selector(updateMeters))
+            displayLink.add(to: .current, forMode: .commonModes)
+                
+        } catch let error {
+        
+            Log.shared.record(error, at: #function)
+        }
+    }
+    
+    private func removeWaveformRecorder() {
+        recorder = nil
+    }
+    
+    @objc func updateMeters() {
+        
+        guard let recorder = recorder else {
+            return
+        }
+        
+        recorder.updateMeters()
+        
+        let normalizedValue = pow(10, CGFloat(recorder.averagePower(forChannel: 0))/10)
+        waveformView.update(withLevel: normalizedValue)
+    }
 }
 
 // MARK: - PitchEngineDelegate
@@ -178,12 +266,17 @@ extension HomeViewController: PitchEngineDelegate {
         
         if pitch.frequency < 340.0 && pitch.frequency > 65.0 {
             pitchArray.append(pitch.frequency)
-            print("pitchEngine didReceivePitch: \(pitchArray)")
         }
     }
     
     func pitchEngine(_ pitchEngine: PitchEngine, didReceiveError error: Error) {
-        print("pitchEngine didReceiveError: \(error.localizedDescription)")
+
+        if error.localizedDescription != "The operation couldn’t be completed. (Pitchy.PitchError error 0.)" &&
+            error.localizedDescription != "The operation couldn’t be completed. (Pitchy.PitchError error 3.)" {
+            
+            print("pitchEngine didReceiveError: \(error.localizedDescription)")
+            Log.shared.record(error, at: #function)
+        }
     }
 
     func pitchEngineWentBelowLevelThreshold(_ pitchEngine: PitchEngine){

@@ -44,6 +44,13 @@ class ThemeManager {
         return UIColor(hex: "27406E")
     }
     
+    private var darkModeWaveformColor: UIColor {
+        return UIColor(hex: "0E1D3A")
+    }
+    
+    private var lightModeWaveformColor: UIColor {
+        return UIColor(hex: "FFE8F0")
+    }
     
     // MARK: - Public
     
@@ -117,6 +124,21 @@ class ThemeManager {
                 return self.darkModeTextColor
             } else {
                 return self.lightModeTimeColor
+            }
+        }
+    }
+    
+    public func getWaveformColor() -> UIColor {
+        
+        guard #available(iOS 13, *) else {
+            return lightModeWaveformColor
+        }
+        
+        return UIColor { (traitCollection: UITraitCollection) -> UIColor in
+            if traitCollection.userInterfaceStyle == .dark {
+                return self.darkModeWaveformColor
+            } else {
+                return self.lightModeWaveformColor
             }
         }
     }

@@ -41,6 +41,7 @@
 		6CA9D717240CB1950000187A /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA9D716240CB1950000187A /* Formatter.swift */; };
 		6CA9D719240CB1BC0000187A /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA9D718240CB1BC0000187A /* Date.swift */; };
 		6CA9D71B240CBB500000187A /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA9D71A240CBB500000187A /* Log.swift */; };
+		6CA9D720240CC1E00000187A /* SCSiriWaveformView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CA9D71E240CC1E00000187A /* SCSiriWaveformView.m */; };
 		6CC2F21E2409EEBB0009FBEB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6CC2F21D2409EEBB0009FBEB /* GoogleService-Info.plist */; };
 		9505091F45E18BC411AA484F /* Pods_Voice_Pitch_Analyzer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0AD652FF89891087FE76A53 /* Pods_Voice_Pitch_Analyzer.framework */; };
 /* End PBXBuildFile section */
@@ -87,6 +88,9 @@
 		6CA9D716240CB1950000187A /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		6CA9D718240CB1BC0000187A /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		6CA9D71A240CBB500000187A /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		6CA9D71C240CC1540000187A /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		6CA9D71E240CC1E00000187A /* SCSiriWaveformView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCSiriWaveformView.m; sourceTree = "<group>"; };
+		6CA9D71F240CC1E00000187A /* SCSiriWaveformView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSiriWaveformView.h; sourceTree = "<group>"; };
 		6CC2F21D2409EEBB0009FBEB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6FAFEE120D5069C22F442CAA /* Pods-Voice Pitch Analyzer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Voice Pitch Analyzer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Voice Pitch Analyzer/Pods-Voice Pitch Analyzer.debug.xcconfig"; sourceTree = "<group>"; };
 		B0AD652FF89891087FE76A53 /* Pods_Voice_Pitch_Analyzer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Voice_Pitch_Analyzer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,6 +112,7 @@
 		41C205D01F478E7D0029B39D = {
 			isa = PBXGroup;
 			children = (
+				6CA9D71C240CC1540000187A /* Bridging-Header.h */,
 				41C205EE1F47930C0029B39D /* Resources */,
 				41C205DB1F478E7D0029B39D /* Voice Pitch Analyzer */,
 				41C205DA1F478E7D0029B39D /* Products */,
@@ -127,6 +132,7 @@
 		41C205DB1F478E7D0029B39D /* Voice Pitch Analyzer */ = {
 			isa = PBXGroup;
 			children = (
+				6CA9D71D240CC1D70000187A /* SCSiriWaveformView */,
 				6C3ED11B240C954600D2BF9E /* Info */,
 				6C3ED114240C8B6500D2BF9E /* Result */,
 				6C3ED10F240C470A00D2BF9E /* Managers */,
@@ -220,6 +226,15 @@
 				6C3ED11E240C956200D2BF9E /* InfoViewController.swift */,
 			);
 			path = Info;
+			sourceTree = "<group>";
+		};
+		6CA9D71D240CC1D70000187A /* SCSiriWaveformView */ = {
+			isa = PBXGroup;
+			children = (
+				6CA9D71F240CC1E00000187A /* SCSiriWaveformView.h */,
+				6CA9D71E240CC1E00000187A /* SCSiriWaveformView.m */,
+			);
+			path = SCSiriWaveformView;
 			sourceTree = "<group>";
 		};
 		6CB1B8A0240C2C37005EF900 /* Home */ = {
@@ -443,6 +458,7 @@
 				6C3ED118240C8B8100D2BF9E /* ResultViewController.swift in Sources */,
 				6C3ED0FD240C312500D2BF9E /* ThemeManager.swift in Sources */,
 				6CA9D715240CB1810000187A /* String.swift in Sources */,
+				6CA9D720240CC1E00000187A /* SCSiriWaveformView.m in Sources */,
 				6C3ED0FA240C2CAD00D2BF9E /* HomeViewController.swift in Sources */,
 				6C3ED108240C427500D2BF9E /* CALayer.swift in Sources */,
 				41CDE7E81F4CEE9F006CE08B /* NSAttributtedString+Link.swift in Sources */,
@@ -610,6 +626,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.carolanitz.voice-pitch-analyzer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -627,6 +644,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.carolanitz.voice-pitch-analyzer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
