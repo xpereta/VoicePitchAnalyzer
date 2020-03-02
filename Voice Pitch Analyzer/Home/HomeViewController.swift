@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Beethoven
+import Pitchy
 
 class HomeViewController: UIViewController {
 
@@ -19,6 +21,12 @@ class HomeViewController: UIViewController {
     private let timeManager: TimeManager
     
     private var timer: Timer?
+    private var pitchArray: Array<Double> = Array()
+    
+    lazy var pitchEngine: PitchEngine = { [weak self] in
+        var config = Config(bufferSize: 4096, estimationStrategy: .yin)
+        return PitchEngine(config: config, delegate: self)
+    }()
     
     init(themeManager: ThemeManager,
          textManager: TextManager,
@@ -43,13 +51,18 @@ class HomeViewController: UIViewController {
     
     @IBAction func didPressRecordButton(_ sender: Any) {
         
-        themeManager.toggleDarkMode(at: self)
         FeedbackManager.shared.giveFeedback()
         
         if timer === nil {
+            
             startTimer()
+            startRecorder()
+            
         } else {
+            
             stopTimer()
+            stopRecorder()
+            presentResultController()
         }
     }
     
@@ -82,9 +95,17 @@ class HomeViewController: UIViewController {
             self.moveTextView()
             
             if self.timeManager.getRemainingTime() <= 0 {
-                self.stopTimer()
+                self.didPressRecordButton(self)
             }
         }
+    }
+    
+    private func startRecorder() {
+        pitchEngine.start()
+    }
+    
+    private func stopRecorder() {
+        pitchEngine.stop()
     }
     
     private func stopTimer() {
@@ -109,5 +130,32 @@ class HomeViewController: UIViewController {
         let offset = textView.contentOffset.y
         let point = CGPoint(x: 0.0, y: offset + 7)
         textView.setContentOffset(point, animated: true)
+    }
+    
+    private func presentResultController() {
+        
+        let resultController = RecordingDetailViewController()
+        resultController.pitchArray = pitchArray
+        present(resultController, animated: true)
+    }
+}
+
+// MARK: - PitchEngineDelegate
+extension HomeViewController: PitchEngineDelegate {
+    
+    func pitchEngine(_ pitchEngine: PitchEngine, didReceivePitch pitch: Pitch) {
+        
+        if pitch.frequency < 340.0 && pitch.frequency > 65.0 {
+            pitchArray.append(pitch.frequency)
+            print("pitchEngine didReceivePitch: \(pitchArray)")
+        }
+    }
+    
+    func pitchEngine(_ pitchEngine: PitchEngine, didReceiveError error: Error) {
+        print("pitchEngine didReceiveError: \(error.localizedDescription)")
+    }
+
+    func pitchEngineWentBelowLevelThreshold(_ pitchEngine: PitchEngine){
+        // intentionally left empty
     }
 }
