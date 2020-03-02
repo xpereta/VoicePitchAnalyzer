@@ -151,4 +151,51 @@ class ThemeManager {
             y: 3,
             blur: 14)
     }
+    
+    public func getCurrentResultLayer(min minAverage: Double, max maxAverage: Double, on view: UIView) -> CALayer {
+        
+        let pathWidth: CGFloat = 20
+        let pathSpacing: CGFloat = 16
+        let xPosition = view.frame.width - (pathSpacing + pathWidth)
+        return getResultLayer(min: minAverage, max: maxAverage, xPosition: xPosition, on: view)
+    }
+    
+    public func getLastResultLayer(min minAverage: Double, max maxAverage: Double, on view: UIView) -> CALayer {
+    
+        let pathWidth: CGFloat = 20
+        let pathSpacing: CGFloat = 16
+        let space = pathSpacing + pathWidth
+        let xPosition = view.frame.width - (space * 3)
+        return getResultLayer(min: minAverage, max: maxAverage, xPosition: xPosition, on: view)
+    }
+    
+    // MARK: - Private
+    
+    public func getResultLayer(min minAverage: Double, max maxAverage: Double, xPosition: CGFloat, on view: UIView) -> CALayer {
+        
+        let yourmin = (1.0 - minAverage/340)
+        let yourmax = (1.0 - maxAverage/340)
+
+        let recordingUpperRange = view.frame.height * CGFloat(yourmin)
+        let recordingLowerRange = view.frame.height * CGFloat(yourmax)
+        
+        let pathWidth: CGFloat = 20
+        let pathHeight: CGFloat = recordingUpperRange - recordingLowerRange
+        let pathHorizontalPosition: CGFloat = recordingLowerRange
+        
+        let yourRange = CGRect(
+            x: xPosition,
+            y: pathHorizontalPosition,
+            width: pathWidth,
+            height: pathHeight)
+        
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.frame = yourRange
+        shapeLayer.setBorderColor(getInnerRecordButtonColor(), with: view)
+        shapeLayer.setShadowColor(getInnerRecordButtonColor(), with: view)
+        shapeLayer.setBackgroundColor(getInnerRecordButtonColor(), with: view)
+        shapeLayer.cornerRadius = 8
+        
+        return shapeLayer
+    }
 }

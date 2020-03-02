@@ -23,6 +23,9 @@ def shared_pods
   
   pod 'SwiftyJSON'
   pod 'Wrap', :git => 'https://github.com/JohnSundell/Wrap.git'
+  
+  # Package to polyfil CALayer with traitCollection.userInterfaceStyle to adapt color as UIView does.
+  pod 'XYColor'
 
 end
 

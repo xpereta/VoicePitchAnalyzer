@@ -285,6 +285,7 @@ PODS:
   - PromisesObjC (1.2.8)
   - SwiftyJSON (5.0.0)
   - Wrap (3.0.0)
+  - XYColor (1.1.1)
 
 DEPENDENCIES:
   - Beethoven (~> 4.0.2)
@@ -294,6 +295,7 @@ DEPENDENCIES:
   - FirebaseFirestoreSwift
   - SwiftyJSON
   - Wrap (from `https://github.com/JohnSundell/Wrap.git`)
+  - XYColor
 
 SPEC REPOS:
   trunk:
@@ -323,6 +325,7 @@ SPEC REPOS:
     - Pitchy
     - PromisesObjC
     - SwiftyJSON
+    - XYColor
 
 EXTERNAL SOURCES:
   Wrap:
@@ -361,7 +364,8 @@ SPEC CHECKSUMS:
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   Wrap: f6b75e1c9617d6671224401a543a8e0407ffb3c4
+  XYColor: 101df126d07deb1b0ef4489bae52f9d643b55190
 
-PODFILE CHECKSUM: 0506990b5b2ad88f522b7e1fafce79fbbcb03fcb
+PODFILE CHECKSUM: 28efb132d1043d0b79c682d332da6faee1ff36c8
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.8.3

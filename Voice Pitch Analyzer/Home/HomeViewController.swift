@@ -185,6 +185,7 @@ class HomeViewController: UIViewController {
         
         let controller = ResultViewController(
             fireStoreManager: fireStoreManager,
+            themeManager: themeManager,
             resultCalculator: resultCalculator,
             pitchArray: pitchArray)
         
