@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		415E53F01F498A93009E33BC /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415E53EF1F498A93009E33BC /* UIColorExtension.swift */; };
+		415E53F01F498A93009E33BC /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415E53EF1F498A93009E33BC /* UIColor.swift */; };
 		415E53F11F498F31009E33BC /* en.json in Resources */ = {isa = PBXBuildFile; fileRef = 412584331F48C15500E1297D /* en.json */; };
 		415E53F21F498F37009E33BC /* de.json in Resources */ = {isa = PBXBuildFile; fileRef = 412584301F48C15500E1297D /* de.json */; };
 		415E53F31F498F37009E33BC /* it.json in Resources */ = {isa = PBXBuildFile; fileRef = 412584311F48C15500E1297D /* it.json */; };
@@ -26,6 +26,15 @@
 		41E5E41E1F496E9B00B191F5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 41E5E41C1F496B4A00B191F5 /* Localizable.strings */; };
 		41E5E4201F49848600B191F5 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E5E41F1F49848600B191F5 /* AboutViewController.swift */; };
 		6C148C6D2409F7FF000B387E /* FireStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C148C6C2409F7FF000B387E /* FireStoreManager.swift */; };
+		6C3ED0F8240C2C9D00D2BF9E /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C3ED0F7240C2C9D00D2BF9E /* HomeViewController.xib */; };
+		6C3ED0FA240C2CAD00D2BF9E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3ED0F9240C2CAD00D2BF9E /* HomeViewController.swift */; };
+		6C3ED0FD240C312500D2BF9E /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3ED0FC240C312500D2BF9E /* ThemeManager.swift */; };
+		6C3ED105240C3BA200D2BF9E /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C3ED104240C3BA200D2BF9E /* Media.xcassets */; };
+		6C3ED108240C427500D2BF9E /* CALayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3ED107240C427500D2BF9E /* CALayer.swift */; };
+		6C3ED10B240C43D300D2BF9E /* RecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3ED10A240C43D300D2BF9E /* RecordButton.swift */; };
+		6C3ED10E240C45CB00D2BF9E /* FeedbackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3ED10D240C45CB00D2BF9E /* FeedbackManager.swift */; };
+		6C3ED111240C471E00D2BF9E /* TextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3ED110240C471E00D2BF9E /* TextManager.swift */; };
+		6C3ED113240C813800D2BF9E /* TimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3ED112240C813800D2BF9E /* TimeManager.swift */; };
 		6CC2F21E2409EEBB0009FBEB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6CC2F21D2409EEBB0009FBEB /* GoogleService-Info.plist */; };
 		9505091F45E18BC411AA484F /* Pods_Voice_Pitch_Analyzer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0AD652FF89891087FE76A53 /* Pods_Voice_Pitch_Analyzer.framework */; };
 /* End PBXBuildFile section */
@@ -35,7 +44,7 @@
 		412584311F48C15500E1297D /* it.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = it.json; path = "Voice Pitch Analyzer/Resources/it.json"; sourceTree = "<group>"; };
 		412584321F48C15500E1297D /* pt.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = pt.json; path = "Voice Pitch Analyzer/Resources/pt.json"; sourceTree = "<group>"; };
 		412584331F48C15500E1297D /* en.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = en.json; path = "Voice Pitch Analyzer/Resources/en.json"; sourceTree = "<group>"; };
-		415E53EF1F498A93009E33BC /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		415E53EF1F498A93009E33BC /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		41C205D91F478E7D0029B39D /* Voice Pitch Analyzer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Voice Pitch Analyzer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		41C205DC1F478E7D0029B39D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		41C205DE1F478E7D0029B39D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +67,15 @@
 		41E5E41F1F49848600B191F5 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		4E8138DCC810D7C2E29B04DC /* Pods-Voice Pitch Analyzer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Voice Pitch Analyzer.release.xcconfig"; path = "Pods/Target Support Files/Pods-Voice Pitch Analyzer/Pods-Voice Pitch Analyzer.release.xcconfig"; sourceTree = "<group>"; };
 		6C148C6C2409F7FF000B387E /* FireStoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireStoreManager.swift; sourceTree = "<group>"; };
+		6C3ED0F7240C2C9D00D2BF9E /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		6C3ED0F9240C2CAD00D2BF9E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		6C3ED0FC240C312500D2BF9E /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
+		6C3ED104240C3BA200D2BF9E /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		6C3ED107240C427500D2BF9E /* CALayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CALayer.swift; sourceTree = "<group>"; };
+		6C3ED10A240C43D300D2BF9E /* RecordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordButton.swift; sourceTree = "<group>"; };
+		6C3ED10D240C45CB00D2BF9E /* FeedbackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackManager.swift; sourceTree = "<group>"; };
+		6C3ED110240C471E00D2BF9E /* TextManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextManager.swift; sourceTree = "<group>"; };
+		6C3ED112240C813800D2BF9E /* TimeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeManager.swift; sourceTree = "<group>"; };
 		6CC2F21D2409EEBB0009FBEB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6FAFEE120D5069C22F442CAA /* Pods-Voice Pitch Analyzer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Voice Pitch Analyzer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Voice Pitch Analyzer/Pods-Voice Pitch Analyzer.debug.xcconfig"; sourceTree = "<group>"; };
 		B0AD652FF89891087FE76A53 /* Pods_Voice_Pitch_Analyzer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Voice_Pitch_Analyzer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,7 +97,6 @@
 		41C205D01F478E7D0029B39D = {
 			isa = PBXGroup;
 			children = (
-				6C148C6B2409F7FF000B387E /* Firebase */,
 				41C205EE1F47930C0029B39D /* Resources */,
 				41C205DB1F478E7D0029B39D /* Voice Pitch Analyzer */,
 				41C205DA1F478E7D0029B39D /* Products */,
@@ -99,6 +116,13 @@
 		41C205DB1F478E7D0029B39D /* Voice Pitch Analyzer */ = {
 			isa = PBXGroup;
 			children = (
+				6C3ED10F240C470A00D2BF9E /* Recorder */,
+				6C3ED10C240C45C100D2BF9E /* Feedback */,
+				6C3ED109240C43C900D2BF9E /* Views */,
+				6C3ED106240C425400D2BF9E /* Extensions */,
+				6C3ED0FB240C311C00D2BF9E /* Theme */,
+				6CB1B8A0240C2C37005EF900 /* Home */,
+				6C148C6B2409F7FF000B387E /* Firebase */,
 				6CC2F21D2409EEBB0009FBEB /* GoogleService-Info.plist */,
 				41C205DC1F478E7D0029B39D /* AppDelegate.swift */,
 				41C205DE1F478E7D0029B39D /* ViewController.swift */,
@@ -108,7 +132,6 @@
 				41C205FC1F481F170029B39D /* RecordingDetailViewController.swift */,
 				41C205FE1F481F920029B39D /* RangeView.swift */,
 				41E5E41F1F49848600B191F5 /* AboutViewController.swift */,
-				415E53EF1F498A93009E33BC /* UIColorExtension.swift */,
 				41CDE7E71F4CEE9F006CE08B /* NSAttributtedString+Link.swift */,
 			);
 			path = "Voice Pitch Analyzer";
@@ -144,8 +167,59 @@
 			children = (
 				6C148C6C2409F7FF000B387E /* FireStoreManager.swift */,
 			);
-			name = Firebase;
-			path = "Voice Pitch Analyzer/Firebase";
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		6C3ED0FB240C311C00D2BF9E /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				6C3ED0FC240C312500D2BF9E /* ThemeManager.swift */,
+				6C3ED104240C3BA200D2BF9E /* Media.xcassets */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		6C3ED106240C425400D2BF9E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				415E53EF1F498A93009E33BC /* UIColor.swift */,
+				6C3ED107240C427500D2BF9E /* CALayer.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		6C3ED109240C43C900D2BF9E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6C3ED10A240C43D300D2BF9E /* RecordButton.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6C3ED10C240C45C100D2BF9E /* Feedback */ = {
+			isa = PBXGroup;
+			children = (
+				6C3ED10D240C45CB00D2BF9E /* FeedbackManager.swift */,
+			);
+			path = Feedback;
+			sourceTree = "<group>";
+		};
+		6C3ED10F240C470A00D2BF9E /* Recorder */ = {
+			isa = PBXGroup;
+			children = (
+				6C3ED110240C471E00D2BF9E /* TextManager.swift */,
+				6C3ED112240C813800D2BF9E /* TimeManager.swift */,
+			);
+			path = Recorder;
+			sourceTree = "<group>";
+		};
+		6CB1B8A0240C2C37005EF900 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				6C3ED0F7240C2C9D00D2BF9E /* HomeViewController.xib */,
+				6C3ED0F9240C2CAD00D2BF9E /* HomeViewController.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		8BB3F525C656EDD6C0114D7A /* Pods */ = {
@@ -233,6 +307,8 @@
 				6CC2F21E2409EEBB0009FBEB /* GoogleService-Info.plist in Resources */,
 				41C205E21F478E7D0029B39D /* Main.storyboard in Resources */,
 				415E53F21F498F37009E33BC /* de.json in Resources */,
+				6C3ED105240C3BA200D2BF9E /* Media.xcassets in Resources */,
+				6C3ED0F8240C2C9D00D2BF9E /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,11 +397,18 @@
 			files = (
 				41E5E4201F49848600B191F5 /* AboutViewController.swift in Sources */,
 				41C205FF1F481F920029B39D /* RangeView.swift in Sources */,
-				415E53F01F498A93009E33BC /* UIColorExtension.swift in Sources */,
+				6C3ED111240C471E00D2BF9E /* TextManager.swift in Sources */,
+				6C3ED10E240C45CB00D2BF9E /* FeedbackManager.swift in Sources */,
+				415E53F01F498A93009E33BC /* UIColor.swift in Sources */,
 				6C148C6D2409F7FF000B387E /* FireStoreManager.swift in Sources */,
+				6C3ED113240C813800D2BF9E /* TimeManager.swift in Sources */,
+				6C3ED10B240C43D300D2BF9E /* RecordButton.swift in Sources */,
+				6C3ED0FD240C312500D2BF9E /* ThemeManager.swift in Sources */,
 				41C205DF1F478E7D0029B39D /* ViewController.swift in Sources */,
+				6C3ED0FA240C2CAD00D2BF9E /* HomeViewController.swift in Sources */,
 				41C205FD1F481F170029B39D /* RecordingDetailViewController.swift in Sources */,
 				41C205F81F4797040029B39D /* RecordingViewController.swift in Sources */,
+				6C3ED108240C427500D2BF9E /* CALayer.swift in Sources */,
 				41CDE7E81F4CEE9F006CE08B /* NSAttributtedString+Link.swift in Sources */,
 				41C205DD1F478E7D0029B39D /* AppDelegate.swift in Sources */,
 			);
