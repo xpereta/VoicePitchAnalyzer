@@ -11,8 +11,7 @@ import FirebaseFirestore
 
 class FireStoreManager {
     
-    static let shared = FireStoreManager()
-    let firestore = Firestore.firestore()
+    private let firestore = Firestore.firestore()
     
     // MARK: - Public
     

@@ -16,9 +16,11 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var recordButtonInnerView: UIButton!
     
+    private let fireStoreManager: FireStoreManager
     private let themeManager: ThemeManager
     private let textManager: TextManager
     private let timeManager: TimeManager
+    private let resultCalculator: ResultCalculator
     
     private var timer: Timer?
     private var pitchArray: Array<Double> = Array()
@@ -28,13 +30,17 @@ class HomeViewController: UIViewController {
         return PitchEngine(config: config, delegate: self)
     }()
     
-    init(themeManager: ThemeManager,
+    init(fireStoreManager: FireStoreManager,
+         themeManager: ThemeManager,
          textManager: TextManager,
-         timeManager: TimeManager) {
+         timeManager: TimeManager,
+         resultCalculator: ResultCalculator) {
         
+        self.fireStoreManager = fireStoreManager
         self.themeManager = themeManager
         self.textManager = textManager
         self.timeManager = timeManager
+        self.resultCalculator = resultCalculator
         
         super.init(nibName: "HomeViewController", bundle: nil)
     }
@@ -47,6 +53,14 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         setAppearance()
+        
+        if let identifierForVendor = UIDevice.current.identifierForVendor {
+            let uuid = identifierForVendor.uuidString
+            
+            fireStoreManager.getLastResult(userID: uuid) { result in
+                print("last result: \(result)")
+            }
+        }
     }
     
     @IBAction func didPressRecordButton(_ sender: Any) {
@@ -60,15 +74,21 @@ class HomeViewController: UIViewController {
             
         } else {
             
+            presentResultController()
             stopTimer()
             stopRecorder()
-            presentResultController()
         }
+    }
+    
+    @IBAction func didPressHelpButton(_ sender: Any) {
+        
+        presentInfoController()
     }
     
     // MARK: - Private
     
     private func setAppearance() {
+        
         view.backgroundColor = themeManager.getBackgroundColor()
         recordButtonInnerView.backgroundColor = themeManager.getInnerRecordButtonColor()
         recordButtonInnerView.layer.cornerRadius = recordButtonInnerView.frame.width / 2
@@ -77,8 +97,9 @@ class HomeViewController: UIViewController {
         timeLabel.textColor = themeManager.getTimeTextColor()
         timeLabel.text = nil
         
+        let recorderText = textManager.getRecorderText()!
         let textColor = themeManager.getTextColor()
-        textView.attributedText = textManager.getAttributedText(with: textColor)
+        textView.attributedText = textManager.getAttributed(text: recorderText, color: textColor)
         
         resetTextView()
     }
@@ -101,11 +122,14 @@ class HomeViewController: UIViewController {
     }
     
     private func startRecorder() {
+        
         pitchEngine.start()
     }
     
     private func stopRecorder() {
+        
         pitchEngine.stop()
+        pitchArray = []
     }
     
     private func stopTimer() {
@@ -134,13 +158,26 @@ class HomeViewController: UIViewController {
     
     private func presentResultController() {
         
-        let resultController = RecordingDetailViewController()
-        resultController.pitchArray = pitchArray
-        present(resultController, animated: true)
+        let controller = ResultViewController(
+            fireStoreManager: fireStoreManager,
+            resultCalculator: resultCalculator,
+            pitchArray: pitchArray)
+        
+        present(controller, animated: true)
+    }
+    
+    private func presentInfoController() {
+        
+        let controller = InfoViewController(
+            themeManager: themeManager,
+            textManager: textManager)
+        
+        present(controller, animated: true)
     }
 }
 
 // MARK: - PitchEngineDelegate
+
 extension HomeViewController: PitchEngineDelegate {
     
     func pitchEngine(_ pitchEngine: PitchEngine, didReceivePitch pitch: Pitch) {

@@ -33,12 +33,16 @@ class TextManager {
         return "00:\(time)"
     }
     
-    public func getAttributedText(with textColor: UIColor) -> NSAttributedString {
+    public func getAttributed(text: String, color textColor: UIColor, centered: Bool = false) -> NSAttributedString {
         
         let sketchLineHeight: CGFloat = 38
         let font = UIFont.systemFont(ofSize: 21)
         let style = NSMutableParagraphStyle()
         style.lineSpacing = sketchLineHeight - font.lineHeight
+        
+        if centered {
+            style.alignment = .center
+        }
         
         let attributes = [
             NSAttributedStringKey.paragraphStyle : style,
@@ -46,12 +50,14 @@ class TextManager {
             NSAttributedStringKey.foregroundColor: textColor
         ]
         
-        return NSAttributedString(string: getText()!, attributes: attributes)
+        return NSAttributedString(string: text, attributes: attributes)
     }
     
-    // MARK: - Private
+    public func getInfoText() -> String {
+        return NSLocalizedString("Welcome", comment: "")
+    }
     
-    private func getText() -> String? {
+    public func getRecorderText() -> String? {
         
         do {
             
@@ -96,5 +102,19 @@ class TextManager {
             print("Error in TextManager.getText() \(error.localizedDescription)")
             return nil
         }
+    }
+    
+    public func getVersionText() -> String? {
+        
+        guard let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String,
+            let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String else {
+            return nil
+        }
+        
+        return "v \(version) \(build)"
+    }
+    
+    public func getAboutText() -> String? {
+        return NSLocalizedString("BasedOn", comment:"")
     }
 }

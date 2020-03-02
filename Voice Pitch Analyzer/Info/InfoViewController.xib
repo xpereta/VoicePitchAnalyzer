@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InfoViewController" customModule="Voice_Pitch_Analyzer" customModuleProvider="target">
+            <connections>
+                <outlet property="aboutLabel" destination="Pbv-UT-owY" id="moP-M1-DKg"/>
+                <outlet property="doneButton" destination="mt8-vr-PKN" id="ODc-Bd-NwD"/>
+                <outlet property="textView" destination="lcg-yX-Iq1" id="m1e-I0-MGF"/>
+                <outlet property="versionLabel" destination="836-b7-ius" id="ViO-tG-IK9"/>
+                <outlet property="view" destination="1r9-wb-qSd" id="RYl-GT-tvO"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="1r9-wb-qSd">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mt8-vr-PKN">
+                    <rect key="frame" x="338" y="52" width="52" height="38"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                    <state key="normal" title="Done"/>
+                    <connections>
+                        <action selector="didPressDoneButton:" destination="-1" eventType="touchUpInside" id="ARN-U4-VNv"/>
+                    </connections>
+                </button>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lcg-yX-Iq1">
+                    <rect key="frame" x="20" y="98" width="374" height="389"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="389" id="tJI-DA-uG5"/>
+                    </constraints>
+                    <string key="text">Hey There! To properly analyse your pitch, we need about one minute of audio recording of your voice. For this purpose, we’ll provide you with a text of a length approximate to this time frame. Of course you’re free to say anything else, too, as long as it’s in your natural voice.</string>
+                    <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AboutText" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pbv-UT-owY">
+                    <rect key="frame" x="20" y="841" width="374" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VersionText" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="836-b7-ius">
+                    <rect key="frame" x="20" y="820" width="374" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="lcg-yX-Iq1" firstAttribute="leading" secondItem="gsa-HZ-u5L" secondAttribute="leading" constant="20" id="2VG-nk-0vZ"/>
+                <constraint firstItem="gsa-HZ-u5L" firstAttribute="trailing" secondItem="mt8-vr-PKN" secondAttribute="trailing" constant="24" id="CPy-eQ-6Zf"/>
+                <constraint firstItem="gsa-HZ-u5L" firstAttribute="trailing" secondItem="836-b7-ius" secondAttribute="trailing" constant="20" id="Fon-gu-CDh"/>
+                <constraint firstItem="lcg-yX-Iq1" firstAttribute="top" secondItem="mt8-vr-PKN" secondAttribute="bottom" constant="8" id="Qbu-vF-WAA"/>
+                <constraint firstItem="gsa-HZ-u5L" firstAttribute="trailing" secondItem="Pbv-UT-owY" secondAttribute="trailing" constant="20" id="ROp-do-caZ"/>
+                <constraint firstItem="Pbv-UT-owY" firstAttribute="top" secondItem="836-b7-ius" secondAttribute="bottom" id="Uz2-wy-5M4"/>
+                <constraint firstItem="Pbv-UT-owY" firstAttribute="leading" secondItem="gsa-HZ-u5L" secondAttribute="leading" constant="20" id="VmH-lo-sNW"/>
+                <constraint firstItem="gsa-HZ-u5L" firstAttribute="trailing" secondItem="lcg-yX-Iq1" secondAttribute="trailing" constant="20" id="guW-62-nti"/>
+                <constraint firstItem="836-b7-ius" firstAttribute="leading" secondItem="gsa-HZ-u5L" secondAttribute="leading" constant="20" id="kjN-Mm-2VM"/>
+                <constraint firstItem="Pbv-UT-owY" firstAttribute="bottom" secondItem="gsa-HZ-u5L" secondAttribute="bottom" id="sVc-El-Apa"/>
+                <constraint firstItem="mt8-vr-PKN" firstAttribute="top" secondItem="gsa-HZ-u5L" secondAttribute="top" constant="8" id="wTA-1K-faY"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="gsa-HZ-u5L"/>
+            <point key="canvasLocation" x="11.594202898550726" y="-354.24107142857139"/>
+        </view>
+    </objects>
+</document>

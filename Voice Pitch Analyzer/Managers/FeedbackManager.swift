@@ -16,7 +16,7 @@ class FeedbackManager {
     
     public func giveFeedback() {
         
-        let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
+         let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
         selectionFeedbackGenerator.selectionChanged()
     }
 }

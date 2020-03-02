@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "maskTopLight.pdf"
+      "filename" : "maskBottomLightFix.pdf"
     },
     {
       "idiom" : "universal",
-      "filename" : "maskTopLight-1.pdf",
+      "filename" : "maskBottomLightFix-1.pdf",
       "appearances" : [
         {
           "appearance" : "luminosity",
@@ -16,7 +16,7 @@
     },
     {
       "idiom" : "universal",
-      "filename" : "maskTopDark.pdf",
+      "filename" : "maskBottomDarkFix.pdf",
       "appearances" : [
         {
           "appearance" : "luminosity",

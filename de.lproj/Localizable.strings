@@ -12,3 +12,4 @@
 "AboutText" = "Voice Pitch Analyzer\nVersion:%@\n\n Basierend auf der original Version https://github.com/purrprogramming/voice-pitch-analyzer/";
 "No Samples" = "Nicht genügend Aufnahmen";
 "No Samples description" = "Wir konnten nicht lange genug aufnehmen. Bitte versuche es noch einmal";
+"BasedOn" = "Basierend auf: Voice Pitch Analyzer";

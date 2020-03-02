@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "maskBottomLight.pdf"
+      "filename" : "icons8-help 3.pdf"
     },
     {
       "idiom" : "universal",
-      "filename" : "maskBottomLight-1.pdf",
+      "filename" : "icons8-help 3-1.pdf",
       "appearances" : [
         {
           "appearance" : "luminosity",
@@ -16,7 +16,7 @@
     },
     {
       "idiom" : "universal",
-      "filename" : "maskBottomDark.pdf",
+      "filename" : "icons8-help 4.pdf",
       "appearances" : [
         {
           "appearance" : "luminosity",

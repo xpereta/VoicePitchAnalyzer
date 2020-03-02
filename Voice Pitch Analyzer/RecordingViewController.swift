@@ -34,14 +34,7 @@ class RecordingViewController: UIViewController, PitchEngineDelegate {
         setupSubviews()
         setupConstraints()
         
-        if let identifierForVendor = UIDevice.current.identifierForVendor {
-            let uuid = identifierForVendor.uuidString
-            
-            FireStoreManager.shared.getLastResult(userID: uuid) { result in
-                
-                print("last result: \(result)")
-            }
-        }
+        
     
         
     }
@@ -168,21 +161,21 @@ class RecordingViewController: UIViewController, PitchEngineDelegate {
 
    
     @objc func stopRecording() {
-        recordButton.removeTarget(self, action: nil, for: .touchUpInside)
-        recordButton.addTarget(self, action: #selector(RecordingViewController.startRecording), for: .touchUpInside)
-        recordButton.setTitle(NSLocalizedString("Record", comment: ""), for: .normal)
-        pitchEngine.stop()
-        if ( pitchArray.count > 0) {
-            let detailViewController = RecordingDetailViewController()
-            detailViewController.pitchArray = pitchArray
-            navigationController?.pushViewController(detailViewController, animated: true)
-        } else {
-            let alert = UIAlertController(title: NSLocalizedString("No Samples", comment:""), message: NSLocalizedString("No Samples description", comment:""), preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
-                self.dismiss(animated: true, completion: nil)
-            }))
-            self.present(alert, animated: true, completion: nil)
-        }
+//        recordButton.removeTarget(self, action: nil, for: .touchUpInside)
+//        recordButton.addTarget(self, action: #selector(RecordingViewController.startRecording), for: .touchUpInside)
+//        recordButton.setTitle(NSLocalizedString("Record", comment: ""), for: .normal)
+//        pitchEngine.stop()
+//        if ( pitchArray.count > 0) {
+//            let detailViewController = RecordingDetailViewController()
+//            detailViewController.pitchArray = pitchArray
+//            navigationController?.pushViewController(detailViewController, animated: true)
+//        } else {
+//            let alert = UIAlertController(title: NSLocalizedString("No Samples", comment:""), message: NSLocalizedString("No Samples description", comment:""), preferredStyle: UIAlertControllerStyle.alert)
+//            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+//                self.dismiss(animated: true, completion: nil)
+//            }))
+//            self.present(alert, animated: true, completion: nil)
+//        }
     }
 
     @objc func showAboutScreen() {

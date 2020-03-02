@@ -15,21 +15,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        FirebaseApp.configure()
 
+        let fireStoreManager = FireStoreManager()
         let themeManager = ThemeManager()
         let timeManager = TimeManager()
         let textManager = TextManager(timeManager: timeManager)
+        let resultCalculator = ResultCalculator()
         
         let home = HomeViewController(
+            fireStoreManager: fireStoreManager,
             themeManager: themeManager,
             textManager: textManager,
-            timeManager: timeManager
-        )
+            timeManager: timeManager,
+            resultCalculator: resultCalculator)
         
         window?.rootViewController = home
         window?.makeKeyAndVisible()
-
-        FirebaseApp.configure()
+        
         return true
     }
 }
