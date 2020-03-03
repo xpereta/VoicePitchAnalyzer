@@ -12,7 +12,7 @@ extension CALayer {
     
   func applySketchShadow(
     color: UIColor = .black,
-    alpha: Float = 0.5,
+    alpha: Float = 1,
     x: CGFloat = 0,
     y: CGFloat = 2,
     blur: CGFloat = 4,

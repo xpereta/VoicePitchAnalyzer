@@ -33,9 +33,7 @@ class RecorderResult: Serializable {
     var maxAverage: Double
     
     required init(json: JSON) {
-        
-        print("date: \(json["date"].stringValue)")
-        
+    
         self.uuid = json["uuid"].stringValue
         self.userID = json["userID"].stringValue
         self.date = json["date"].stringValue.dateFromISO8601!
@@ -52,6 +50,26 @@ class RecorderResult: Serializable {
             "minAverage": minAverage,
             "maxAverage": maxAverage
         ])
+    }
+    
+    // MARK: - Public
+    
+    public func getFormattedMin() -> String {
+        return "\(Int(minAverage))hz"
+    }
+    
+    public func getFormattedMax() -> String {
+        return "\(Int(maxAverage))hz"
+    }
+    
+    public func getFormattedMonth(using formatter: DateFormatter) -> String {
+        formatter.dateFormat = "MMM"
+        return formatter.string(from: date)
+    }
+    
+    public func getFormatteDay(using formatter: DateFormatter) -> String {
+        formatter.dateFormat = "dd"
+        return formatter.string(from: date)
     }
 }
 

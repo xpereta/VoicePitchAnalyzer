@@ -17,11 +17,22 @@ class ResultViewController: UIViewController {
     @IBOutlet weak var femaleLabel: UILabel!
     @IBOutlet weak var androLabel: UILabel!
     @IBOutlet weak var maleLabel: UILabel!
+    @IBOutlet weak var maleRangeLabel: UILabel!
+    @IBOutlet weak var femaleRangeLabel: UILabel!
+    @IBOutlet weak var currentLabel: UILabel!
+    @IBOutlet weak var lastLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
     
     private let fireStoreManager: FireStoreManager
     private let themeManager: ThemeManager
     private let resultCalculator: ResultCalculator
     private let pitchArray: Array<Double>
+    
+    private var results = [RecorderResult]()
+        
+    private lazy var dateFormatter: DateFormatter = {
+        return DateFormatter()
+    }()
     
     init(fireStoreManager: FireStoreManager,
          themeManager: ThemeManager,
@@ -42,11 +53,19 @@ class ResultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.register(
+            UINib.init(nibName: "ResultCell", bundle: nil),
+            forCellReuseIdentifier: "ResultCell")
+        
         setAppearance()
         
         getLastResults { [weak self] results in
             
             DispatchQueue.main.async { [weak self] in
+                
+                self?.results = results
+                self?.tableView.reloadData()
+                
                 self?.setCurrentResult()
                 self?.setLastResult(results.last)
             }
@@ -65,25 +84,33 @@ class ResultViewController: UIViewController {
         view.backgroundColor = themeManager.getBackgroundColor()
         let buttonColor = themeManager.getInnerRecordButtonColor()
         let waveformColor = themeManager.getWaveformColor()
+        let bordercolor = themeManager.getBorderColor()
         
         doneButton.setTitleColor(buttonColor, for: .normal)
         
         femaleLabel.textColor = themeManager.getTimeTextColor()
         androLabel.textColor = themeManager.getTimeTextColor()
         maleLabel.textColor = themeManager.getTimeTextColor()
+        currentLabel.textColor = themeManager.getTimeTextColor()
+        lastLabel.textColor = themeManager.getTimeTextColor()
+        
+        maleRangeLabel.textColor = themeManager.getSubTextColor()
+        femaleRangeLabel.textColor = themeManager.getSubTextColor()
         
         rangeContainer.backgroundColor = waveformColor
-        rangeContainer.setLayerBorderColor(waveformColor)
-        rangeContainer.setLayerShadowColor(waveformColor)
-        rangeContainer.setLayerBackgroundColor(waveformColor)
-        
         rangeContainer.layer.cornerRadius = 16
+        
+        rangeContainer.setLayerBorderColor(bordercolor)
+        rangeContainer.layer.setBorderColor(bordercolor, with: rangeContainer)
+        rangeContainer.layer.borderWidth = 1
     }
     
     private func storeResult(min minAverage: Double, max maxAverage: Double) {
         
-        guard let identifierForVendor = UIDevice.current.identifierForVendor else {
-            return
+        guard let identifierForVendor = UIDevice.current.identifierForVendor,
+            minAverage > 0,
+            maxAverage > 0 else {
+                return
         }
         
         let result = RecorderResult(
@@ -135,5 +162,30 @@ class ResultViewController: UIViewController {
         storeResult(min: minAverage, max: maxAverage)
         let layer = themeManager.getCurrentResultLayer(min: minAverage, max: maxAverage, on: rangeContainer)
         rangeContainer.layer.addSublayer(layer)
+    }
+}
+
+extension ResultViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return results.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let result = results[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ResultCell", for: indexPath) as! ResultCell
+        
+        let content = ResultCellContent(
+            result: result,
+            themeManager: themeManager,
+            dateFormatter: dateFormatter)
+        
+        cell.bindViewModel(content)
+        return cell
     }
 }

@@ -79,6 +79,12 @@ class HomeViewController: UIViewController {
         setAppearance()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        presentResultController()
+    }
+    
     @IBAction func didPressRecordButton(_ sender: Any) {
         
         print("didPressRecordButton")

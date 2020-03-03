@@ -35,6 +35,8 @@
 		6C3ED11A240C8FC300D2BF9E /* ResultCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3ED119240C8FC300D2BF9E /* ResultCalculator.swift */; };
 		6C3ED11D240C955C00D2BF9E /* InfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C3ED11C240C955C00D2BF9E /* InfoViewController.xib */; };
 		6C3ED11F240C956200D2BF9E /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3ED11E240C956200D2BF9E /* InfoViewController.swift */; };
+		6C6ADED0240DDC0A003F8E88 /* ResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6ADECE240DDC0A003F8E88 /* ResultCell.swift */; };
+		6C6ADED1240DDC0A003F8E88 /* ResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C6ADECF240DDC0A003F8E88 /* ResultCell.xib */; };
 		6CA9D711240CAF4F0000187A /* RecorderResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA9D710240CAF4F0000187A /* RecorderResult.swift */; };
 		6CA9D713240CB1070000187A /* Serializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA9D712240CB1070000187A /* Serializable.swift */; };
 		6CA9D715240CB1810000187A /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA9D714240CB1810000187A /* String.swift */; };
@@ -82,6 +84,8 @@
 		6C3ED119240C8FC300D2BF9E /* ResultCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCalculator.swift; sourceTree = "<group>"; };
 		6C3ED11C240C955C00D2BF9E /* InfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoViewController.xib; sourceTree = "<group>"; };
 		6C3ED11E240C956200D2BF9E /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		6C6ADECE240DDC0A003F8E88 /* ResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCell.swift; sourceTree = "<group>"; };
+		6C6ADECF240DDC0A003F8E88 /* ResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultCell.xib; sourceTree = "<group>"; };
 		6CA9D710240CAF4F0000187A /* RecorderResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderResult.swift; sourceTree = "<group>"; };
 		6CA9D712240CB1070000187A /* Serializable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Serializable.swift; sourceTree = "<group>"; };
 		6CA9D714240CB1810000187A /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -215,6 +219,8 @@
 				6C3ED117240C8B8100D2BF9E /* ResultViewController.swift */,
 				41C205FE1F481F920029B39D /* RangeView.swift */,
 				6CA9D710240CAF4F0000187A /* RecorderResult.swift */,
+				6C6ADECE240DDC0A003F8E88 /* ResultCell.swift */,
+				6C6ADECF240DDC0A003F8E88 /* ResultCell.xib */,
 			);
 			path = Result;
 			sourceTree = "<group>";
@@ -326,6 +332,7 @@
 				41E5E41E1F496E9B00B191F5 /* Localizable.strings in Resources */,
 				41C205E71F478E7D0029B39D /* LaunchScreen.storyboard in Resources */,
 				41E5E4141F496A9900B191F5 /* InfoPlist.strings in Resources */,
+				6C6ADED1240DDC0A003F8E88 /* ResultCell.xib in Resources */,
 				415E53F31F498F37009E33BC /* it.json in Resources */,
 				41C206031F484B7C0029B39D /* Assets.xcassets in Resources */,
 				415E53F41F498F37009E33BC /* pt.json in Resources */,
@@ -450,6 +457,7 @@
 				6C3ED10E240C45CB00D2BF9E /* FeedbackManager.swift in Sources */,
 				6C3ED11F240C956200D2BF9E /* InfoViewController.swift in Sources */,
 				6CA9D713240CB1070000187A /* Serializable.swift in Sources */,
+				6C6ADED0240DDC0A003F8E88 /* ResultCell.swift in Sources */,
 				415E53F01F498A93009E33BC /* UIColor.swift in Sources */,
 				6C148C6D2409F7FF000B387E /* FireStoreManager.swift in Sources */,
 				6CA9D71B240CBB500000187A /* Log.swift in Sources */,

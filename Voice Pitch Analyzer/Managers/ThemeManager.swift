@@ -52,6 +52,30 @@ class ThemeManager {
         return UIColor(hex: "FFE8F0")
     }
     
+    private var c7050A5: UIColor {
+        return #colorLiteral(red: 0.4392156863, green: 0.3137254902, blue: 0.6470588235, alpha: 1)
+    }
+    
+    private var cFF93B9: UIColor {
+        return #colorLiteral(red: 1, green: 0.5764705882, blue: 0.7254901961, alpha: 1)
+    }
+    
+    private var c253657: UIColor {
+        return #colorLiteral(red: 0.1450980392, green: 0.2117647059, blue: 0.3411764706, alpha: 1)
+    }
+    
+    private var cFFD0E1: UIColor {
+        return #colorLiteral(red: 1, green: 0.8156862745, blue: 0.8823529412, alpha: 1)
+    }
+    
+    private var cFFFFFF: UIColor {
+        return #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+    }
+    
+    private var c000000: UIColor {
+        return #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+    }
+    
     // MARK: - Public
     
     /**
@@ -143,6 +167,51 @@ class ThemeManager {
         }
     }
     
+    public func getShadowColor() -> UIColor {
+        
+        guard #available(iOS 13, *) else {
+            return cFF93B9
+        }
+        
+        return UIColor { (traitCollection: UITraitCollection) -> UIColor in
+            if traitCollection.userInterfaceStyle == .dark {
+                return self.c7050A5
+            } else {
+                return self.cFF93B9
+            }
+        }
+    }
+    
+    public func getBorderColor() -> UIColor {
+        
+        guard #available(iOS 13, *) else {
+            return cFFD0E1
+        }
+        
+        return UIColor { (traitCollection: UITraitCollection) -> UIColor in
+            if traitCollection.userInterfaceStyle == .dark {
+                return self.c253657
+            } else {
+                return self.cFFD0E1
+            }
+        }
+    }
+    
+    public func getSubTextColor() -> UIColor {
+        
+        guard #available(iOS 13, *) else {
+            return c000000.withAlphaComponent(0.45)
+        }
+        
+        return UIColor { (traitCollection: UITraitCollection) -> UIColor in
+            if traitCollection.userInterfaceStyle == .dark {
+                return self.cFFFFFF.withAlphaComponent(0.45)
+            } else {
+                return self.c000000.withAlphaComponent(0.45)
+            }
+        }
+    }
+    
     public func setInnerRecordButtonShadow(to recordButton: UIButton) {
         
         recordButton.layer.applySketchShadow(
@@ -154,18 +223,13 @@ class ThemeManager {
     
     public func getCurrentResultLayer(min minAverage: Double, max maxAverage: Double, on view: UIView) -> CALayer {
         
-        let pathWidth: CGFloat = 20
-        let pathSpacing: CGFloat = 16
-        let xPosition = view.frame.width - (pathSpacing + pathWidth)
+        let xPosition = view.frame.width - (65 + 32)
         return getResultLayer(min: minAverage, max: maxAverage, xPosition: xPosition, on: view)
     }
     
     public func getLastResultLayer(min minAverage: Double, max maxAverage: Double, on view: UIView) -> CALayer {
     
-        let pathWidth: CGFloat = 20
-        let pathSpacing: CGFloat = 16
-        let space = pathSpacing + pathWidth
-        let xPosition = view.frame.width - (space * 3)
+        let xPosition = view.frame.width - (147 + 32)
         return getResultLayer(min: minAverage, max: maxAverage, xPosition: xPosition, on: view)
     }
     
@@ -179,22 +243,27 @@ class ThemeManager {
         let recordingUpperRange = view.frame.height * CGFloat(yourmin)
         let recordingLowerRange = view.frame.height * CGFloat(yourmax)
         
-        let pathWidth: CGFloat = 20
+        let width: CGFloat = 32
         let pathHeight: CGFloat = recordingUpperRange - recordingLowerRange
         let pathHorizontalPosition: CGFloat = recordingLowerRange
         
         let yourRange = CGRect(
             x: xPosition,
             y: pathHorizontalPosition,
-            width: pathWidth,
+            width: width,
             height: pathHeight)
         
         let shapeLayer = CAShapeLayer()
         shapeLayer.frame = yourRange
         shapeLayer.setBorderColor(getInnerRecordButtonColor(), with: view)
-        shapeLayer.setShadowColor(getInnerRecordButtonColor(), with: view)
+        shapeLayer.setShadowColor(getShadowColor(), with: view)
         shapeLayer.setBackgroundColor(getInnerRecordButtonColor(), with: view)
-        shapeLayer.cornerRadius = 8
+        shapeLayer.cornerRadius = 16
+        
+        shapeLayer.applySketchShadow(
+            color: getShadowColor(),
+            y: 3,
+            blur: 14)
         
         return shapeLayer
     }
