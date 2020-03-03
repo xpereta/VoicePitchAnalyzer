@@ -83,6 +83,8 @@ class ThemeManager {
      Used to test dark mode on the simulator.
      Add themeManager.toggleDarkMode(at: self) wherever
      you need/want to test dark mode appearance.
+     
+     @author David Seek
     */
     public func toggleDarkMode(at controller: UIViewController) {
         isDarkModeEnabled = !isDarkModeEnabled
@@ -264,18 +266,18 @@ class ThemeManager {
     
     private func getHorizontalResultFrame(min minAverage: Double, max maxAverage: Double, on view: UIView) -> CGRect {
         
-        let yourmin = (1.0 - minAverage/Double(view.frame.width))
-        let yourmax = (1.0 - maxAverage/Double(view.frame.width))
+        let yourmin = (1.0 - minAverage/340)
+        let yourmax = (1.0 - maxAverage/340)
 
         let recordingUpperRange = view.frame.width * CGFloat(yourmin)
         let recordingLowerRange = view.frame.width * CGFloat(yourmax)
         
         let pathWidth: CGFloat = recordingUpperRange - recordingLowerRange
-        let pathYPosition: CGFloat = recordingLowerRange
+        let pathXPosition: CGFloat = recordingLowerRange
         
         return CGRect(
-            x: 0,
-            y: pathYPosition,
+            x: pathXPosition,
+            y: 0,
             width: pathWidth,
             height: 8)
     }

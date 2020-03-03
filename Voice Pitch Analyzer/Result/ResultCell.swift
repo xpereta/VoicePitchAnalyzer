@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import XYColor
 
 class ResultCell: UITableViewCell {
 
@@ -19,15 +20,26 @@ class ResultCell: UITableViewCell {
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var rangeContainer: UIView!
     
+    var content_: ResultCellContent?
     var layer_: CALayer?
+    var hasBeenReused: Bool = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
+    
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        hasBeenReused = true
+    }
+    
+    
     
     func bindViewModel(_ viewModel: Any) {
                 
@@ -35,6 +47,7 @@ class ResultCell: UITableViewCell {
             return
         }
         
+        content_ = result
         backgroundColor = result.themeManager.getBackgroundColor()
         calendarContainer.backgroundColor = result.themeManager.getInnerRecordButtonColor()
         calendarContainer.layer.cornerRadius = 16
@@ -64,14 +77,45 @@ class ResultCell: UITableViewCell {
         rangeContainer.layer.setBorderColor(result.themeManager.getBorderColor(), with: rangeContainer)
         rangeContainer.layer.borderWidth = 1
         
+        setRange(result: result)
+        
+        if hasBeenReused == false {
+            rangeContainer.addObserver(self, forKeyPath: #keyPath(UIView.bounds), options: .new, context: nil)
+        }
+    }
+    
+    // MARK: - Private
+    
+    private func setRange(result: ResultCellContent) {
+        
+        layer_?.removeFromSuperlayer()
+        
         let layer = result.themeManager.getHistoryResultLayer(
             min: result.result.minAverage,
             max: result.result.maxAverage,
             on: rangeContainer)
         
-        layer_?.removeFromSuperlayer()
         rangeContainer.layer.insertSublayer(layer, at: 0)
         layer_ = layer
+    }
+    
+    /**
+     
+    The KVO approach here fixes the issue,
+    where the rangeContainer frame has not been set properly,
+    and the layer had been set incorrectly.
+     
+    Setting needsLayout did not fix the issue.
+    @author David Seek
+     */
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if let objectView = object as? UIView,
+            objectView === rangeContainer,
+            keyPath == #keyPath(UIView.bounds),
+            let result = content_ {
+
+            setRange(result: result)
+        }
     }
 }
 
