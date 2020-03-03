@@ -17,6 +17,7 @@ class ResultCell: UITableViewCell {
     @IBOutlet weak var highResultLabel: UILabel!
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var dayLabel: UILabel!
+    @IBOutlet weak var rangeContainer: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,6 +25,20 @@ class ResultCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        guard let container = rangeContainer else {
+            return
+        }
+        
+//        container.layer.sublayers?.forEach { layer in
+//            layer.removeFromSuperlayer()
+//        }
+               
+        print("rangeContainer.layer.sublayers: \(container.layer.sublayers?.count)")
     }
     
     func bindViewModel(_ viewModel: Any) {
@@ -53,6 +68,25 @@ class ResultCell: UITableViewCell {
         
         monthLabel.text = result.result.getFormattedMonth(using: result.dateFormatter)
         dayLabel.text = result.result.getFormatteDay(using: result.dateFormatter)
+        
+        rangeContainer.backgroundColor = result.themeManager.getWaveformColor()
+        rangeContainer.layer.cornerRadius = 4
+        
+        rangeContainer.setLayerBorderColor(result.themeManager.getBorderColor())
+        rangeContainer.layer.setBorderColor(result.themeManager.getBorderColor(), with: rangeContainer)
+        rangeContainer.layer.borderWidth = 1
+        
+        let layer = result.themeManager.getHistoryResultLayer(
+            min: result.result.minAverage,
+            max: result.result.maxAverage,
+            on: rangeContainer)
+        
+        rangeContainer.layer.sublayers?.forEach { layer in
+            //layer.removeFromSuperlayer()
+            layer.opacity = 0
+        }
+        
+        rangeContainer.layer.insertSublayer(layer, at: 0)
     }
 }
 

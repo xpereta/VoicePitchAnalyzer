@@ -123,7 +123,7 @@
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="74" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4pp-RH-8lZ">
-                    <rect key="frame" x="20" y="446" width="374" height="416"/>
+                    <rect key="frame" x="20" y="470" width="374" height="392"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <connections>
@@ -142,7 +142,7 @@
                 <constraint firstItem="Tpm-sO-mLA" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="gjA-O8-KhD"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="4pp-RH-8lZ" secondAttribute="trailing" constant="20" id="ohX-DQ-Fc0"/>
                 <constraint firstItem="4pp-RH-8lZ" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="sSv-Ql-Qyk"/>
-                <constraint firstItem="4pp-RH-8lZ" firstAttribute="top" secondItem="rCe-nV-qK8" secondAttribute="bottom" constant="8" id="wcx-jI-zZJ"/>
+                <constraint firstItem="4pp-RH-8lZ" firstAttribute="top" secondItem="rCe-nV-qK8" secondAttribute="bottom" constant="32" id="wcx-jI-zZJ"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="137.68115942028987" y="118.52678571428571"/>

@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "icons8-help 3.pdf"
+      "filename" : "pink.pdf"
     },
     {
       "idiom" : "universal",
-      "filename" : "icons8-help 3-1.pdf",
+      "filename" : "pink-1.pdf",
       "appearances" : [
         {
           "appearance" : "luminosity",
@@ -16,7 +16,7 @@
     },
     {
       "idiom" : "universal",
-      "filename" : "icons8-help 4.pdf",
+      "filename" : "purple.pdf",
       "appearances" : [
         {
           "appearance" : "luminosity",

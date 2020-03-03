@@ -63,7 +63,7 @@ class ResultViewController: UIViewController {
             
             DispatchQueue.main.async { [weak self] in
                 
-                self?.results = results
+                self?.results = results.reversed()
                 self?.tableView.reloadData()
                 
                 self?.setCurrentResult()
@@ -160,7 +160,12 @@ class ResultViewController: UIViewController {
         print("minAverage: \(minAverage)")
         
         storeResult(min: minAverage, max: maxAverage)
-        let layer = themeManager.getCurrentResultLayer(min: minAverage, max: maxAverage, on: rangeContainer)
+        
+        let layer = themeManager.getCurrentResultLayer(
+            min: minAverage,
+            max: maxAverage,
+            on: rangeContainer)
+        
         rangeContainer.layer.addSublayer(layer)
     }
 }

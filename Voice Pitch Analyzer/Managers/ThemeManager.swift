@@ -224,18 +224,26 @@ class ThemeManager {
     public func getCurrentResultLayer(min minAverage: Double, max maxAverage: Double, on view: UIView) -> CALayer {
         
         let xPosition = view.frame.width - (65 + 32)
-        return getResultLayer(min: minAverage, max: maxAverage, xPosition: xPosition, on: view)
+        let frame = getVerticalResultFrame(min: minAverage, max: maxAverage, xPosition: xPosition, on: view)
+        return getResultLayer(frame: frame, on: view)
     }
     
     public func getLastResultLayer(min minAverage: Double, max maxAverage: Double, on view: UIView) -> CALayer {
     
         let xPosition = view.frame.width - (147 + 32)
-        return getResultLayer(min: minAverage, max: maxAverage, xPosition: xPosition, on: view)
+        let frame = getVerticalResultFrame(min: minAverage, max: maxAverage, xPosition: xPosition, on: view)
+        return getResultLayer(frame: frame, on: view)
+    }
+    
+    public func getHistoryResultLayer(min minAverage: Double, max maxAverage: Double, on view: UIView) -> CALayer {
+    
+        let frame = getHorizontalResultFrame(min: minAverage, max: maxAverage, on: view)
+        return getResultLayer(frame: frame, on: view, radius: 4)
     }
     
     // MARK: - Private
     
-    public func getResultLayer(min minAverage: Double, max maxAverage: Double, xPosition: CGFloat, on view: UIView) -> CALayer {
+    private func getVerticalResultFrame(min minAverage: Double, max maxAverage: Double, xPosition: CGFloat, on view: UIView) -> CGRect {
         
         let yourmin = (1.0 - minAverage/340)
         let yourmax = (1.0 - maxAverage/340)
@@ -247,18 +255,39 @@ class ThemeManager {
         let pathHeight: CGFloat = recordingUpperRange - recordingLowerRange
         let pathHorizontalPosition: CGFloat = recordingLowerRange
         
-        let yourRange = CGRect(
+        return CGRect(
             x: xPosition,
             y: pathHorizontalPosition,
             width: width,
             height: pathHeight)
+    }
+    
+    private func getHorizontalResultFrame(min minAverage: Double, max maxAverage: Double, on view: UIView) -> CGRect {
         
+        let yourmin = (1.0 - minAverage/Double(view.frame.width))
+        let yourmax = (1.0 - maxAverage/Double(view.frame.width))
+
+        let recordingUpperRange = view.frame.width * CGFloat(yourmin)
+        let recordingLowerRange = view.frame.width * CGFloat(yourmax)
+        
+        let pathWidth: CGFloat = recordingUpperRange - recordingLowerRange
+        let pathYPosition: CGFloat = recordingLowerRange
+        
+        return CGRect(
+            x: 0,
+            y: pathYPosition,
+            width: pathWidth,
+            height: 8)
+    }
+    
+    private func getResultLayer(frame: CGRect, on view: UIView, radius: CGFloat = 16) -> CALayer {
+                
         let shapeLayer = CAShapeLayer()
-        shapeLayer.frame = yourRange
+        shapeLayer.frame = frame
         shapeLayer.setBorderColor(getInnerRecordButtonColor(), with: view)
         shapeLayer.setShadowColor(getShadowColor(), with: view)
         shapeLayer.setBackgroundColor(getInnerRecordButtonColor(), with: view)
-        shapeLayer.cornerRadius = 16
+        shapeLayer.cornerRadius = radius
         
         shapeLayer.applySketchShadow(
             color: getShadowColor(),
