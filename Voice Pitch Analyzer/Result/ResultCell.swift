@@ -19,26 +19,14 @@ class ResultCell: UITableViewCell {
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var rangeContainer: UIView!
     
+    var layer_: CALayer?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        
-        guard let container = rangeContainer else {
-            return
-        }
-        
-//        container.layer.sublayers?.forEach { layer in
-//            layer.removeFromSuperlayer()
-//        }
-               
-        print("rangeContainer.layer.sublayers: \(container.layer.sublayers?.count)")
     }
     
     func bindViewModel(_ viewModel: Any) {
@@ -81,12 +69,9 @@ class ResultCell: UITableViewCell {
             max: result.result.maxAverage,
             on: rangeContainer)
         
-        rangeContainer.layer.sublayers?.forEach { layer in
-            //layer.removeFromSuperlayer()
-            layer.opacity = 0
-        }
-        
+        layer_?.removeFromSuperlayer()
         rangeContainer.layer.insertSublayer(layer, at: 0)
+        layer_ = layer
     }
 }
 
