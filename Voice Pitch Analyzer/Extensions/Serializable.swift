@@ -11,8 +11,8 @@ import Wrap
 import SwiftyJSON
 
 protocol Serializable {
+    
     var serialized: WrappedDictionary { get }
     var uuid: String { get }
-    static func getAll(jsonArray: [JSON]) -> [Serializable]
     static func initialize(json: JSON) -> Serializable
 }

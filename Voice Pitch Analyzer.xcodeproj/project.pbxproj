@@ -30,7 +30,6 @@
 		6C3ED10B240C43D300D2BF9E /* RecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3ED10A240C43D300D2BF9E /* RecordButton.swift */; };
 		6C3ED10E240C45CB00D2BF9E /* FeedbackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3ED10D240C45CB00D2BF9E /* FeedbackManager.swift */; };
 		6C3ED111240C471E00D2BF9E /* TextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3ED110240C471E00D2BF9E /* TextManager.swift */; };
-		6C3ED113240C813800D2BF9E /* TimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3ED112240C813800D2BF9E /* TimeManager.swift */; };
 		6C3ED116240C8B7A00D2BF9E /* ResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C3ED115240C8B7A00D2BF9E /* ResultViewController.xib */; };
 		6C3ED118240C8B8100D2BF9E /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3ED117240C8B8100D2BF9E /* ResultViewController.swift */; };
 		6C3ED11A240C8FC300D2BF9E /* ResultCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3ED119240C8FC300D2BF9E /* ResultCalculator.swift */; };
@@ -80,7 +79,6 @@
 		6C3ED10A240C43D300D2BF9E /* RecordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordButton.swift; sourceTree = "<group>"; };
 		6C3ED10D240C45CB00D2BF9E /* FeedbackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackManager.swift; sourceTree = "<group>"; };
 		6C3ED110240C471E00D2BF9E /* TextManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextManager.swift; sourceTree = "<group>"; };
-		6C3ED112240C813800D2BF9E /* TimeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeManager.swift; sourceTree = "<group>"; };
 		6C3ED115240C8B7A00D2BF9E /* ResultViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultViewController.xib; sourceTree = "<group>"; };
 		6C3ED117240C8B8100D2BF9E /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		6C3ED119240C8FC300D2BF9E /* ResultCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCalculator.swift; sourceTree = "<group>"; };
@@ -217,7 +215,6 @@
 				6C3ED10D240C45CB00D2BF9E /* FeedbackManager.swift */,
 				6C3ED0FC240C312500D2BF9E /* ThemeManager.swift */,
 				6C3ED110240C471E00D2BF9E /* TextManager.swift */,
-				6C3ED112240C813800D2BF9E /* TimeManager.swift */,
 				6C3ED119240C8FC300D2BF9E /* ResultCalculator.swift */,
 				6CA9D71A240CBB500000187A /* Log.swift */,
 				6C167227241017D000AFE5BC /* RecordingManager.swift */,
@@ -473,7 +470,6 @@
 				6C148C6D2409F7FF000B387E /* DatabaseManager.swift in Sources */,
 				6CA9D71B240CBB500000187A /* Log.swift in Sources */,
 				6CA9D711240CAF4F0000187A /* RecorderResult.swift in Sources */,
-				6C3ED113240C813800D2BF9E /* TimeManager.swift in Sources */,
 				6C3ED10B240C43D300D2BF9E /* RecordButton.swift in Sources */,
 				6CA9D719240CB1BC0000187A /* Date.swift in Sources */,
 				6C3ED118240C8B8100D2BF9E /* ResultViewController.swift in Sources */,

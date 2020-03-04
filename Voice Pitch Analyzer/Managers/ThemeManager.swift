@@ -69,8 +69,7 @@ class ThemeManager {
         
         let userMinimum: CGFloat = CGFloat(minAverage)
         let userMaximum: CGFloat = CGFloat(maxAverage)
-        
-        //let lowPoint: CGFloat = 85
+
         let topPoint: CGFloat = 255
         
         let height = (userMaximum - userMinimum) * 2
@@ -85,33 +84,16 @@ class ThemeManager {
     
     private func getHorizontalResultFrame(min minAverage: Double, max maxAverage: Double, on view: UIView) -> CGRect {
         
-//        let yourmin = (1.0 - minAverage/340)
-//        let yourmax = (1.0 - maxAverage/340)
-//
-//        let recordingUpperRange = view.frame.width * CGFloat(yourmin)
-//        let recordingLowerRange = view.frame.width * CGFloat(yourmax)
-//
-//        let pathWidth: CGFloat = recordingUpperRange - recordingLowerRange
-//        let pathXPosition: CGFloat = recordingLowerRange
-        
         let userMinimum: CGFloat = CGFloat(minAverage)
         let userMaximum: CGFloat = CGFloat(maxAverage)
         
         let lowPoint: CGFloat = 85
-        //let topPoint: CGFloat = 255
         
         let width = (userMaximum - userMinimum) * 2
         let xPosition = (userMinimum - lowPoint) * 2
         let factor = view.frame.width / 340
         let width_ = width * factor
         let xPosition_ = xPosition * factor
-        
-        print("userMinimum: \(userMinimum)")
-        print("userMaximum: \(userMaximum)")
-        print("xPosition_: \(xPosition_)")
-        print("view.frame.width: \(view.frame.width)")
-        print("width_: \(width_)")
-        print("\n")
         
         return CGRect(
             x: xPosition_,

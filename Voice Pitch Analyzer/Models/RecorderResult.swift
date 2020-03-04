@@ -16,12 +16,6 @@ class RecorderResult: Serializable {
         return try! Wrap.wrap(self)
     }
     
-    static func getAll(jsonArray: [JSON]) -> [Serializable] {
-        return jsonArray.map { element in
-            self.init(json: element)
-        }
-    }
-    
     static func initialize(json: JSON) -> Serializable {
         return self.init(json: json)
     }
