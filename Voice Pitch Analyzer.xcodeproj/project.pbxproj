@@ -20,7 +20,7 @@
 		41CDE7E81F4CEE9F006CE08B /* NSAttributtedString+Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CDE7E71F4CEE9F006CE08B /* NSAttributtedString+Link.swift */; };
 		41E5E4141F496A9900B191F5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 41E5E4161F496A9900B191F5 /* InfoPlist.strings */; };
 		41E5E41E1F496E9B00B191F5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 41E5E41C1F496B4A00B191F5 /* Localizable.strings */; };
-		6C148C6D2409F7FF000B387E /* FireStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C148C6C2409F7FF000B387E /* FireStoreManager.swift */; };
+		6C148C6D2409F7FF000B387E /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C148C6C2409F7FF000B387E /* DatabaseManager.swift */; };
 		6C3ED0F8240C2C9D00D2BF9E /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C3ED0F7240C2C9D00D2BF9E /* HomeViewController.xib */; };
 		6C3ED0FA240C2CAD00D2BF9E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3ED0F9240C2CAD00D2BF9E /* HomeViewController.swift */; };
 		6C3ED0FD240C312500D2BF9E /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3ED0FC240C312500D2BF9E /* ThemeManager.swift */; };
@@ -69,7 +69,7 @@
 		41E5E41B1F496B4A00B191F5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		41E5E41D1F496B8300B191F5 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4E8138DCC810D7C2E29B04DC /* Pods-Voice Pitch Analyzer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Voice Pitch Analyzer.release.xcconfig"; path = "Pods/Target Support Files/Pods-Voice Pitch Analyzer/Pods-Voice Pitch Analyzer.release.xcconfig"; sourceTree = "<group>"; };
-		6C148C6C2409F7FF000B387E /* FireStoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireStoreManager.swift; sourceTree = "<group>"; };
+		6C148C6C2409F7FF000B387E /* DatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		6C3ED0F7240C2C9D00D2BF9E /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		6C3ED0F9240C2CAD00D2BF9E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		6C3ED0FC240C312500D2BF9E /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
@@ -200,7 +200,7 @@
 		6C3ED10F240C470A00D2BF9E /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				6C148C6C2409F7FF000B387E /* FireStoreManager.swift */,
+				6C148C6C2409F7FF000B387E /* DatabaseManager.swift */,
 				6C3ED10D240C45CB00D2BF9E /* FeedbackManager.swift */,
 				6C3ED104240C3BA200D2BF9E /* Media.xcassets */,
 				6C3ED0FC240C312500D2BF9E /* ThemeManager.swift */,
@@ -459,7 +459,7 @@
 				6CA9D713240CB1070000187A /* Serializable.swift in Sources */,
 				6C6ADED0240DDC0A003F8E88 /* ResultCell.swift in Sources */,
 				415E53F01F498A93009E33BC /* UIColor.swift in Sources */,
-				6C148C6D2409F7FF000B387E /* FireStoreManager.swift in Sources */,
+				6C148C6D2409F7FF000B387E /* DatabaseManager.swift in Sources */,
 				6CA9D71B240CBB500000187A /* Log.swift in Sources */,
 				6CA9D711240CAF4F0000187A /* RecorderResult.swift in Sources */,
 				6C3ED113240C813800D2BF9E /* TimeManager.swift in Sources */,

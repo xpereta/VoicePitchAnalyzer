@@ -19,14 +19,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         Log.shared.event(.AppStart)
 
-        let fireStoreManager = FireStoreManager()
+        let databaseManager = DatabaseManager()
+        databaseManager.configure()
+        
         let themeManager = ThemeManager()
         let timeManager = TimeManager()
         let textManager = TextManager(timeManager: timeManager)
         let resultCalculator = ResultCalculator()
         
         let home = HomeViewController(
-            fireStoreManager: fireStoreManager,
+            databaseManager: databaseManager,
             themeManager: themeManager,
             textManager: textManager,
             timeManager: timeManager,

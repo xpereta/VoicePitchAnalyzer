@@ -18,7 +18,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var recordButtonInnerView: UIButton!
     @IBOutlet weak var waveformContainer: UIView!
     
-    private let fireStoreManager: FireStoreManager
+    private let databaseManager: DatabaseManager
     private let themeManager: ThemeManager
     private let textManager: TextManager
     private let timeManager: TimeManager
@@ -54,13 +54,13 @@ class HomeViewController: UIViewController {
         return view
     }()
     
-    init(fireStoreManager: FireStoreManager,
+    init(databaseManager: DatabaseManager,
          themeManager: ThemeManager,
          textManager: TextManager,
          timeManager: TimeManager,
          resultCalculator: ResultCalculator) {
         
-        self.fireStoreManager = fireStoreManager
+        self.databaseManager = databaseManager
         self.themeManager = themeManager
         self.textManager = textManager
         self.timeManager = timeManager
@@ -79,11 +79,11 @@ class HomeViewController: UIViewController {
         setAppearance()
     }
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//        
-//        presentResultController()
-//    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        presentResultController()
+    }
     
     @IBAction func didPressRecordButton(_ sender: Any) {
         
@@ -190,7 +190,7 @@ class HomeViewController: UIViewController {
     private func presentResultController() {
         
         let controller = ResultViewController(
-            fireStoreManager: fireStoreManager,
+            databaseManager: databaseManager,
             themeManager: themeManager,
             resultCalculator: resultCalculator,
             pitchArray: pitchArray)

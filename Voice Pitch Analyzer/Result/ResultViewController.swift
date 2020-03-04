@@ -23,7 +23,7 @@ class ResultViewController: UIViewController {
     @IBOutlet weak var lastLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
-    private let fireStoreManager: FireStoreManager
+    private let databaseManager: DatabaseManager
     private let themeManager: ThemeManager
     private let resultCalculator: ResultCalculator
     private let pitchArray: Array<Double>
@@ -34,12 +34,12 @@ class ResultViewController: UIViewController {
         return DateFormatter()
     }()
     
-    init(fireStoreManager: FireStoreManager,
+    init(databaseManager: DatabaseManager,
          themeManager: ThemeManager,
          resultCalculator: ResultCalculator,
          pitchArray: Array<Double>) {
         
-        self.fireStoreManager = fireStoreManager
+        self.databaseManager = databaseManager
         self.themeManager = themeManager
         self.resultCalculator = resultCalculator
         self.pitchArray = pitchArray
@@ -58,18 +58,9 @@ class ResultViewController: UIViewController {
             forCellReuseIdentifier: "ResultCell")
         
         setAppearance()
-        
-        getLastResults { [weak self] results in
-            
-            DispatchQueue.main.async { [weak self] in
-                
-                self?.results = results.reversed()
-                self?.tableView.reloadData()
-                
-                self?.setCurrentResult()
-                self?.setLastResult(results.last)
-            }
-        }
+        databaseManager.delegate = self
+        databaseManager.getResults()
+        setCurrentResult()
     }
     
     @IBAction func didPressDoneButton(_ sender: Any) {
@@ -118,23 +109,7 @@ class ResultViewController: UIViewController {
             maxAverage: maxAverage,
             userID: identifierForVendor.uuidString)
         
-        fireStoreManager.setLastResult(result)
-    }
-    
-    private func getLastResults(completion: @escaping ([RecorderResult]) -> ()) {
-        
-        guard let identifierForVendor = UIDevice.current.identifierForVendor else {
-            completion([])
-            return
-        }
-        
-        activityIndicator.startAnimating()
-        let uuid = identifierForVendor.uuidString
-        fireStoreManager.getLastResults(userID: uuid) { [weak self] results in
-            
-            self?.activityIndicator.stopAnimating()
-            completion(results)
-        }
+        databaseManager.setLastResult(result)
     }
     
     private func setLastResult(_ result: RecorderResult?) {
@@ -170,6 +145,7 @@ class ResultViewController: UIViewController {
     }
 }
 
+// MARK: - UITableViewDataSource UITableViewDelegate
 extension ResultViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -199,5 +175,24 @@ extension ResultViewController: UITableViewDataSource, UITableViewDelegate {
         UIView.performWithoutAnimation {
             cell.layoutIfNeeded()
         }
+    }
+}
+
+// MARK: - DatabaseManagerDelegate
+extension ResultViewController: DatabaseManagerDelegate {
+    
+    func databaseManager(didLoadData data: [RecorderResult]) {
+        print("databaseManager didLoadData: \(data.count)")
+        results = data.reversed()
+        tableView.reloadData()
+        setLastResult(data.last)
+    }
+    
+    func databaseManager(didReceiveError error: Error) {
+        print("databaseManager didReceiveError: \(error)")
+    }
+    
+    func databaseManager(didUploadResultWithID documentID: String) {
+        print("databaseManager didUploadResultWithID: \(documentID)")
     }
 }
