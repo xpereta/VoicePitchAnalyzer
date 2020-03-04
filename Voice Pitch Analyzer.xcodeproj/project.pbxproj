@@ -23,6 +23,7 @@
 		6C148C6D2409F7FF000B387E /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C148C6C2409F7FF000B387E /* DatabaseManager.swift */; };
 		6C167226241011FA00AFE5BC /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C167225241011FA00AFE5BC /* Color.swift */; };
 		6C167228241017D000AFE5BC /* RecordingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C167227241017D000AFE5BC /* RecordingManager.swift */; };
+		6C16722A2410272500AFE5BC /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1672292410272500AFE5BC /* Image.swift */; };
 		6C3ED0F8240C2C9D00D2BF9E /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C3ED0F7240C2C9D00D2BF9E /* HomeViewController.xib */; };
 		6C3ED0FA240C2CAD00D2BF9E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3ED0F9240C2CAD00D2BF9E /* HomeViewController.swift */; };
 		6C3ED0FD240C312500D2BF9E /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3ED0FC240C312500D2BF9E /* ThemeManager.swift */; };
@@ -74,6 +75,7 @@
 		6C148C6C2409F7FF000B387E /* DatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		6C167225241011FA00AFE5BC /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		6C167227241017D000AFE5BC /* RecordingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingManager.swift; sourceTree = "<group>"; };
+		6C1672292410272500AFE5BC /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		6C3ED0F7240C2C9D00D2BF9E /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		6C3ED0F9240C2CAD00D2BF9E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		6C3ED0FC240C312500D2BF9E /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 			children = (
 				6CA9D710240CAF4F0000187A /* RecorderResult.swift */,
 				6C167225241011FA00AFE5BC /* Color.swift */,
+				6C1672292410272500AFE5BC /* Image.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -484,6 +487,7 @@
 				6C3ED0FD240C312500D2BF9E /* ThemeManager.swift in Sources */,
 				6CA9D715240CB1810000187A /* String.swift in Sources */,
 				6CA9D720240CC1E00000187A /* SCSiriWaveformView.m in Sources */,
+				6C16722A2410272500AFE5BC /* Image.swift in Sources */,
 				6C3ED0FA240C2CAD00D2BF9E /* HomeViewController.swift in Sources */,
 				6C3ED108240C427500D2BF9E /* CALayer.swift in Sources */,
 				41CDE7E81F4CEE9F006CE08B /* NSAttributtedString+Link.swift in Sources */,

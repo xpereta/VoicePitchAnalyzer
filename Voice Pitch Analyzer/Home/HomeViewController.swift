@@ -113,6 +113,17 @@ class HomeViewController: UIViewController {
         resetTextView()
     }
     
+    private func updateRecordButton(toRecording isRecording: Bool) {
+        
+        DispatchQueue.main.async { [weak self] in
+            if isRecording {
+                self?.recordButtonInnerView.setImage(Image.stop, for: .normal)
+            } else {
+                self?.recordButtonInnerView.setImage(Image.record, for: .normal)
+            }
+        }
+    }
+    
     private func startRecorder() {
         
         Log.event(.RecordStart)
@@ -147,7 +158,7 @@ class HomeViewController: UIViewController {
         textView.setContentOffset(point, animated: true)
     }
     
-    private func presentResultController() {
+    private func presentResultController(completion: @escaping () -> ()) {
         
         let controller = ResultViewController(
             databaseManager: databaseManager,
@@ -155,7 +166,7 @@ class HomeViewController: UIViewController {
             resultCalculator: resultCalculator,
             pitchArray: pitchArray)
         
-        present(controller, animated: true)
+        present(controller, animated: true, completion: completion)
     }
     
     private func presentInfoController() {
@@ -261,9 +272,13 @@ extension HomeViewController: RecordingManagerDelegate {
         
         if isRecording {
             startRecorder()
+            updateRecordButton(toRecording: true)
         } else  {
             stopRecorder()
-            presentResultController()
+            
+            presentResultController { [weak self] in
+                self?.updateRecordButton(toRecording: false)
+            }
         }
     }
     
