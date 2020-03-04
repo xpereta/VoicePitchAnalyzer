@@ -67,6 +67,7 @@ class DatabaseManager {
             .collection("Results")
             .document(userID)
             .collection("Results")
+            .limit(to: 20)
             .addSnapshotListener({ [weak self] (querySnapshot, error) in
                 
                 guard error == nil else {
