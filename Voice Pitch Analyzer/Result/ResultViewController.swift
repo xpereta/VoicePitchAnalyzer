@@ -30,6 +30,7 @@ class ResultViewController: UIViewController {
     private let pitchArray: Array<Double>
     
     private var results = [RecorderResult]()
+    private var currentResult: RecorderResult?
         
     private lazy var dateFormatter: DateFormatter = {
         return DateFormatter()
@@ -61,7 +62,7 @@ class ResultViewController: UIViewController {
         setAppearance()
         databaseManager.delegate = self
         databaseManager.getResults()
-        setCurrentResult()
+        displayCurrentResult()
     }
     
     @IBAction func didPressDoneButton(_ sender: Any) {
@@ -110,10 +111,11 @@ class ResultViewController: UIViewController {
             maxAverage: maxAverage,
             userID: identifierForVendor.uuidString)
         
+        currentResult = result
         databaseManager.setLastResult(result)
     }
     
-    private func setLastResult(_ result: RecorderResult?) {
+    private func displayLastResult(_ result: RecorderResult?) {
         
         guard let result = result else {
             return
@@ -122,15 +124,20 @@ class ResultViewController: UIViewController {
         let layer = themeManager.getLastResultLayer(
             min: result.minAverage,
             max: result.maxAverage,
-            on: rangeContainer)
+            on: innerRangeContainer)
         
-        rangeContainer.layer.addSublayer(layer)
+        innerRangeContainer.layer.addSublayer(layer)
     }
     
-    private func setCurrentResult() {
+    private func displayCurrentResult() {
         
         let maxAverage = resultCalculator.getAverage(of: pitchArray, getMax: true)
         let minAverage = resultCalculator.getAverage(of: pitchArray, getMax: false)
+        
+        guard minAverage > 0,
+            maxAverage > 0 else {
+                return 
+        }
         
         storeResult(min: minAverage, max: maxAverage)
         
@@ -183,7 +190,14 @@ extension ResultViewController: DatabaseManagerDelegate {
         print("databaseManager didLoadData: \(data.count)")
         results = data.reversed()
         tableView.reloadData()
-        setLastResult(data.last)
+        
+        guard let last = data.last else { return }
+        
+        if let result = currentResult, result.uuid == last.uuid {
+            return
+        }
+        
+        displayLastResult(last)
     }
     
     func databaseManager(didReceiveError error: Error) {

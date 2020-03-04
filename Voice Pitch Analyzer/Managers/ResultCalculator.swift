@@ -25,7 +25,22 @@ class ResultCalculator {
             sorted = Array(sorted.prefix(elements))
         }
 
-        return calculateAverage(pitches: sorted)
+        var result = calculateAverage(pitches: sorted)
+        
+        if getMax {
+            
+            if result > 255 {
+                result = 255
+            }
+            
+        } else {
+            
+            if result < 85 {
+                result = 85
+            }
+        }
+        
+        return result
     }
     
     // MARK: - Private
