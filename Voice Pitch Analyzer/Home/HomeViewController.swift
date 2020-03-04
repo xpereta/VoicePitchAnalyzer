@@ -18,15 +18,13 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var recordButtonInnerView: UIButton!
     @IBOutlet weak var waveformContainer: UIView!
     
+    private let recordingManager: RecordingManager
     private let databaseManager: DatabaseManager
     private let themeManager: ThemeManager
     private let textManager: TextManager
-    private let timeManager: TimeManager
     private let resultCalculator: ResultCalculator
     
     private var recorder: AVAudioRecorder?
-    
-    private var timer: Timer?
     private var pitchArray: Array<Double> = Array()
     private var link: CADisplayLink?
     
@@ -45,7 +43,7 @@ class HomeViewController: UIViewController {
         
         let view = SCSiriWaveformView(frame: frame)
 
-        view.waveColor = themeManager.getWaveformColor()
+        view.waveColor = Color.getWaveformColor()
         view.backgroundColor = .clear
         view.primaryWaveLineWidth = waveformContainer.frame.height - 100
         view.secondaryWaveLineWidth = (waveformContainer.frame.height - 100) / 2
@@ -54,16 +52,16 @@ class HomeViewController: UIViewController {
         return view
     }()
     
-    init(databaseManager: DatabaseManager,
+    init(recordingManager: RecordingManager,
+         databaseManager: DatabaseManager,
          themeManager: ThemeManager,
          textManager: TextManager,
-         timeManager: TimeManager,
          resultCalculator: ResultCalculator) {
         
+        self.recordingManager = recordingManager
         self.databaseManager = databaseManager
         self.themeManager = themeManager
         self.textManager = textManager
-        self.timeManager = timeManager
         self.resultCalculator = resultCalculator
         
         super.init(nibName: "HomeViewController", bundle: nil)
@@ -76,6 +74,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        recordingManager.delegate = self
         setAppearance()
     }
     
@@ -87,25 +86,13 @@ class HomeViewController: UIViewController {
     
     @IBAction func didPressRecordButton(_ sender: Any) {
         
-        print("didPressRecordButton")
         FeedbackManager.shared.giveFeedback()
-        
-        if timer === nil {
-            
-            startTimer()
-            startRecorder()
-            
-        } else {
-            
-            stopTimer()
-            stopRecorder()
-            presentResultController()
-        }
+        recordingManager.toggleRecordingState()
     }
     
     @IBAction func didPressHelpButton(_ sender: Any) {
         
-        Log.shared.event(.PressHelpButton)
+        Log.event(.PressHelpButton)
         presentInfoController()
     }
     
@@ -113,64 +100,37 @@ class HomeViewController: UIViewController {
     
     private func setAppearance() {
         
-        view.backgroundColor = themeManager.getBackgroundColor()
-        recordButtonInnerView.backgroundColor = themeManager.getInnerRecordButtonColor()
-        recordButtonInnerView.layer.cornerRadius = recordButtonInnerView.frame.width / 2
+        view.backgroundColor = Color.getBackgroundColor()
         themeManager.setInnerRecordButtonShadow(to: recordButtonInnerView)
         
-        timeLabel.textColor = themeManager.getTimeTextColor()
+        timeLabel.textColor = Color.getTimeTextColor()
         timeLabel.text = nil
         
         let recorderText = textManager.getRecorderText()!
-        let textColor = themeManager.getTextColor()
+        let textColor = Color.getTextColor()
         textView.attributedText = textManager.getAttributed(text: recorderText, color: textColor)
         
         resetTextView()
     }
     
-    private func startTimer() {
-        
-        timeLabel.text = textManager.getFormattedRemainingTime()
-        
-        timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] timer in
-            
-            guard let self = self else { return }
-            self.timeLabel.text = self.textManager.getFormattedRemainingTime()
-            self.timeManager.reduceTime(by: 0.1)
-            self.moveTextView()
-            
-            if self.timeManager.getRemainingTime() <= 0 {
-                self.didPressRecordButton(self)
-            }
-        }
-    }
-    
     private func startRecorder() {
         
-        Log.shared.event(.RecordStart)
-        pitchEngine.start()
+        Log.event(.RecordStart)
         
-        setWaveform()
+        DispatchQueue.main.async { [weak self] in
+            self?.pitchEngine.start()
+            self?.setWaveform()
+        }
     }
     
     private func stopRecorder() {
         
         removeWaveform { [weak self] in
             
-            Log.shared.event(.RecordStop)
+            Log.event(.RecordStop)
             self?.pitchEngine.stop()
             self?.pitchArray = []
         }
-    }
-    
-    private func stopTimer() {
-        
-        timer?.invalidate()
-        timer = nil
-        
-        timeManager.reduceTime(by: nil)
-        timeLabel.text = nil
-        resetTextView()
     }
     
     private func resetTextView() {
@@ -200,10 +160,7 @@ class HomeViewController: UIViewController {
     
     private func presentInfoController() {
         
-        let controller = InfoViewController(
-            themeManager: themeManager,
-            textManager: textManager)
-        
+        let controller = InfoViewController(textManager: textManager)
         present(controller, animated: true)
     }
     
@@ -220,22 +177,13 @@ class HomeViewController: UIViewController {
             ])
             
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayAndRecord)
+                
+            recorder?.prepareToRecord()
+            recorder?.isMeteringEnabled = true
+            recorder?.record()
             
-            DispatchQueue.global(qos: .background).async { [weak self] in
-                
-                guard let self = self, let recorder = self.recorder else {
-                    return
-                }
-                    
-                recorder.prepareToRecord()
-                recorder.isMeteringEnabled = true
-                recorder.record()
-                
-                DispatchQueue.main.async {
-                    UIView.animate(withDuration: 0.3) { [weak self] in
-                        self?.waveformView.alpha = 1
-                    }
-                }
+            UIView.animate(withDuration: 0.3) { [weak self] in
+                self?.waveformView.alpha = 1
             }
             
             link = CADisplayLink(target: self, selector: #selector(updateMeters))
@@ -243,7 +191,7 @@ class HomeViewController: UIViewController {
                 
         } catch let error {
         
-            Log.shared.record(error, at: #function)
+            Log.record(error, at: #function)
         }
     }
     
@@ -292,11 +240,39 @@ extension HomeViewController: PitchEngineDelegate {
             error.localizedDescription != "The operation couldn’t be completed. (Pitchy.PitchError error 3.)" {
             
             print("pitchEngine didReceiveError: \(error.localizedDescription)")
-            Log.shared.record(error, at: #function)
+            Log.record(error, at: #function)
         }
     }
 
     func pitchEngineWentBelowLevelThreshold(_ pitchEngine: PitchEngine){
         // intentionally left empty
+    }
+}
+
+// MARK: - RecordingManagerDelegate
+extension HomeViewController: RecordingManagerDelegate {
+
+    func recordingManager(didUpdateRemainingTime time: String?) {
+        
+        self.timeLabel.text = time
+    }
+    
+    func recordingManager(didUpdateRecordingState isRecording: Bool) {
+        
+        if isRecording {
+            startRecorder()
+        } else  {
+            stopRecorder()
+            presentResultController()
+        }
+    }
+    
+    func recordingManager(didUpdateTimer timerDidStop: Bool) {
+        
+        if timerDidStop {
+            resetTextView()
+        } else {
+            moveTextView()
+        }
     }
 }

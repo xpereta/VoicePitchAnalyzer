@@ -21,6 +21,8 @@
 		41E5E4141F496A9900B191F5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 41E5E4161F496A9900B191F5 /* InfoPlist.strings */; };
 		41E5E41E1F496E9B00B191F5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 41E5E41C1F496B4A00B191F5 /* Localizable.strings */; };
 		6C148C6D2409F7FF000B387E /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C148C6C2409F7FF000B387E /* DatabaseManager.swift */; };
+		6C167226241011FA00AFE5BC /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C167225241011FA00AFE5BC /* Color.swift */; };
+		6C167228241017D000AFE5BC /* RecordingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C167227241017D000AFE5BC /* RecordingManager.swift */; };
 		6C3ED0F8240C2C9D00D2BF9E /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C3ED0F7240C2C9D00D2BF9E /* HomeViewController.xib */; };
 		6C3ED0FA240C2CAD00D2BF9E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3ED0F9240C2CAD00D2BF9E /* HomeViewController.swift */; };
 		6C3ED0FD240C312500D2BF9E /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3ED0FC240C312500D2BF9E /* ThemeManager.swift */; };
@@ -70,6 +72,8 @@
 		41E5E41D1F496B8300B191F5 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4E8138DCC810D7C2E29B04DC /* Pods-Voice Pitch Analyzer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Voice Pitch Analyzer.release.xcconfig"; path = "Pods/Target Support Files/Pods-Voice Pitch Analyzer/Pods-Voice Pitch Analyzer.release.xcconfig"; sourceTree = "<group>"; };
 		6C148C6C2409F7FF000B387E /* DatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		6C167225241011FA00AFE5BC /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		6C167227241017D000AFE5BC /* RecordingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingManager.swift; sourceTree = "<group>"; };
 		6C3ED0F7240C2C9D00D2BF9E /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		6C3ED0F9240C2CAD00D2BF9E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		6C3ED0FC240C312500D2BF9E /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
@@ -136,6 +140,7 @@
 		41C205DB1F478E7D0029B39D /* Voice Pitch Analyzer */ = {
 			isa = PBXGroup;
 			children = (
+				6C167224241011CE00AFE5BC /* Models */,
 				6CA9D71D240CC1D70000187A /* SCSiriWaveformView */,
 				6C3ED11B240C954600D2BF9E /* Info */,
 				6C3ED114240C8B6500D2BF9E /* Result */,
@@ -152,6 +157,7 @@
 		41C205EE1F47930C0029B39D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6C3ED104240C3BA200D2BF9E /* Media.xcassets */,
 				41C205E51F478E7D0029B39D /* LaunchScreen.storyboard */,
 				41E5E41C1F496B4A00B191F5 /* Localizable.strings */,
 				412584301F48C15500E1297D /* de.json */,
@@ -173,6 +179,15 @@
 				B0AD652FF89891087FE76A53 /* Pods_Voice_Pitch_Analyzer.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6C167224241011CE00AFE5BC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6CA9D710240CAF4F0000187A /* RecorderResult.swift */,
+				6C167225241011FA00AFE5BC /* Color.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		6C3ED106240C425400D2BF9E /* Extensions */ = {
@@ -202,12 +217,12 @@
 			children = (
 				6C148C6C2409F7FF000B387E /* DatabaseManager.swift */,
 				6C3ED10D240C45CB00D2BF9E /* FeedbackManager.swift */,
-				6C3ED104240C3BA200D2BF9E /* Media.xcassets */,
 				6C3ED0FC240C312500D2BF9E /* ThemeManager.swift */,
 				6C3ED110240C471E00D2BF9E /* TextManager.swift */,
 				6C3ED112240C813800D2BF9E /* TimeManager.swift */,
 				6C3ED119240C8FC300D2BF9E /* ResultCalculator.swift */,
 				6CA9D71A240CBB500000187A /* Log.swift */,
+				6C167227241017D000AFE5BC /* RecordingManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -218,7 +233,6 @@
 				6C3ED115240C8B7A00D2BF9E /* ResultViewController.xib */,
 				6C3ED117240C8B8100D2BF9E /* ResultViewController.swift */,
 				41C205FE1F481F920029B39D /* RangeView.swift */,
-				6CA9D710240CAF4F0000187A /* RecorderResult.swift */,
 				6C6ADECE240DDC0A003F8E88 /* ResultCell.swift */,
 				6C6ADECF240DDC0A003F8E88 /* ResultCell.xib */,
 			);
@@ -456,6 +470,7 @@
 				6C3ED111240C471E00D2BF9E /* TextManager.swift in Sources */,
 				6C3ED10E240C45CB00D2BF9E /* FeedbackManager.swift in Sources */,
 				6C3ED11F240C956200D2BF9E /* InfoViewController.swift in Sources */,
+				6C167226241011FA00AFE5BC /* Color.swift in Sources */,
 				6CA9D713240CB1070000187A /* Serializable.swift in Sources */,
 				6C6ADED0240DDC0A003F8E88 /* ResultCell.swift in Sources */,
 				415E53F01F498A93009E33BC /* UIColor.swift in Sources */,
@@ -473,6 +488,7 @@
 				6C3ED108240C427500D2BF9E /* CALayer.swift in Sources */,
 				41CDE7E81F4CEE9F006CE08B /* NSAttributtedString+Link.swift in Sources */,
 				6C3ED11A240C8FC300D2BF9E /* ResultCalculator.swift in Sources */,
+				6C167228241017D000AFE5BC /* RecordingManager.swift in Sources */,
 				41C205DD1F478E7D0029B39D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

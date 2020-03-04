@@ -17,21 +17,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         FirebaseApp.configure()
-        Log.shared.event(.AppStart)
+        Log.event(.AppStart)
 
+        let recordingManager = RecordingManager()
         let databaseManager = DatabaseManager()
         databaseManager.configure()
         
         let themeManager = ThemeManager()
-        let timeManager = TimeManager()
-        let textManager = TextManager(timeManager: timeManager)
+        let textManager = TextManager()
         let resultCalculator = ResultCalculator()
         
         let home = HomeViewController(
+            recordingManager: recordingManager,
             databaseManager: databaseManager,
             themeManager: themeManager,
             textManager: textManager,
-            timeManager: timeManager,
             resultCalculator: resultCalculator)
         
         window = UIWindow(frame: UIScreen.main.bounds)

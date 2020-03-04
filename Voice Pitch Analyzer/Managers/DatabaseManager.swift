@@ -51,7 +51,7 @@ class DatabaseManager {
         reference?.setData(result.serialized) { [weak self] error in
             
             guard error == nil else {
-                Log.shared.record(error!, at: #function)
+                Log.record(error!, at: #function)
                 return
             }
             
@@ -71,7 +71,7 @@ class DatabaseManager {
             .addSnapshotListener({ [weak self] (querySnapshot, error) in
                 
                 guard error == nil else {
-                    Log.shared.record(error!, at: #function)
+                    Log.record(error!, at: #function)
                     self?.delegate?.databaseManager(didReceiveError: error!)
                     return
                 }

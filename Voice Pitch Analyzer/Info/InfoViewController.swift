@@ -15,15 +15,10 @@ class InfoViewController: UIViewController {
     @IBOutlet weak var versionLabel: UILabel!
     @IBOutlet weak var aboutLabel: UILabel!
     
-    private let themeManager: ThemeManager
     private let textManager: TextManager
     
-    init(themeManager: ThemeManager,
-         textManager: TextManager) {
-        
-        self.themeManager = themeManager
+    init(textManager: TextManager) {
         self.textManager = textManager
-        
         super.init(nibName: "InfoViewController", bundle: nil)
     }
     
@@ -41,10 +36,10 @@ class InfoViewController: UIViewController {
     
     private func setAppearance() {
         
-        view.backgroundColor = themeManager.getBackgroundColor()
+        view.backgroundColor = Color.getBackgroundColor()
         let infoText = textManager.getInfoText()
-        let textColor = themeManager.getTextColor()
-        let buttonColor = themeManager.getInnerRecordButtonColor()
+        let textColor = Color.getTextColor()
+        let buttonColor = Color.getInnerRecordButtonColor()
         
         doneButton.setTitleColor(buttonColor, for: .normal)
         textView.attributedText = textManager.getAttributed(text: infoText, color: textColor)

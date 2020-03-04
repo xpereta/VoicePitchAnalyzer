@@ -12,17 +12,15 @@ import FirebaseAnalytics
 
 class Log {
     
-    static let shared = Log()
-    
     // MARK: - Public
     
-    public func record(_ error: Error, at function: String) {
+    static public func record(_ error: Error, at function: String) {
         
         print("Error at \(function): \(error)")
         Crashlytics.crashlytics().record(error: error)
     }
     
-    public func event(_ event: LogEvent) {
+    static public func event(_ event: LogEvent) {
         
         let parameters = [
             "date": Date().iso8601

@@ -62,10 +62,11 @@
                         <constraint firstAttribute="height" constant="80" id="xP3-Jx-0E3"/>
                     </constraints>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ROY-L0-8ha" customClass="RecordButton" customModule="Voice_Pitch_Analyzer" customModuleProvider="target">
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ROY-L0-8ha" customClass="RecordButton" customModule="Voice_Pitch_Analyzer" customModuleProvider="target">
                     <rect key="frame" x="181" y="760" width="52" height="52"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="1" green="0.47450980390000003" blue="0.6588235294" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" image="recordButtonInner"/>
                     <connections>
                         <action selector="didPressRecordButton:" destination="-1" eventType="touchUpInside" id="YuS-MY-IiO"/>
                     </connections>
@@ -114,5 +115,6 @@
         <image name="maskBottom" width="375" height="314"/>
         <image name="maskTop" width="375" height="268"/>
         <image name="recordButton" width="80" height="80"/>
+        <image name="recordButtonInner" width="52" height="52"/>
     </resources>
 </document>

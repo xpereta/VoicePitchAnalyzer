@@ -10,28 +10,7 @@ import UIKit
 
 class TextManager {
     
-    private let timeManager: TimeManager
-    
-    init(timeManager: TimeManager) {
-        self.timeManager = timeManager
-    }
-    
     // MARK: - Public
-    
-    public func getFormattedRemainingTime() -> String {
-        
-        let time = timeManager.getRemainingTime()
-        
-        if time == 60 {
-            return "01:00"
-        }
-        
-        if time < 10 {
-            return "00:0\(time)"
-        }
-        
-        return "00:\(time)"
-    }
     
     public func getAttributed(text: String, color textColor: UIColor, centered: Bool = false) -> NSAttributedString {
         

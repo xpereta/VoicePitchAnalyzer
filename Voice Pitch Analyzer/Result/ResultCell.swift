@@ -48,21 +48,21 @@ class ResultCell: UITableViewCell {
         }
         
         content_ = result
-        backgroundColor = result.themeManager.getBackgroundColor()
-        calendarContainer.backgroundColor = result.themeManager.getInnerRecordButtonColor()
+        backgroundColor = Color.getBackgroundColor()
+        calendarContainer.backgroundColor = Color.getInnerRecordButtonColor()
         calendarContainer.layer.cornerRadius = 16
         
-        lowLabel.textColor = result.themeManager.getSubTextColor()
-        highLabel.textColor = result.themeManager.getSubTextColor()
+        lowLabel.textColor = Color.getSubTextColor()
+        highLabel.textColor = Color.getSubTextColor()
         
-        lowResultLabel.textColor = result.themeManager.getTimeTextColor()
-        highResultLabel.textColor = result.themeManager.getTimeTextColor()
+        lowResultLabel.textColor = Color.getTimeTextColor()
+        highResultLabel.textColor = Color.getTimeTextColor()
         
         lowResultLabel.text = result.result.getFormattedMin()
         highResultLabel.text = result.result.getFormattedMax()
         
-        monthLabel.textColor = result.themeManager.getBackgroundColor()
-        dayLabel.textColor = result.themeManager.getBackgroundColor()
+        monthLabel.textColor = Color.getBackgroundColor()
+        dayLabel.textColor = Color.getBackgroundColor()
         
         lowResultLabel.text = result.result.getFormattedMin()
         highResultLabel.text = result.result.getFormattedMax()
@@ -70,11 +70,11 @@ class ResultCell: UITableViewCell {
         monthLabel.text = result.result.getFormattedMonth(using: result.dateFormatter)
         dayLabel.text = result.result.getFormatteDay(using: result.dateFormatter)
         
-        rangeContainer.backgroundColor = result.themeManager.getWaveformColor()
+        rangeContainer.backgroundColor = Color.getWaveformColor()
         rangeContainer.layer.cornerRadius = 4
         
-        rangeContainer.setLayerBorderColor(result.themeManager.getBorderColor())
-        rangeContainer.layer.setBorderColor(result.themeManager.getBorderColor(), with: rangeContainer)
+        rangeContainer.setLayerBorderColor(Color.getBorderColor())
+        rangeContainer.layer.setBorderColor(Color.getBorderColor(), with: rangeContainer)
         rangeContainer.layer.borderWidth = 1
         
         setRange(result: result)
