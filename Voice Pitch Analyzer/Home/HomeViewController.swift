@@ -43,7 +43,7 @@ class HomeViewController: UIViewController {
         
         let view = SCSiriWaveformView(frame: frame)
 
-        view.waveColor = Color.getWaveformColor()
+        view.waveColor = ColorCache.shared.getWaveformColor()
         view.backgroundColor = .clear
         view.primaryWaveLineWidth = waveformContainer.frame.height - 100
         view.secondaryWaveLineWidth = (waveformContainer.frame.height - 100) / 2
@@ -100,14 +100,14 @@ class HomeViewController: UIViewController {
     
     private func setAppearance() {
         
-        view.backgroundColor = Color.getBackgroundColor()
+        view.backgroundColor = ColorCache.shared.getBackgroundColor()
         themeManager.setInnerRecordButtonShadow(to: recordButtonInnerView)
         
-        timeLabel.textColor = Color.getTimeTextColor()
+        timeLabel.textColor = ColorCache.shared.getTimeTextColor()
         timeLabel.text = nil
         
         let recorderText = textManager.getRecorderText()!
-        let textColor = Color.getTextColor()
+        let textColor = ColorCache.shared.getTextColor()
         textView.attributedText = textManager.getAttributed(text: recorderText, color: textColor)
         
         resetTextView()
@@ -117,9 +117,9 @@ class HomeViewController: UIViewController {
         
         DispatchQueue.main.async { [weak self] in
             if isRecording {
-                self?.recordButtonInnerView.setImage(Image.stop, for: .normal)
+                self?.recordButtonInnerView.setImage(ImageCache.shared.stop, for: .normal)
             } else {
-                self?.recordButtonInnerView.setImage(Image.record, for: .normal)
+                self?.recordButtonInnerView.setImage(ImageCache.shared.record, for: .normal)
             }
         }
     }

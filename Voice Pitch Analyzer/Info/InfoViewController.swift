@@ -36,10 +36,10 @@ class InfoViewController: UIViewController {
     
     private func setAppearance() {
         
-        view.backgroundColor = Color.getBackgroundColor()
+        view.backgroundColor = ColorCache.shared.getBackgroundColor()
         let infoText = textManager.getInfoText()
-        let textColor = Color.getTextColor()
-        let buttonColor = Color.getInnerRecordButtonColor()
+        let textColor = ColorCache.shared.getTextColor()
+        let buttonColor = ColorCache.shared.getInnerRecordButtonColor()
         
         doneButton.setTitleColor(buttonColor, for: .normal)
         textView.attributedText = textManager.getAttributed(text: infoText, color: textColor)

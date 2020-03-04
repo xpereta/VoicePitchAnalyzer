@@ -48,21 +48,21 @@ class ResultCell: UITableViewCell {
         }
         
         content_ = result
-        backgroundColor = Color.getBackgroundColor()
-        calendarContainer.backgroundColor = Color.getInnerRecordButtonColor()
+        backgroundColor = ColorCache.shared.getBackgroundColor()
+        calendarContainer.backgroundColor = ColorCache.shared.getInnerRecordButtonColor()
         calendarContainer.layer.cornerRadius = 16
         
-        lowLabel.textColor = Color.getSubTextColor()
-        highLabel.textColor = Color.getSubTextColor()
+        lowLabel.textColor = ColorCache.shared.getSubTextColor()
+        highLabel.textColor = ColorCache.shared.getSubTextColor()
         
-        lowResultLabel.textColor = Color.getTimeTextColor()
-        highResultLabel.textColor = Color.getTimeTextColor()
+        lowResultLabel.textColor = ColorCache.shared.getTimeTextColor()
+        highResultLabel.textColor = ColorCache.shared.getTimeTextColor()
         
         lowResultLabel.text = result.result.getFormattedMin()
         highResultLabel.text = result.result.getFormattedMax()
         
-        monthLabel.textColor = Color.getBackgroundColor()
-        dayLabel.textColor = Color.getBackgroundColor()
+        monthLabel.textColor = ColorCache.shared.getBackgroundColor()
+        dayLabel.textColor = ColorCache.shared.getBackgroundColor()
         
         lowResultLabel.text = result.result.getFormattedMin()
         highResultLabel.text = result.result.getFormattedMax()
@@ -70,11 +70,11 @@ class ResultCell: UITableViewCell {
         monthLabel.text = result.result.getFormattedMonth(using: result.dateFormatter)
         dayLabel.text = result.result.getFormatteDay(using: result.dateFormatter)
         
-        rangeContainer.backgroundColor = Color.getWaveformColor()
+        rangeContainer.backgroundColor = ColorCache.shared.getWaveformColor()
         rangeContainer.layer.cornerRadius = 4
         
-        rangeContainer.setLayerBorderColor(Color.getBorderColor())
-        rangeContainer.layer.setBorderColor(Color.getBorderColor(), with: rangeContainer)
+        rangeContainer.setLayerBorderColor(ColorCache.shared.getBorderColor())
+        rangeContainer.layer.setBorderColor(ColorCache.shared.getBorderColor(), with: rangeContainer)
         rangeContainer.layer.borderWidth = 1
         
         setRange(result: result)

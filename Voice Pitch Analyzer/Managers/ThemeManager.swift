@@ -33,7 +33,7 @@ class ThemeManager {
     public func setInnerRecordButtonShadow(to recordButton: UIButton) {
         
         recordButton.layer.applySketchShadow(
-            color: Color.getShadowColor(),
+            color: ColorCache.shared.getShadowColor(),
             alpha: 0.22,
             y: 3,
             blur: 14)
@@ -102,13 +102,13 @@ class ThemeManager {
                 
         let shapeLayer = CAShapeLayer()
         shapeLayer.frame = frame
-        shapeLayer.setBorderColor(Color.getInnerRecordButtonColor(), with: view)
-        shapeLayer.setShadowColor(Color.getShadowColor(), with: view)
-        shapeLayer.setBackgroundColor(Color.getInnerRecordButtonColor(), with: view)
+        shapeLayer.setBorderColor(ColorCache.shared.getInnerRecordButtonColor(), with: view)
+        shapeLayer.setShadowColor(ColorCache.shared.getShadowColor(), with: view)
+        shapeLayer.setBackgroundColor(ColorCache.shared.getInnerRecordButtonColor(), with: view)
         shapeLayer.cornerRadius = radius
         
         shapeLayer.applySketchShadow(
-            color: Color.getShadowColor(),
+            color: ColorCache.shared.getShadowColor(),
             y: 3,
             blur: 14)
         

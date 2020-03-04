@@ -72,21 +72,21 @@ class ResultViewController: UIViewController {
     private func setAppearance() {
         
         activityIndicator.hidesWhenStopped = true
-        view.backgroundColor = Color.getBackgroundColor()
-        let buttonColor = Color.getInnerRecordButtonColor()
-        let waveformColor = Color.getWaveformColor()
-        let bordercolor = Color.getBorderColor()
+        view.backgroundColor = ColorCache.shared.getBackgroundColor()
+        let buttonColor = ColorCache.shared.getInnerRecordButtonColor()
+        let waveformColor = ColorCache.shared.getWaveformColor()
+        let bordercolor = ColorCache.shared.getBorderColor()
         
         doneButton.setTitleColor(buttonColor, for: .normal)
         
-        femaleLabel.textColor = Color.getTimeTextColor()
-        androLabel.textColor = Color.getTimeTextColor()
-        maleLabel.textColor = Color.getTimeTextColor()
-        currentLabel.textColor = Color.getTimeTextColor()
-        lastLabel.textColor = Color.getTimeTextColor()
+        femaleLabel.textColor = ColorCache.shared.getTimeTextColor()
+        androLabel.textColor = ColorCache.shared.getTimeTextColor()
+        maleLabel.textColor = ColorCache.shared.getTimeTextColor()
+        currentLabel.textColor = ColorCache.shared.getTimeTextColor()
+        lastLabel.textColor = ColorCache.shared.getTimeTextColor()
         
-        maleRangeLabel.textColor = Color.getSubTextColor()
-        femaleRangeLabel.textColor = Color.getSubTextColor()
+        maleRangeLabel.textColor = ColorCache.shared.getSubTextColor()
+        femaleRangeLabel.textColor = ColorCache.shared.getSubTextColor()
         
         rangeContainer.backgroundColor = waveformColor
         rangeContainer.layer.cornerRadius = 16
