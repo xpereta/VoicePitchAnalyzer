@@ -61,23 +61,27 @@ class ThemeManager {
     
     // MARK: - Private
     
-    private func getVerticalResultFrame(min minAverage: Double, max maxAverage: Double, xPosition: CGFloat, on view: UIView) -> CGRect {
+    private func getVerticalResultFrame(
+        min minAverage: Double,
+        max maxAverage: Double,
+        xPosition: CGFloat,
+        on view: UIView) -> CGRect {
         
-        let yourmin = (1.0 - minAverage/340)
-        let yourmax = (1.0 - maxAverage/340)
+        let userMinimum: CGFloat = CGFloat(minAverage)
+        let lowPoint: CGFloat = 85
 
-        let recordingUpperRange = view.frame.height * CGFloat(yourmin)
-        let recordingLowerRange = view.frame.height * CGFloat(yourmax)
+        let userMaximum: CGFloat = CGFloat(maxAverage)
+
+        let bottomPosition: CGFloat = (userMinimum - lowPoint) * 2
+        let height: CGFloat = (userMaximum - lowPoint) * 2
         
-        let width: CGFloat = 32
-        let pathHeight: CGFloat = recordingUpperRange - recordingLowerRange
-        let pathHorizontalPosition: CGFloat = recordingLowerRange
+        let yPosition: CGFloat = (340 - (bottomPosition + height))
         
         return CGRect(
             x: xPosition,
-            y: pathHorizontalPosition,
-            width: width,
-            height: pathHeight)
+            y: yPosition,
+            width: 32,
+            height: height)
     }
     
     private func getHorizontalResultFrame(min minAverage: Double, max maxAverage: Double, on view: UIView) -> CGRect {

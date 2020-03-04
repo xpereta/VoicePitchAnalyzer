@@ -72,6 +72,8 @@ class RangeView: UIView {
         context.fill(bounds);
 
         let height = bounds.height;
+        
+        print("height: \(height)")
 
         //femaleRange goes from 165hz - 255. The entire screen should show 340HZ
         //therefor 165 is 48.f percent of the screen and 255 is 75 percent

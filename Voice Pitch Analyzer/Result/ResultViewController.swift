@@ -14,6 +14,7 @@ class ResultViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var rangeContainer: UIView!
+    @IBOutlet weak var innerRangeContainer: UIView!
     @IBOutlet weak var femaleLabel: UILabel!
     @IBOutlet weak var androLabel: UILabel!
     @IBOutlet weak var maleLabel: UILabel!
@@ -131,17 +132,14 @@ class ResultViewController: UIViewController {
         let maxAverage = resultCalculator.getAverage(of: pitchArray, getMax: true)
         let minAverage = resultCalculator.getAverage(of: pitchArray, getMax: false)
         
-        print("maxAverage: \(maxAverage)")
-        print("minAverage: \(minAverage)")
-        
         storeResult(min: minAverage, max: maxAverage)
         
         let layer = themeManager.getCurrentResultLayer(
             min: minAverage,
             max: maxAverage,
-            on: rangeContainer)
+            on: innerRangeContainer)
         
-        rangeContainer.layer.addSublayer(layer)
+        innerRangeContainer.layer.addSublayer(layer)
     }
 }
 

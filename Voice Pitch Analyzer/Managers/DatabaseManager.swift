@@ -67,6 +67,7 @@ class DatabaseManager {
             .collection("Results")
             .document(userID)
             .collection("Results")
+            .order(by: "date")
             .limit(toLast: 20)
             .addSnapshotListener({ [weak self] (querySnapshot, error) in
                 
