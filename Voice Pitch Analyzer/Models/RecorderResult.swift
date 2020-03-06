@@ -12,10 +12,12 @@ import SwiftyJSON
 
 class RecorderResult: Serializable {
     
+    /** Returns object as JSON for Firebase */
     var serialized: WrappedDictionary {
         return try! Wrap.wrap(self)
     }
     
+    /** Inits object from JSON */
     static func initialize(json: JSON) -> Serializable {
         return self.init(json: json)
     }
@@ -70,6 +72,7 @@ class RecorderResult: Serializable {
 // MARK: - Wrap Customization
 extension RecorderResult: WrapCustomizable {
     
+    /** Function to mutate the JSON result of 'serialized' and adjust date object as iso8601 */
     func wrap(context: Any?, dateFormatter: DateFormatter?) -> Any? {
         return try? Wrapper(context: context, dateFormatter: Formatter.iso8601).wrap(object: self)
     }

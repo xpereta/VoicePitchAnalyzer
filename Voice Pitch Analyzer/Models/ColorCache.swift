@@ -7,6 +7,8 @@
 //
 
 // MARK: - Color Cache
+
+/** Cache for colors. Saves memory. */
 struct ColorCache {
     
     public static let shared = ColorCache()

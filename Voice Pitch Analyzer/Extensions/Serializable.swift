@@ -10,6 +10,7 @@ import Foundation
 import Wrap
 import SwiftyJSON
 
+/** JSON protocol for Firebase */
 protocol Serializable {
     
     var serialized: WrappedDictionary { get }

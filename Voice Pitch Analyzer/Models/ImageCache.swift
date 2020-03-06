@@ -9,6 +9,8 @@
 import UIKit
 
 // MARK: - Image Cache
+
+/** Cache for images. Saves memory. */
 struct ImageCache {
     
     public static let shared = ImageCache()

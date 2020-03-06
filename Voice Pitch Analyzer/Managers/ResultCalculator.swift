@@ -12,6 +12,7 @@ class ResultCalculator {
     
     // MARK: - Public
     
+    /** Returns the average of the input pitch levels used to display the min/max pitch level */
     public func getAverage(of pitchArray: [Double], getMax: Bool) -> Double {
         
         var sorted = pitchArray
@@ -29,12 +30,14 @@ class ResultCalculator {
         
         if getMax {
             
+            /** Edit result back to desired top level of 255 Hz */
             if result > 255 {
                 result = 255
             }
             
         } else {
             
+            /** Edit result back to desired low level of 85 Hz */
             if result < 85 {
                 result = 85
             }

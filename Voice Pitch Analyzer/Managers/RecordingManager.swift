@@ -42,6 +42,7 @@ class RecordingManager {
     
     // MARK: - Private
     
+    /** Observer function called when isRecording state changes */
     private func setState(isRecording: Bool) {
         
         if isRecording {
@@ -51,6 +52,7 @@ class RecordingManager {
         }
     }
     
+    /** Returns formatted remaining time used on HomeViewController */
     private func getFormattedRemainingTime() -> String {
         
         let remainingTime_ = Int(remainingTime)
@@ -66,6 +68,7 @@ class RecordingManager {
         return "00:\(remainingTime_)"
     }
     
+    /** Starts recording timer and updates the Delegate to change the record button on HomeViewController */
     private func startRecording() {
         
         startTimer()
@@ -75,6 +78,7 @@ class RecordingManager {
         }
     }
     
+    /** Stops and reset time and updates the Delegate to change the record button on HomeViewController */
     private func stopRecording() {
         
         remainingTime = 60
@@ -85,6 +89,7 @@ class RecordingManager {
         }
     }
     
+    /** Timer to update remaining time and automatically stop after 60 seconds. */
     private func startTimer() {
 
         timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] timer in
@@ -102,6 +107,7 @@ class RecordingManager {
         }
     }
     
+    /** Stops and reset timer. */
     private func stopTimer() {
         
         timer?.invalidate()

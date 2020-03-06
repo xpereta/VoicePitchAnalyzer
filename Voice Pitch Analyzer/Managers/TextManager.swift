@@ -32,10 +32,12 @@ class TextManager {
         return NSAttributedString(string: text, attributes: attributes)
     }
     
+    /** Get the localized welcome text for the InfoViewController  */
     public func getInfoText() -> String {
         return NSLocalizedString("Welcome", comment: "")
     }
     
+    /** We're crashing the app if the Recorder Text can't be loaded. No point to keep the app alive at this point. */
     public func getRecorderText() -> String? {
         
         do {
@@ -49,40 +51,45 @@ class TextManager {
             }
             
             guard let file = Bundle.main.url(forResource: lang, withExtension: "json") else {
-                print("Error in TextManager.getText() file not found")
-                return nil
+                let error = "Error in TextManager.getText() file not found"
+                Log.recordProblem(error, at: #function)
+                fatalError(error)
             }
             
             let data = try Data(contentsOf: file)
             let json = try JSONSerialization.jsonObject(with: data, options: [])
             
             guard let object = json as? [String: Any] else {
-                print("Error in TextManager.getText() JSON invalid")
-                return nil
+                let error = "Error in TextManager.getText() JSON invalid"
+                Log.recordProblem(error, at: #function)
+                fatalError(error)
             }
             
             guard let texts = object["texts"] as? [String : Any] else {
-                print("Error in TextManager.getText() JSON empty")
-                return nil
+                let error = "Error in TextManager.getText() JSON empty"
+                Log.recordProblem(error, at: #function)
+                fatalError(error)
             }
             
             let dict = texts[lang!] as! [String]
             let randomNumber = Int(arc4random() % 457)
             
             guard randomNumber < dict.count else {
-                print("Error in TextManager.getText() dict empty")
-                return nil
+                let error = "Error in TextManager.getText() dict empty"
+                Log.recordProblem(error, at: #function)
+                fatalError(error)
             }
             
             return dict[randomNumber]
             
         } catch let error {
-            
-            print("Error in TextManager.getText() \(error.localizedDescription)")
-            return nil
+
+            Log.record(error, at: #function)
+            fatalError(error.localizedDescription)
         }
     }
     
+    /** Get version and build number for the InfoViewController */
     public func getVersionText() -> String? {
         
         guard let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String,
@@ -93,6 +100,7 @@ class TextManager {
         return "v \(version) \(build)"
     }
     
+    /** Get the localized about text for the InfoViewController  */
     public func getAboutText() -> String? {
         return NSLocalizedString("BasedOn", comment:"")
     }

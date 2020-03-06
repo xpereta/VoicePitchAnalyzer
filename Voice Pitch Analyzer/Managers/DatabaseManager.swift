@@ -27,6 +27,7 @@ class DatabaseManager {
     
     public func configure() {
         
+        /** Using the vendorID to support none registratered users with Firebase */
         guard let identifierForVendor = UIDevice.current.identifierForVendor else {
             return
         }
@@ -34,10 +35,12 @@ class DatabaseManager {
         setResultsObserver(userID: identifierForVendor.uuidString)
     }
     
+    /** Helper to push the existing results down the delegate. */
     public func getResults() {
         delegate?.databaseManager(didLoadData: results)
     }
     
+    /** Upload the current new result to firebase. */
     public func setLastResult(_ result: RecorderResult) {
                 
         var reference: DocumentReference? = nil
@@ -61,6 +64,8 @@ class DatabaseManager {
     
     // MARK: - Private
     
+    /** Observer for the result history on Firebase. */
+    // MARK: - TODO: Add pagination to support more than 20 results
     private func setResultsObserver(userID: String) {
         
         firestore

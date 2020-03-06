@@ -98,6 +98,9 @@ class ResultViewController: UIViewController {
         rangeContainer.layer.borderWidth = 1
     }
     
+    /**
+     Upload current result to Firebase if the frequency is of interest.
+     Might be 0 if the user dismisses the recording process to soon. */
     private func storeResult(min minAverage: Double, max maxAverage: Double) {
         
         guard let identifierForVendor = UIDevice.current.identifierForVendor,
@@ -200,10 +203,12 @@ extension ResultViewController: DatabaseManagerDelegate {
         displayLastResult(last)
     }
     
+    /** Log already added in manager class. */
     func databaseManager(didReceiveError error: Error) {
         print("databaseManager didReceiveError: \(error)")
     }
     
+    /** Might want to add UI feedback for successful storing results? */
     func databaseManager(didUploadResultWithID documentID: String) {
         print("databaseManager didUploadResultWithID: \(documentID)")
     }

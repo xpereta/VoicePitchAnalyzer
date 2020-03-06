@@ -107,6 +107,7 @@ class HomeViewController: UIViewController {
         resetTextView()
     }
     
+    /** Update the image of the record button from a circle to a square */
     private func updateRecordButton(toRecording isRecording: Bool) {
         
         DispatchQueue.main.async { [weak self] in
@@ -138,6 +139,7 @@ class HomeViewController: UIViewController {
         }
     }
     
+    /** Reset the textView to its original offset */
     private func resetTextView() {
         
         let initialTextViewOffset: CGFloat = -268
@@ -145,6 +147,7 @@ class HomeViewController: UIViewController {
         textView.setContentOffset(point, animated: true)
     }
     
+    /** Scroll the textView by 7pts per 0.1 seconds. The full text will take roughly 1 minute */
     private func moveTextView() {
         
         let offset = textView.contentOffset.y
@@ -169,6 +172,7 @@ class HomeViewController: UIViewController {
         present(controller, animated: true)
     }
     
+    /** Present the waveform around the record button and start the recorder */
     private func setWaveform() {
             
         do {
@@ -200,6 +204,7 @@ class HomeViewController: UIViewController {
         }
     }
     
+    /** Stop the recorder and hide the waveform */
     private func removeWaveform(completion: @escaping () -> ()) {
         
         DispatchQueue.global(qos: .background).async { [weak self] in
@@ -216,6 +221,7 @@ class HomeViewController: UIViewController {
         }
     }
     
+    /** Update waveform coming from  CADisplayLink based on the microphone recorder */
     @objc func updateMeters() {
         
         guard let recorder = self.recorder else {
@@ -234,6 +240,7 @@ extension HomeViewController: PitchEngineDelegate {
     
     func pitchEngine(_ pitchEngine: PitchEngine, didReceivePitch pitch: Pitch) {
         
+        /** Append frequencies above and below the desired levels of 255 and 85 to receive more accurate avergaes */
         if pitch.frequency < 340.0 && pitch.frequency > 65.0 {
             pitchArray.append(pitch.frequency)
         }
@@ -241,6 +248,7 @@ extension HomeViewController: PitchEngineDelegate {
     
     func pitchEngine(_ pitchEngine: PitchEngine, didReceiveError error: Error) {
 
+        /** Error 0 and 3 seem to be volume kind of pitch recognition errors. No point in loggint those */
         if error.localizedDescription != "The operation couldn’t be completed. (Pitchy.PitchError error 0.)" &&
             error.localizedDescription != "The operation couldn’t be completed. (Pitchy.PitchError error 3.)" {
             

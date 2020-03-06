@@ -45,6 +45,7 @@
 		6CA9D71B240CBB500000187A /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA9D71A240CBB500000187A /* Log.swift */; };
 		6CA9D720240CC1E00000187A /* SCSiriWaveformView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CA9D71E240CC1E00000187A /* SCSiriWaveformView.m */; };
 		6CC2F21E2409EEBB0009FBEB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6CC2F21D2409EEBB0009FBEB /* GoogleService-Info.plist */; };
+		6CE2AAA52411D329003D5C7B /* NSError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE2AAA42411D329003D5C7B /* NSError.swift */; };
 		9505091F45E18BC411AA484F /* Pods_Voice_Pitch_Analyzer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0AD652FF89891087FE76A53 /* Pods_Voice_Pitch_Analyzer.framework */; };
 /* End PBXBuildFile section */
 
@@ -96,6 +97,7 @@
 		6CA9D71E240CC1E00000187A /* SCSiriWaveformView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCSiriWaveformView.m; sourceTree = "<group>"; };
 		6CA9D71F240CC1E00000187A /* SCSiriWaveformView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSiriWaveformView.h; sourceTree = "<group>"; };
 		6CC2F21D2409EEBB0009FBEB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6CE2AAA42411D329003D5C7B /* NSError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSError.swift; sourceTree = "<group>"; };
 		6FAFEE120D5069C22F442CAA /* Pods-Voice Pitch Analyzer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Voice Pitch Analyzer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Voice Pitch Analyzer/Pods-Voice Pitch Analyzer.debug.xcconfig"; sourceTree = "<group>"; };
 		B0AD652FF89891087FE76A53 /* Pods_Voice_Pitch_Analyzer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Voice_Pitch_Analyzer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -196,6 +198,7 @@
 				6CA9D714240CB1810000187A /* String.swift */,
 				6CA9D716240CB1950000187A /* Formatter.swift */,
 				6CA9D718240CB1BC0000187A /* Date.swift */,
+				6CE2AAA42411D329003D5C7B /* NSError.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -470,6 +473,7 @@
 				6C148C6D2409F7FF000B387E /* DatabaseManager.swift in Sources */,
 				6CA9D71B240CBB500000187A /* Log.swift in Sources */,
 				6CA9D711240CAF4F0000187A /* RecorderResult.swift in Sources */,
+				6CE2AAA52411D329003D5C7B /* NSError.swift in Sources */,
 				6C3ED10B240C43D300D2BF9E /* RecordButton.swift in Sources */,
 				6CA9D719240CB1BC0000187A /* Date.swift in Sources */,
 				6C3ED118240C8B8100D2BF9E /* ResultViewController.swift in Sources */,
