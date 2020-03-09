@@ -3,7 +3,7 @@
 //  Voice Pitch Analyzer
 //
 //  Created by Carola Nitz on 8/20/17.
-//  Copyright © 2017 Carola Nitz. All rights reserved.
+//  Copyright © 2017 David Seek. All rights reserved.
 //
 
 import UIKit

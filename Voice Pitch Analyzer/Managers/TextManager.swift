@@ -3,7 +3,7 @@
 //  Voice Pitch Analyzer
 //
 //  Created by David Seek on 3/1/20.
-//  Copyright © 2020 Carola Nitz. All rights reserved.
+//  Copyright © 2020 David Seek. All rights reserved.
 //
 
 import UIKit
@@ -103,7 +103,12 @@ class TextManager {
     }
     
     /** Get the localized about text for the InfoViewController  */
-    public func getAboutText() -> String? {
-        return NSLocalizedString("BasedOn", comment:"")
+    public func getLocalized(_ text: Text) -> String? {
+        return NSLocalizedString(text.rawValue, comment:"")
     }
+}
+
+enum Text: String {
+    
+    case about = "BasedOn"
 }
