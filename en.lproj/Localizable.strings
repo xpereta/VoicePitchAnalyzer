@@ -12,4 +12,5 @@
 "AboutText" = "Voice Pitch Analyzer\nVersion:%@\n\nBased on the original %@";
 "No Samples" = "Not enough samples";
 "No Samples description" = "We couldn't record enough speaking samples from you. Please try again";
+"BasedOn" = "Based on: Voice Pitch Analyzer";
 

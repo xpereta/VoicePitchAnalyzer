@@ -1,0 +1,32 @@
+{
+  "images" : [
+    {
+      "idiom" : "universal",
+      "filename" : "maskBottomLightFix.pdf"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "maskBottomLightFix-1.pdf",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ]
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "maskBottomDarkFix.pdf",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}

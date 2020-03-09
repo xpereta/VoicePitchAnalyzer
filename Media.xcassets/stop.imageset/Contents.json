@@ -1,0 +1,32 @@
+{
+  "images" : [
+    {
+      "idiom" : "universal",
+      "filename" : "stopPink.pdf"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "stopPink-1.pdf",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ]
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "stopPurple.pdf",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}

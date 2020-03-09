@@ -1,0 +1,32 @@
+{
+  "images" : [
+    {
+      "idiom" : "universal",
+      "filename" : "recordButtonLight.pdf"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "recordButtonLight-1.pdf",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ]
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "recordButtonDark.pdf",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}
