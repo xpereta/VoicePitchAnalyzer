@@ -43,6 +43,8 @@ class TextManager {
         do {
             
             var lang = NSLocale.preferredLanguages.first
+            
+            /** Shortening enUS to en, enCA to en etc */
             let range = ..<lang!.index(lang!.startIndex, offsetBy: 2)
             lang = String(lang![range])
             

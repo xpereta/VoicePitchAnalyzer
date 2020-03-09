@@ -151,6 +151,8 @@ class HomeViewController: UIViewController {
     private func moveTextView() {
         
         let offset = textView.contentOffset.y
+        
+        /** Moving 7pts per 0.1 seconds. That seems to be the sweet spot to read the snippet in 1 minute. */
         let point = CGPoint(x: 0.0, y: offset + 7)
         textView.setContentOffset(point, animated: true)
     }
@@ -267,7 +269,7 @@ extension HomeViewController: RecordingManagerDelegate {
 
     func recordingManager(didUpdateRemainingTime time: String?) {
         
-        self.timeLabel.text = time
+        timeLabel.text = time
     }
     
     func recordingManager(didUpdateRecordingState isRecording: Bool) {
