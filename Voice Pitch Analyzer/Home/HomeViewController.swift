@@ -124,17 +124,29 @@ class HomeViewController: UIViewController {
         Log.event(.RecordStart)
         
         DispatchQueue.main.async { [weak self] in
+            #if targetEnvironment(simulator)
+            print("Mic and pitch detection only works on a device.")
+            #else
             self?.pitchEngine.start()
+            #endif
             self?.setWaveform()
         }
     }
     
     private func stopRecorder() {
+        #if targetEnvironment(simulator)
+        self.pitchArray = generateSimulatorPitchData()
+        #endif
         
         removeWaveform { [weak self] in
             
             Log.event(.RecordStop)
+            #if targetEnvironment(simulator)
+            print("Mic and pitch detection only works on a device.")
+            #else
             self?.pitchEngine.stop()
+            #endif
+
             self?.pitchArray = []
         }
     }
@@ -295,3 +307,17 @@ extension HomeViewController: RecordingManagerDelegate {
         }
     }
 }
+
+// MARK:Simulator support
+#if targetEnvironment(simulator)
+extension HomeViewController {
+    func generateSimulatorPitchData() -> [Double] {
+        let numSamples = 10
+        let centerPitch = Double.random(in: 100 ... 250)
+        let amplitude = Double.random(in: 50 ... 100)
+        let lowerPitch = Double(centerPitch - amplitude / 2)
+        let highestPitch = Double(centerPitch + amplitude / 2)
+        return (0 ..< numSamples).map { _ in Double.random(in: lowerPitch ... highestPitch)}
+    }
+}
+#endif
