@@ -75,6 +75,12 @@ class TextManager {
             
             let dict = texts[lang!] as! [String]
             
+            guard dict.count > 0 else {
+                let error = "Error in TextManager.getText() dict empty"
+                Log.recordProblem(error, at: #function)
+                fatalError(error)
+            }
+            
             return dict.randomElement()
             
         } catch let error {
