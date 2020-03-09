@@ -74,15 +74,8 @@ class TextManager {
             }
             
             let dict = texts[lang!] as! [String]
-            let randomNumber = Int(arc4random() % 457)
             
-            guard randomNumber < dict.count else {
-                let error = "Error in TextManager.getText() dict empty"
-                Log.recordProblem(error, at: #function)
-                fatalError(error)
-            }
-            
-            return dict[randomNumber]
+            return dict.randomElement()
             
         } catch let error {
 
