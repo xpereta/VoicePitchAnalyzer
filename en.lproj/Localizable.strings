@@ -1,16 +1,11 @@
 
 "Welcome" = "Hey There!\n\nTo properly analyse your pitch, we need about one minute of audio recording of your voice. For this purpose, we’ll provide you with a text of a length approximate to this time frame. Of course you’re free to say anything else, too, as long as it’s in your natural voice.";
-"Gotit" = "Got it!";
-"Record" = "Record";
-"Cancel" = "Cancel";
-"Stop" = "Stop";
-"Female\nRange" = "Female Range\n(165hz - 255hz)";
-"Male\nRange" = "Male Range\n(85hz - 180hz)";
-"Androgynous\nRange" = "Androgynous\nRange";
-"Recording" = "Recording";
-"About" = "About";
-"AboutText" = "Voice Pitch Analyzer\nVersion:%@\n\nBased on the original %@";
-"No Samples" = "Not enough samples";
-"No Samples description" = "We couldn't record enough speaking samples from you. Please try again";
+"FemaleRange" = "Female Range";
+"MaleRange" = "Male Range";
+"AndrogynousRange" = "Androgynous";
 "BasedOn" = "Based on: Voice Pitch Analyzer";
-
+"Current" = "Current";
+"Last" = "Last";
+"Low" = "Low";
+"High" = "High";
+"Done" = "Done";

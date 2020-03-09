@@ -27,6 +27,7 @@ class ResultViewController: UIViewController {
     private let databaseManager: DatabaseManager
     private let themeManager: ThemeManager
     private let resultCalculator: ResultCalculator
+    private let textManager: TextManager
     private let pitchArray: Array<Double>
     
     private var results = [RecorderResult]()
@@ -39,11 +40,13 @@ class ResultViewController: UIViewController {
     init(databaseManager: DatabaseManager,
          themeManager: ThemeManager,
          resultCalculator: ResultCalculator,
+         textManager: TextManager,
          pitchArray: Array<Double>) {
         
         self.databaseManager = databaseManager
         self.themeManager = themeManager
         self.resultCalculator = resultCalculator
+        self.textManager = textManager
         self.pitchArray = pitchArray
         super.init(nibName: "ResultViewController", bundle: nil)
     }
@@ -80,12 +83,22 @@ class ResultViewController: UIViewController {
         let bordercolor = ColorCache.shared.getBorderColor()
         
         doneButton.setTitleColor(buttonColor, for: .normal)
+        doneButton.setTitle(textManager.getLocalized(.done), for: .normal)
         
         femaleLabel.textColor = ColorCache.shared.getTimeTextColor()
+        femaleLabel.text = textManager.getLocalized(.female)
+        
         androLabel.textColor = ColorCache.shared.getTimeTextColor()
+        androLabel.text = textManager.getLocalized(.androgynous)
+        
         maleLabel.textColor = ColorCache.shared.getTimeTextColor()
+        maleLabel.text = textManager.getLocalized(.male)
+        
         currentLabel.textColor = ColorCache.shared.getTimeTextColor()
+        currentLabel.text = textManager.getLocalized(.current)
+        
         lastLabel.textColor = ColorCache.shared.getTimeTextColor()
+        lastLabel.text = textManager.getLocalized(.last)
         
         maleRangeLabel.textColor = ColorCache.shared.getSubTextColor()
         femaleRangeLabel.textColor = ColorCache.shared.getSubTextColor()
@@ -172,6 +185,7 @@ extension ResultViewController: UITableViewDataSource, UITableViewDelegate {
         let content = ResultCellContent(
             result: result,
             themeManager: themeManager,
+            textManager: textManager,
             dateFormatter: dateFormatter)
         
         cell.bindViewModel(content)

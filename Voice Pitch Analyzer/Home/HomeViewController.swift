@@ -163,6 +163,7 @@ class HomeViewController: UIViewController {
             databaseManager: databaseManager,
             themeManager: themeManager,
             resultCalculator: resultCalculator,
+            textManager: textManager,
             pitchArray: pitchArray)
         
         present(controller, animated: true, completion: completion)
