@@ -3,7 +3,7 @@
 //  Voice Pitch Analyzer
 //
 //  Created by David Seek on 3/2/20.
-//  Copyright © 2020 Carola Nitz. All rights reserved.
+//  Copyright © 2020 David Seek. All rights reserved.
 //
 
 import UIKit
@@ -53,7 +53,10 @@ class ResultCell: UITableViewCell {
         calendarContainer.layer.cornerRadius = 16
         
         lowLabel.textColor = ColorCache.shared.getSubTextColor()
+        lowLabel.text = result.textManager.getLocalized(.low)
+        
         highLabel.textColor = ColorCache.shared.getSubTextColor()
+        highLabel.text = result.textManager.getLocalized(.high)
         
         lowResultLabel.textColor = ColorCache.shared.getTimeTextColor()
         highResultLabel.textColor = ColorCache.shared.getTimeTextColor()
@@ -123,5 +126,6 @@ struct ResultCellContent {
     
     public let result: RecorderResult
     public let themeManager: ThemeManager
+    public let textManager: TextManager
     public let dateFormatter: DateFormatter
 }

@@ -3,7 +3,7 @@
 //  Voice Pitch Analyzer
 //
 //  Created by David Seek on 3/1/20.
-//  Copyright © 2020 Carola Nitz. All rights reserved.
+//  Copyright © 2020 David Seek. All rights reserved.
 //
 
 import UIKit
@@ -163,6 +163,7 @@ class HomeViewController: UIViewController {
             databaseManager: databaseManager,
             themeManager: themeManager,
             resultCalculator: resultCalculator,
+            textManager: textManager,
             pitchArray: pitchArray)
         
         present(controller, animated: true, completion: completion)

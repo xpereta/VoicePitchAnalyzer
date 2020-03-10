@@ -3,7 +3,7 @@
 //  Voice Pitch Analyzer
 //
 //  Created by David Seek on 3/1/20.
-//  Copyright © 2020 Carola Nitz. All rights reserved.
+//  Copyright © 2020 David Seek. All rights reserved.
 //
 
 import UIKit
@@ -37,18 +37,21 @@ class InfoViewController: UIViewController {
     private func setAppearance() {
         
         view.backgroundColor = ColorCache.shared.getBackgroundColor()
-        let infoText = textManager.getInfoText()
         let textColor = ColorCache.shared.getTextColor()
         let buttonColor = ColorCache.shared.getInnerRecordButtonColor()
         
         doneButton.setTitleColor(buttonColor, for: .normal)
-        textView.attributedText = textManager.getAttributed(text: infoText, color: textColor)
+        doneButton.setTitle(textManager.getLocalized(.done), for: .normal)
+        
+        if let infoText = textManager.getLocalized(.welcome) {
+            textView.attributedText = textManager.getAttributed(text: infoText, color: textColor)
+        }
         
         var versionText = textManager.getVersionText()
         versionText = versionText != nil ? versionText : ""
         versionLabel.attributedText = textManager.getAttributed(text: versionText!, color: textColor, centered: true)
         
-        var aboutText = textManager.getAboutText()
+        var aboutText = textManager.getLocalized(.about)
         aboutText = aboutText != nil ? aboutText : ""
         aboutLabel.attributedText = textManager.getAttributed(text: aboutText!, color: buttonColor, centered: true)
         

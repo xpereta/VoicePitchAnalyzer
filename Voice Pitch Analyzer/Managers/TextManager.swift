@@ -3,7 +3,7 @@
 //  Voice Pitch Analyzer
 //
 //  Created by David Seek on 3/1/20.
-//  Copyright © 2020 Carola Nitz. All rights reserved.
+//  Copyright © 2020 David Seek. All rights reserved.
 //
 
 import UIKit
@@ -30,11 +30,6 @@ class TextManager {
         ]
         
         return NSAttributedString(string: text, attributes: attributes)
-    }
-    
-    /** Get the localized welcome text for the InfoViewController  */
-    public func getInfoText() -> String {
-        return NSLocalizedString("Welcome", comment: "")
     }
     
     /** We're crashing the app if the Recorder Text can't be loaded. No point to keep the app alive at this point. */
@@ -102,8 +97,22 @@ class TextManager {
         return "v \(version) \(build)"
     }
     
-    /** Get the localized about text for the InfoViewController  */
-    public func getAboutText() -> String? {
-        return NSLocalizedString("BasedOn", comment:"")
+    /** Get localized texts  */
+    public func getLocalized(_ text: Text) -> String? {
+        return NSLocalizedString(text.rawValue, comment:"")
     }
+}
+
+enum Text: String {
+    
+    case about = "BasedOn"
+    case welcome = "Welcome"
+    case female = "FemaleRange"
+    case male = "MaleRange"
+    case androgynous = "AndrogynousRange"
+    case current = "Current"
+    case last = "Last"
+    case low = "Low"
+    case high = "High"
+    case done = "Done"
 }

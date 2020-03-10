@@ -1,15 +1,11 @@
 
 "Welcome" = "Hallo!\n\nUm deine Stimmlage richtig zu analysieren brauchen wir eine Audioaufnahme deiner Stimme von einer Minute. Zu diesem Zweck geben wir dir einen Text in dieser ungefähren Länge. Natürlich kannst du auch etwas anderes sagen so lange es in deiner natürlichen Stimme ist.";
-"Gotit" = "Alles klar!";
-"Record" = "Aufnehmen";
-"Caccel" = "Abbrechen";
-"Stop" = "Stop";
-"Female\nRange" = "Weibliche Spanne\n(165hz - 255hz)";
-"Male\nRange" = "Männliche Spanne\n(85hz - 180hz)";
-"Androgynous\nRange" = "Androgyne\nSpanne";
-"Recording" = "Aufnehmen";
-"About" = "Über";
-"AboutText" = "Voice Pitch Analyzer\nVersion:%@\n\n Basierend auf der original Version https://github.com/purrprogramming/voice-pitch-analyzer/";
-"No Samples" = "Nicht genügend Aufnahmen";
-"No Samples description" = "Wir konnten nicht lange genug aufnehmen. Bitte versuche es noch einmal";
+"FemaleRange" = "Weibliche Spanne";
+"MaleRange" = "Männliche Spanne";
+"AndrogynousRange" = "Androgyne Spanne";
 "BasedOn" = "Basierend auf: Voice Pitch Analyzer";
+"Current" = "Aktuell";
+"Last" = "Zuvor";
+"Low" = "Tief";
+"High" = "Hoch";
+"Done" = "Fertig";
