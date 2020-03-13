@@ -9,14 +9,14 @@
 import UIKit
 
 extension UIColor {
-    
+
     open class var vpapurple: UIColor {
         return UIColor(red: 147.0/255.0, green: 112.0/255.0, blue: 219.0/255.0, alpha: 1)
     }
 }
 
 extension UIColor {
-    
+
     convenience init(hex: String) {
         let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
         var int = UInt64()
@@ -32,6 +32,10 @@ extension UIColor {
         default:
             (alpha, red, green, blue) = (255, 0, 0, 0)
         }
-        self.init(red: CGFloat(red) / 255, green: CGFloat(green) / 255, blue: CGFloat(blue) / 255, alpha: CGFloat(alpha) / 255)
+        self.init(
+            red: CGFloat(red) / 255,
+            green: CGFloat(green) / 255,
+            blue: CGFloat(blue) / 255,
+            alpha: CGFloat(alpha) / 255)
     }
 }
