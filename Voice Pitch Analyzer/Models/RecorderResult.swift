@@ -13,8 +13,14 @@ import SwiftyJSON
 class RecorderResult: Serializable {
     
     /** Returns object as JSON for Firebase */
-    var serialized: WrappedDictionary {
-        return try! Wrap.wrap(self)
+    var serialized: WrappedDictionary? {
+        do {
+            return try Wrap.wrap(self)
+        } catch let error {
+            Log.record(error, at: #function)
+            return nil
+        }
+        
     }
     
     /** Inits object from JSON */

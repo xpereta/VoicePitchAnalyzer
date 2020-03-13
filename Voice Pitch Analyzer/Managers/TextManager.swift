@@ -68,7 +68,12 @@ class TextManager {
                 fatalError(error)
             }
             
-            let dict = texts[lang!] as! [String]
+            guard let dict = texts[lang!] as? [String] else {
+                let error = "Error in TextManager.getText() cast to String array failed"
+                Log.recordProblem(error, at: #function)
+                fatalError(error)
+            }
+            
             let randomNumber = Int(arc4random() % 457)
             
             guard randomNumber < dict.count else {

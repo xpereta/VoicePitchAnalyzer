@@ -55,17 +55,17 @@ class RecordingManager {
     /** Returns formatted remaining time used on HomeViewController */
     private func getFormattedRemainingTime() -> String {
         
-        let remainingTime_ = Int(remainingTime)
+        let calculatedTime = Int(remainingTime)
         
-        if remainingTime_ == 60 {
+        if calculatedTime == 60 {
             return "01:00"
         }
         
-        if remainingTime_ < 10 {
-            return "00:0\(remainingTime_)"
+        if calculatedTime < 10 {
+            return "00:0\(calculatedTime)"
         }
         
-        return "00:\(remainingTime_)"
+        return "00:\(calculatedTime)"
     }
     
     /** Starts recording timer and updates the Delegate to change the record button on HomeViewController */

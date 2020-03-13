@@ -11,7 +11,7 @@ import FirebaseCrashlytics
 import FirebaseAnalytics
 
 class Log {
-    
+
     // MARK: - Public
     
     /** Sends custom error messages to Firebase. Crash logs will be send in background. */
@@ -42,8 +42,8 @@ class Log {
 
 // MARK: - TODO Add more logging events
 enum LogEvent: String {
-    case AppStart = "appStart"
-    case RecordStart = "recordStart"
-    case RecordStop = "recordStop"
-    case PressHelpButton = "pressHelpButton"
+    case appStart = "appStart"
+    case recordStart = "recordStart"
+    case recordStop = "recordStop"
+    case pressHelpButton = "pressHelpButton"
 }

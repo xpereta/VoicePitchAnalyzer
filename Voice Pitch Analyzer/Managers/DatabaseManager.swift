@@ -50,8 +50,10 @@ class DatabaseManager {
             .document(result.userID)
             .collection("Results")
             .document(result.uuid)
+        
+        guard let serialized = result.serialized else { return }
             
-        reference?.setData(result.serialized) { [weak self] error in
+        reference?.setData(serialized) { [weak self] error in
             
             guard error == nil else {
                 Log.record(error!, at: #function)

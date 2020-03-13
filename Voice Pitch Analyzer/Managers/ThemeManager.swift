@@ -36,7 +36,7 @@ class ThemeManager {
         recordButton.layer.applySketchShadow(
             color: ColorCache.shared.getShadowColor(),
             alpha: 0.22,
-            y: 3,
+            yPosition: 3,
             blur: 14)
     }
     
@@ -110,13 +110,13 @@ class ThemeManager {
          We need the factor as oppose to the vertical view where the height is always 340 pts,
          the width varies based on the screen size */
         let factor = view.frame.width / 340
-        let width_ = width * factor
-        let xPosition_ = xPosition * factor
+        let calculatedWidth = width * factor
+        let calculatedxPosition = xPosition * factor
         
         return CGRect(
-            x: xPosition_,
+            x: calculatedxPosition,
             y: 0,
-            width: width_,
+            width: calculatedWidth,
             height: 8)
     }
     
@@ -133,7 +133,7 @@ class ThemeManager {
         
         shapeLayer.applySketchShadow(
             color: ColorCache.shared.getShadowColor(),
-            y: 3,
+            yPosition: 3,
             blur: 14)
         
         return shapeLayer

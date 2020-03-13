@@ -20,8 +20,8 @@ class ResultCell: UITableViewCell {
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var rangeContainer: UIView!
     
-    var content_: ResultCellContent?
-    var layer_: CALayer?
+    var resultCellContent: ResultCellContent?
+    var theLayer: CALayer?
     var hasBeenReused: Bool = false
     
     override func awakeFromNib() {
@@ -47,7 +47,7 @@ class ResultCell: UITableViewCell {
             return
         }
         
-        content_ = result
+        resultCellContent = result
         backgroundColor = ColorCache.shared.getBackgroundColor()
         calendarContainer.backgroundColor = ColorCache.shared.getInnerRecordButtonColor()
         calendarContainer.layer.cornerRadius = 16
@@ -91,7 +91,7 @@ class ResultCell: UITableViewCell {
     
     private func setRange(result: ResultCellContent) {
         
-        layer_?.removeFromSuperlayer()
+        theLayer?.removeFromSuperlayer()
         
         let layer = result.themeManager.getHistoryResultLayer(
             min: result.result.minAverage,
@@ -99,7 +99,7 @@ class ResultCell: UITableViewCell {
             on: rangeContainer)
         
         rangeContainer.layer.insertSublayer(layer, at: 0)
-        layer_ = layer
+        theLayer = layer
     }
     
     /**
@@ -115,9 +115,8 @@ class ResultCell: UITableViewCell {
         if let objectView = object as? UIView,
             objectView === rangeContainer,
             keyPath == #keyPath(UIView.bounds),
-            let result = content_ {
-
-            setRange(result: result)
+            let resultCellContent = resultCellContent {
+            setRange(result: resultCellContent)
         }
     }
 }

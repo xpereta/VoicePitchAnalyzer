@@ -85,7 +85,7 @@ class HomeViewController: UIViewController {
     
     @IBAction func didPressHelpButton(_ sender: Any) {
         
-        Log.event(.PressHelpButton)
+        Log.event(.pressHelpButton)
         presentInfoController()
     }
     
@@ -120,7 +120,7 @@ class HomeViewController: UIViewController {
     
     private func startPitchEngine() {
         
-        Log.event(.RecordStart)
+        Log.event(.recordStart)
         
         DispatchQueue.main.async { [weak self] in
             self?.pitchEngine.start()
@@ -132,7 +132,7 @@ class HomeViewController: UIViewController {
         
         removeWaveform { [weak self] in
             
-            Log.event(.RecordStop)
+            Log.event(.recordStop)
             self?.pitchEngine.stop()
             self?.pitchArray = []
         }
