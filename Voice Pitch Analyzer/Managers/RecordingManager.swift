@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol RecordingManagerDelegate {
+protocol RecordingManagerDelegate: class {
     func recordingManager(didUpdateRemainingTime time: String?)
     func recordingManager(didUpdateRecordingState isRecording: Bool)
     func recordingManager(didUpdateTimer timerDidStop: Bool)
@@ -32,7 +32,7 @@ class RecordingManager {
         }
     }
 
-    public var delegate: RecordingManagerDelegate?
+    public weak var delegate: RecordingManagerDelegate?
 
     // MARK: - Public
 

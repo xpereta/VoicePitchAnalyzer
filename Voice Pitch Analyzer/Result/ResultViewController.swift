@@ -180,7 +180,9 @@ extension ResultViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let result = results[indexPath.row]
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ResultCell", for: indexPath) as? ResultCell else {
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: "ResultCell",
+            for: indexPath) as? ResultCell else {
             fatalError("Error loading ResultCell. This should never happen.")
         }
 

@@ -24,9 +24,9 @@ class TextManager {
         }
 
         let attributes = [
-            NSAttributedStringKey.paragraphStyle: style,
-            NSAttributedStringKey.font: font,
-            NSAttributedStringKey.foregroundColor: textColor
+            NSAttributedString.Key.paragraphStyle: style,
+            NSAttributedString.Key.font: font,
+            NSAttributedString.Key.foregroundColor: textColor
         ]
 
         return NSAttributedString(string: text, attributes: attributes)

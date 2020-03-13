@@ -109,7 +109,11 @@ class ResultCell: UITableViewCell {
     Setting needsLayout did not fix the issue.
     @author David Seek
      */
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
+    override func observeValue(
+        forKeyPath keyPath: String?,
+        of object: Any?,
+        change: [NSKeyValueChangeKey: Any]?,
+        context: UnsafeMutableRawPointer?) {
         if let objectView = object as? UIView,
             objectView === rangeContainer,
             keyPath == #keyPath(UIView.bounds),

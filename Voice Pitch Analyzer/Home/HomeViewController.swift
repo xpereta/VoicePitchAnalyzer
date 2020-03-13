@@ -183,14 +183,14 @@ class HomeViewController: UIViewController {
 
         /** Link to update the waveform around the button */
         link = CADisplayLink(target: self, selector: #selector(updateMeters))
-        link?.add(to: .current, forMode: .commonModes)
+        link?.add(to: .current, forMode: RunLoop.Mode.common)
     }
 
     /** Stop the recorder and hide the waveform */
     private func removeWaveform(completion: @escaping () -> Void) {
 
         /** Remove the link to stop the waveform setting selector */
-        link?.remove(from: .current, forMode: .commonModes)
+        link?.remove(from: .current, forMode: RunLoop.Mode.common)
 
         DispatchQueue.main.async { [weak self] in
             self?.waveformView.alpha = 0
