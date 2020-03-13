@@ -9,6 +9,7 @@
 import UIKit
 import Beethoven
 import Pitchy
+import AVFoundation
 
 class HomeViewController: UIViewController {
 
@@ -23,9 +24,9 @@ class HomeViewController: UIViewController {
     private let textManager: TextManager
     private let resultCalculator: ResultCalculator
     
+    private var recorder: AVAudioRecorder?
     private var pitchArray: Array<Double> = Array()
     private var link: CADisplayLink?
-    private var lastFrequency: Double?
     
     lazy var pitchEngine: PitchEngine = { [weak self] in
         var config = Config(bufferSize: 4096, estimationStrategy: .yin)
@@ -118,7 +119,7 @@ class HomeViewController: UIViewController {
         }
     }
     
-    private func startPitchEngine() {
+    private func startRecorder() {
         
         Log.event(.RecordStart)
         
@@ -128,7 +129,7 @@ class HomeViewController: UIViewController {
         }
     }
     
-    private func stopPitchEngine() {
+    private func stopRecorder() {
         
         removeWaveform { [weak self] in
             
@@ -177,34 +178,63 @@ class HomeViewController: UIViewController {
     /** Present the waveform around the record button and start the recorder */
     private func setWaveform() {
             
-        UIView.animate(withDuration: 0.3) { [weak self] in
-            self?.waveformView.alpha = 1
-        }
+        do {
+                
+            let url = URL(fileURLWithPath: "/dev/null")
+            recorder = try AVAudioRecorder(url: url, settings: [
+                AVSampleRateKey: 44100.0,
+                AVFormatIDKey: kAudioFormatAppleLossless,
+                AVNumberOfChannelsKey: 2,
+                AVEncoderAudioQualityKey: AVAudioQuality.min.rawValue
+            ])
+            
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayAndRecord)
+                
+            recorder?.prepareToRecord()
+            recorder?.isMeteringEnabled = true
+            recorder?.record()
+            
+            UIView.animate(withDuration: 0.3) { [weak self] in
+                self?.waveformView.alpha = 1
+            }
+            
+            link = CADisplayLink(target: self, selector: #selector(updateMeters))
+            link?.add(to: .current, forMode: .commonModes)
+                
+        } catch let error {
         
-        /** Link to update the waveform around the button */
-        link = CADisplayLink(target: self, selector: #selector(updateMeters))
-        link?.add(to: .current, forMode: .commonModes)
+            Log.record(error, at: #function)
+        }
     }
     
     /** Stop the recorder and hide the waveform */
     private func removeWaveform(completion: @escaping () -> ()) {
         
-        /** Remove the link to stop the waveform setting selector */
-        link?.remove(from: .current, forMode: .commonModes)
-        
-        DispatchQueue.main.async { [weak self] in
-            self?.waveformView.alpha = 0
-            completion()
+        DispatchQueue.global(qos: .background).async { [weak self] in
+            
+            self?.link?.remove(from: .current, forMode: .commonModes)
+            self?.recorder?.isMeteringEnabled = false
+            self?.recorder?.stop()
+            self?.recorder = nil
+            
+            DispatchQueue.main.async { [weak self] in
+                self?.waveformView.alpha = 0
+                completion()
+            }
         }
     }
     
     /** Update waveform coming from  CADisplayLink based on the microphone recorder */
     @objc func updateMeters() {
         
-        if let lastFrequency = lastFrequency {
-            let normalizedValue =  pow(10, CGFloat(lastFrequency / 10000)) - 1
-            self.waveformView.update(withLevel:  normalizedValue)
+        guard let recorder = self.recorder else {
+            return
         }
+        
+        recorder.updateMeters()
+        
+        let normalizedValue = pow(10, CGFloat(recorder.averagePower(forChannel: 0))/10)
+        self.waveformView.update(withLevel: normalizedValue)
     }
 }
 
@@ -215,7 +245,6 @@ extension HomeViewController: PitchEngineDelegate {
         
         /** Append frequencies above and below the desired levels of 255 and 85 to receive more accurate avergaes */
         if pitch.frequency < 340.0 && pitch.frequency > 65.0 {
-            lastFrequency = pitch.wave.frequency
             pitchArray.append(pitch.frequency)
         }
     }
@@ -247,10 +276,10 @@ extension HomeViewController: RecordingManagerDelegate {
     func recordingManager(didUpdateRecordingState isRecording: Bool) {
         
         if isRecording {
-            startPitchEngine()
+            startRecorder()
             updateRecordButton(toRecording: true)
         } else  {
-            stopPitchEngine()
+            stopRecorder()
             
             presentResultController { [weak self] in
                 self?.updateRecordButton(toRecording: false)
