@@ -20,8 +20,8 @@ class RecordingManager {
     private var remainingTime: Float = 60 {
         didSet {
             DispatchQueue.main.async { [weak self] in
-                guard let strongSelf = self else { return }
-                strongSelf.delegate?.recordingManager(didUpdateRemainingTime: strongSelf.getFormattedRemainingTime())
+                guard let self = self else { return }
+                self.delegate?.recordingManager(didUpdateRemainingTime: self.getFormattedRemainingTime())
             }
         }
     }
@@ -94,15 +94,15 @@ class RecordingManager {
 
         timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] timer in
             
-            guard let strongSelf = self else { return }
-            strongSelf.remainingTime -= 0.1
+            guard let self = self else { return }
+            self.remainingTime -= 0.1
             
             DispatchQueue.main.async { [weak self] in
                 self?.delegate?.recordingManager(didUpdateTimer: false)
             }
             
-            if strongSelf.remainingTime <= 0 {
-                strongSelf.stopRecording()
+            if self.remainingTime <= 0 {
+                self.stopRecording()
             }
         }
     }
