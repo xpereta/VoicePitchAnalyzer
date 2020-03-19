@@ -3,7 +3,7 @@
 //  Voice Pitch Analyzer
 //
 //  Created by David Seek on 3/4/20.
-//  Copyright © 2020 Carola Nitz. All rights reserved.
+//  Copyright © 2020 David Seek. All rights reserved.
 //
 
 import UIKit
@@ -12,9 +12,9 @@ import UIKit
 
 /** Cache for images. Saves memory. */
 struct ImageCache {
-    
+
     public static let shared = ImageCache()
-    
+
     // MARK: - Public
 
     public let stop = UIImage(named: "stop")

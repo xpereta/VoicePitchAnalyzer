@@ -3,16 +3,16 @@
 //  Voice Pitch Analyzer
 //
 //  Created by David Seek on 3/4/20.
-//  Copyright © 2020 Carola Nitz. All rights reserved.
+//  Copyright © 2020 David Seek. All rights reserved.
 //
 
 // MARK: - Color Cache
 
 /** Cache for colors. Saves memory. */
 struct ColorCache {
-    
+
     public static let shared = ColorCache()
-    
+
     private let cFFFFFF = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
     private let cEFEFEF = #colorLiteral(red: 0.937254902, green: 0.937254902, blue: 0.937254902, alpha: 1)
     private let cFFE8F0 = #colorLiteral(red: 1, green: 0.9098039216, blue: 0.9411764706, alpha: 1)
@@ -27,13 +27,13 @@ struct ColorCache {
     private let c061023 = #colorLiteral(red: 0.02352941176, green: 0.06274509804, blue: 0.137254902, alpha: 1)
     private let c000000 = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
     private let c202020 = #colorLiteral(red: 0.1254901961, green: 0.1254901961, blue: 0.1254901961, alpha: 1)
-    
+
     public func getBackgroundColor() -> UIColor {
-        
+
         guard #available(iOS 13, *) else {
             return cFFFFFF
         }
-        
+
         return UIColor { (traitCollection: UITraitCollection) -> UIColor in
             if traitCollection.userInterfaceStyle == .dark {
                 return self.c061023
@@ -42,13 +42,13 @@ struct ColorCache {
             }
         }
     }
-    
+
     public func getInnerRecordButtonColor() -> UIColor {
-        
+
         guard #available(iOS 13, *) else {
             return cFF79A8
         }
-        
+
         return UIColor { (traitCollection: UITraitCollection) -> UIColor in
             if traitCollection.userInterfaceStyle == .dark {
                 return self.cB98FFE
@@ -57,13 +57,13 @@ struct ColorCache {
             }
         }
     }
-    
+
     public func getTextColor() -> UIColor {
-        
+
         guard #available(iOS 13, *) else {
             return c202020
         }
-        
+
         return UIColor { (traitCollection: UITraitCollection) -> UIColor in
             if traitCollection.userInterfaceStyle == .dark {
                 return self.cEFEFEF
@@ -72,13 +72,13 @@ struct ColorCache {
             }
         }
     }
-    
+
     public func getTimeTextColor() -> UIColor {
-        
+
         guard #available(iOS 13, *) else {
             return c27406E
         }
-        
+
         return UIColor { (traitCollection: UITraitCollection) -> UIColor in
             if traitCollection.userInterfaceStyle == .dark {
                 return self.cEFEFEF
@@ -87,13 +87,13 @@ struct ColorCache {
             }
         }
     }
-    
+
     public func getWaveformColor() -> UIColor {
-        
+
         guard #available(iOS 13, *) else {
             return cFFE8F0
         }
-        
+
         return UIColor { (traitCollection: UITraitCollection) -> UIColor in
             if traitCollection.userInterfaceStyle == .dark {
                 return self.c0E1D3A
@@ -102,13 +102,13 @@ struct ColorCache {
             }
         }
     }
-    
+
     public func getShadowColor() -> UIColor {
-        
+
         guard #available(iOS 13, *) else {
             return cFF93B9
         }
-        
+
         return UIColor { (traitCollection: UITraitCollection) -> UIColor in
             if traitCollection.userInterfaceStyle == .dark {
                 return self.c7050A5
@@ -117,13 +117,13 @@ struct ColorCache {
             }
         }
     }
-    
+
     public func getBorderColor() -> UIColor {
-        
+
         guard #available(iOS 13, *) else {
             return cFFD0E1
         }
-        
+
         return UIColor { (traitCollection: UITraitCollection) -> UIColor in
             if traitCollection.userInterfaceStyle == .dark {
                 return self.c253657
@@ -132,13 +132,13 @@ struct ColorCache {
             }
         }
     }
-    
+
     public func getSubTextColor() -> UIColor {
-        
+
         guard #available(iOS 13, *) else {
             return c000000.withAlphaComponent(0.45)
         }
-        
+
         return UIColor { (traitCollection: UITraitCollection) -> UIColor in
             if traitCollection.userInterfaceStyle == .dark {
                 return self.cFFFFFF.withAlphaComponent(0.45)
