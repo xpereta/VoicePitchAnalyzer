@@ -148,6 +148,7 @@ class HomeViewController: UIViewController {
            #endif
                      
            self?.pitchArray = []
+        }
     }
 
     /** Reset the textView to its original offset */
