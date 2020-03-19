@@ -324,6 +324,7 @@
 				EF2C5DC34665B843B2AD39A5 /* [CP] Embed Pods Frameworks */,
 				6C1EEBE12409F0360067C09C /* ShellScript */,
 				6C807BB8240CA8DA00C7B9FB /* ShellScript */,
+				6C60F30F241C444000BB28AD /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -347,17 +348,16 @@
 					41C205D81F478E7D0029B39D = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = 69XUZ6HBUE;
-						LastSwiftMigration = 0920;
+						LastSwiftMigration = 1130;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
 			buildConfigurationList = 41C205D41F478E7D0029B39D /* Build configuration list for PBXProject "Voice Pitch Analyzer" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 				de,
@@ -438,6 +438,23 @@
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
+		};
+		6C60F30F241C444000BB28AD /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint autocorrect\"\n\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
 		};
 		6C807BB8240CA8DA00C7B9FB /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -730,7 +747,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.carolanitz.voice-pitch-analyzer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -748,7 +765,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.carolanitz.voice-pitch-analyzer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

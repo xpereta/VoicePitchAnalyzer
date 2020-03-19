@@ -9,7 +9,7 @@
 import UIKit
 
 class RecordButton: UIButton {
-    
+
     /** Custom button used in HomeViewController. Removes shadow when clicked. */
     override var isHighlighted: Bool {
         didSet {

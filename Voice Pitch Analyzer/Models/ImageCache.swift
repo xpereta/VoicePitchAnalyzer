@@ -12,9 +12,9 @@ import UIKit
 
 /** Cache for images. Saves memory. */
 struct ImageCache {
-    
+
     public static let shared = ImageCache()
-    
+
     // MARK: - Public
 
     public let stop = UIImage(named: "stop")

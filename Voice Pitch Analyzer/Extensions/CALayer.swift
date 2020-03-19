@@ -9,26 +9,26 @@
 import UIKit
 
 extension CALayer {
-    
+
   func applySketchShadow(
     color: UIColor = .black,
     alpha: Float = 1,
-    x: CGFloat = 0,
-    y: CGFloat = 2,
+    xPosition: CGFloat = 0,
+    yPosition: CGFloat = 2,
     blur: CGFloat = 4,
     spread: CGFloat = 0) {
-    
+
     shadowColor = color.cgColor
     shadowOpacity = alpha
-    shadowOffset = CGSize(width: x, height: y)
+    shadowOffset = CGSize(width: xPosition, height: yPosition)
     shadowRadius = blur / 2.0
-    
+
     if spread == 0 {
       shadowPath = nil
     } else {
-        
-      let dx = -spread
-      let rect = bounds.insetBy(dx: dx, dy: dx)
+
+      let calculatedX = -spread
+      let rect = bounds.insetBy(dx: calculatedX, dy: calculatedX)
       shadowPath = UIBezierPath(rect: rect).cgPath
     }
   }

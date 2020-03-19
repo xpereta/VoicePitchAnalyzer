@@ -283,6 +283,7 @@ PODS:
   - nanopb/encode (0.3.9011)
   - Pitchy (3.0.0)
   - PromisesObjC (1.2.8)
+  - SwiftLint (0.39.1)
   - SwiftyJSON (5.0.0)
   - Wrap (3.0.0)
   - XYColor (1.1.1)
@@ -293,6 +294,7 @@ DEPENDENCIES:
   - Firebase/Crashlytics
   - Firebase/Firestore
   - FirebaseFirestoreSwift
+  - SwiftLint
   - SwiftyJSON
   - Wrap (from `https://github.com/JohnSundell/Wrap.git`)
   - XYColor
@@ -324,6 +326,7 @@ SPEC REPOS:
     - nanopb
     - Pitchy
     - PromisesObjC
+    - SwiftLint
     - SwiftyJSON
     - XYColor
 
@@ -362,10 +365,11 @@ SPEC CHECKSUMS:
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   Pitchy: 15407e4425b6d88fa3e7eef8927ba659fab52d7a
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
+  SwiftLint: 55e96a4a4d537d4a3156859fc1c54bd24851a046
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   Wrap: f6b75e1c9617d6671224401a543a8e0407ffb3c4
   XYColor: 101df126d07deb1b0ef4489bae52f9d643b55190
 
-PODFILE CHECKSUM: 28efb132d1043d0b79c682d332da6faee1ff36c8
+PODFILE CHECKSUM: cf093cf301126d9190a3052ac29d1511a6dab3bf
 
 COCOAPODS: 1.8.3

@@ -12,8 +12,8 @@ import SwiftyJSON
 
 /** JSON protocol for Firebase */
 protocol Serializable {
-    
-    var serialized: WrappedDictionary { get }
+
+    var serialized: WrappedDictionary? { get }
     var uuid: String { get }
     static func initialize(json: JSON) -> Serializable
 }
