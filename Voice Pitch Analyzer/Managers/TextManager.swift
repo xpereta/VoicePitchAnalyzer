@@ -83,7 +83,7 @@ class TextManager {
             }
 
             return dict[randomNumber]
-          
+
         } catch let error {
 
             Log.record(error, at: #function)

@@ -131,22 +131,22 @@ class HomeViewController: UIViewController {
             self?.setWaveform()
         }
     }
-  
+
     private func stopPitchEngine() {
-  
+
        #if targetEnvironment(simulator)
        self.pitchArray = generateSimulatorPitchData()
        #endif
-    
+
        removeWaveform { [weak self] in
-            
+
            Log.event(.recordStop)
            #if targetEnvironment(simulator)
            print("Mic and pitch detection only works on a device.")
            #else
            self?.pitchEngine.stop()
            #endif
-                     
+
            self?.pitchArray = []
         }
     }
@@ -281,7 +281,7 @@ extension HomeViewController: RecordingManagerDelegate {
     }
 }
 
-// MARK:Simulator support
+// MARK: Simulator support
 #if targetEnvironment(simulator)
 extension HomeViewController {
     func generateSimulatorPitchData() -> [Double] {
