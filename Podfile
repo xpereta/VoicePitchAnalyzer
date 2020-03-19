@@ -26,6 +26,7 @@ def shared_pods
   
   # Package to polyfil CALayer with traitCollection.userInterfaceStyle to adapt color as UIView does.
   pod 'XYColor'
+  pod 'SwiftLint'
 
 end
 

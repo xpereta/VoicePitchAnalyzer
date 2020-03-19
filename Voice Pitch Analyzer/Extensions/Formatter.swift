@@ -3,13 +3,13 @@
 //  Voice Pitch Analyzer
 //
 //  Created by David Seek on 3/1/20.
-//  Copyright © 2020 Carola Nitz. All rights reserved.
+//  Copyright © 2020 David Seek. All rights reserved.
 //
 
 import Foundation
 
 extension Formatter {
-    
+
     static let iso8601: DateFormatter = {
         let formatter = DateFormatter()
         formatter.calendar = Calendar(identifier: .iso8601)
