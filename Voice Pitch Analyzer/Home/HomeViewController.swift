@@ -97,7 +97,6 @@ class HomeViewController: UIViewController {
         themeManager.setInnerRecordButtonShadow(to: recordButtonInnerView)
 
         timeLabel.textColor = ColorCache.shared.getTimeTextColor()
-        timeLabel.text = nil
 
         let recorderText = textManager.getRecorderText()!
         let textColor = ColorCache.shared.getTextColor()
@@ -278,6 +277,15 @@ extension HomeViewController: RecordingManagerDelegate {
         } else {
             moveTextView()
         }
+    }
+    
+    func recordingManager(didReceiveSimulatedPitch pitch: Double) {
+        
+        /**
+         Simulation of:
+         pitchEngine(_ pitchEngine: PitchEngine, didReceivePitch pitch: Pitch)
+         */
+        lastFrequency = pitch
     }
 }
 
