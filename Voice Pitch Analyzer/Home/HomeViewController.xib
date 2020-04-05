@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -62,9 +62,8 @@
                         <constraint firstAttribute="height" constant="80" id="xP3-Jx-0E3"/>
                     </constraints>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ROY-L0-8ha" customClass="RecordButton" customModule="Voice_Pitch_Analyzer" customModuleProvider="target">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ROY-L0-8ha" customClass="RecordButton" customModule="Voice_Pitch_Analyzer" customModuleProvider="target">
                     <rect key="frame" x="181" y="760" width="52" height="52"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <state key="normal" image="recordButtonInner"/>
                     <connections>
@@ -92,6 +91,7 @@
                 <constraint firstItem="Swv-d9-VTT" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="topMargin" id="4dm-EH-aEz"/>
                 <constraint firstAttribute="trailing" secondItem="E3k-ci-5yw" secondAttribute="trailing" constant="16" id="8CC-Cx-MJ1"/>
                 <constraint firstAttribute="bottom" secondItem="vRH-t1-A94" secondAttribute="bottom" constant="-163" id="DP1-2T-e5L"/>
+                <constraint firstItem="ROY-L0-8ha" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="FeW-JB-uJG"/>
                 <constraint firstItem="x8d-zm-6j4" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="HH5-aS-Yev"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="JLe-MP-6gz" secondAttribute="trailing" constant="20" id="ITF-0F-Y1Y"/>
                 <constraint firstItem="2dQ-au-mM9" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="53" id="Q4g-jO-hK5"/>
@@ -100,6 +100,7 @@
                 <constraint firstItem="Swv-d9-VTT" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="XS8-EC-XKb"/>
                 <constraint firstItem="x8d-zm-6j4" firstAttribute="top" secondItem="JLe-MP-6gz" secondAttribute="bottom" constant="8" id="e3q-S1-nES"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="x8d-zm-6j4" secondAttribute="bottom" constant="36" id="gke-w1-bch"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="ROY-L0-8ha" secondAttribute="bottom" constant="50" id="lXU-fH-tO1"/>
                 <constraint firstItem="JLe-MP-6gz" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="mv7-Ji-O4Y"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="2dQ-au-mM9" secondAttribute="trailing" constant="20" id="mvm-Xv-jNP"/>
                 <constraint firstItem="JLe-MP-6gz" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="odr-69-khg"/>
