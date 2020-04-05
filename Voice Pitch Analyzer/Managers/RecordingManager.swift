@@ -12,6 +12,9 @@ protocol RecordingManagerDelegate: class {
     func recordingManager(didUpdateRemainingTime time: String?)
     func recordingManager(didUpdateRecordingState isRecording: Bool)
     func recordingManager(didUpdateTimer timerDidStop: Bool)
+    
+    /** For simulator only*/
+    func recordingManager(didReceiveSimulatedPitch pitch: Double)
 }
 
 class RecordingManager {
@@ -104,6 +107,10 @@ class RecordingManager {
             if strongSelf.remainingTime <= 0 {
                 strongSelf.stopRecording()
             }
+            
+            #if targetEnvironment(simulator)
+            self?.delegate?.recordingManager(didReceiveSimulatedPitch: Double.random(in: 0...1))
+            #endif
         }
     }
 
@@ -114,7 +121,7 @@ class RecordingManager {
         timer = nil
 
         DispatchQueue.main.async { [weak self] in
-            self?.delegate?.recordingManager(didUpdateRemainingTime: nil)
+            self?.delegate?.recordingManager(didUpdateRemainingTime: "1:00")
             self?.delegate?.recordingManager(didUpdateTimer: true)
         }
     }
