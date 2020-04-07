@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 import Beethoven
 import Pitchy
 
@@ -22,6 +23,7 @@ class HomeViewController: UIViewController {
     private let themeManager: ThemeManager
     private let textManager: TextManager
     private let resultCalculator: ResultCalculator
+    private let microphoneAccessManager: MicrophoneAccessManager
 
     private var pitchArray: [Double] = Array()
     private var link: CADisplayLink?
@@ -55,13 +57,15 @@ class HomeViewController: UIViewController {
          databaseManager: DatabaseManager,
          themeManager: ThemeManager,
          textManager: TextManager,
-         resultCalculator: ResultCalculator) {
+         resultCalculator: ResultCalculator,
+         microphoneAccessManager: MicrophoneAccessManager) {
 
         self.recordingManager = recordingManager
         self.databaseManager = databaseManager
         self.themeManager = themeManager
         self.textManager = textManager
         self.resultCalculator = resultCalculator
+        self.microphoneAccessManager = microphoneAccessManager
 
         super.init(nibName: "HomeViewController", bundle: nil)
     }
@@ -74,7 +78,15 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
 
         recordingManager.delegate = self
+        microphoneAccessManager.delegate = self
+
         setAppearance()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        microphoneAccessManager.checkAuthorizationStatus()
     }
 
     @IBAction func didPressRecordButton(_ sender: Any) {
@@ -278,14 +290,22 @@ extension HomeViewController: RecordingManagerDelegate {
             moveTextView()
         }
     }
-    
+
     func recordingManager(didReceiveSimulatedPitch pitch: Double) {
-        
+
         /**
          Simulation of:
          pitchEngine(_ pitchEngine: PitchEngine, didReceivePitch pitch: Pitch)
          */
         lastFrequency = pitch
+    }
+}
+
+// MARK: - MicrophoneAccessManagerDelegate
+extension HomeViewController: MicrophoneAccessManagerDelegate {
+
+    func microphoneAccessManager(didChangeAuthorizationStatusTo status: AVAuthorizationStatus, isAuthorized: Bool) {
+        print("didChangeAuthorizationStatusTo \(status) isAuthorized: \(isAuthorized)")
     }
 }
 
