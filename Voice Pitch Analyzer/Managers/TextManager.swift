@@ -120,4 +120,8 @@ enum Text: String {
     case low = "Low"
     case high = "High"
     case done = "Done"
+    case micAccessExplanation = "MicAccessExplanation"
+    case micAccessExplanationDenied = "MicAccessExplanationDenied"
+    case openSettings = "OpenSettings"
+    case next = "Next"
 }

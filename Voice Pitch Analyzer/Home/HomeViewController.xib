@@ -10,6 +10,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="Voice_Pitch_Analyzer" customModuleProvider="target">
             <connections>
+                <outlet property="micAccessButton" destination="0eW-Ai-0wh" id="YgL-cf-ZZ5"/>
+                <outlet property="micAccessLabel" destination="KNF-vu-q1A" id="MhY-kc-cci"/>
+                <outlet property="micAccessView" destination="xP3-yk-3l2" id="Ov3-Nz-qQg"/>
                 <outlet property="recordButtonInnerView" destination="ROY-L0-8ha" id="hT0-WW-O9v"/>
                 <outlet property="textView" destination="JLe-MP-6gz" id="SjC-o6-K0U"/>
                 <outlet property="timeLabel" destination="2dQ-au-mM9" id="7rG-jz-ITu"/>
@@ -81,6 +84,37 @@
                         <action selector="didPressHelpButton:" destination="-1" eventType="touchUpInside" id="Bux-Hc-G19"/>
                     </connections>
                 </button>
+                <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xP3-yk-3l2">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="explanation" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KNF-vu-q1A">
+                            <rect key="frame" x="24" y="64" width="366" height="25.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0eW-Ai-0wh">
+                            <rect key="frame" x="24" y="782" width="366" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="HEc-xA-Ib1"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                            <state key="normal" title="GO"/>
+                            <connections>
+                                <action selector="didPressMicAccessButton:" destination="-1" eventType="touchUpInside" id="yx1-MT-xWI"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="0eW-Ai-0wh" secondAttribute="bottom" constant="64" id="SAj-Jq-GhT"/>
+                        <constraint firstItem="KNF-vu-q1A" firstAttribute="top" secondItem="xP3-yk-3l2" secondAttribute="top" constant="64" id="UIK-YB-NZR"/>
+                        <constraint firstItem="0eW-Ai-0wh" firstAttribute="leading" secondItem="xP3-yk-3l2" secondAttribute="leading" constant="24" id="YVm-Qx-SvX"/>
+                        <constraint firstItem="KNF-vu-q1A" firstAttribute="leading" secondItem="xP3-yk-3l2" secondAttribute="leading" constant="24" id="aDv-cR-xWz"/>
+                        <constraint firstAttribute="trailing" secondItem="0eW-Ai-0wh" secondAttribute="trailing" constant="24" id="lnt-8N-crQ"/>
+                        <constraint firstAttribute="trailing" secondItem="KNF-vu-q1A" secondAttribute="trailing" constant="24" id="u9R-Cb-x6P"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -89,16 +123,20 @@
                 <constraint firstItem="2dQ-au-mM9" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="2Od-iA-84L"/>
                 <constraint firstItem="vRH-t1-A94" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="-63" id="34a-EF-ypE"/>
                 <constraint firstItem="Swv-d9-VTT" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="topMargin" constant="-44" id="4dm-EH-aEz"/>
+                <constraint firstItem="xP3-yk-3l2" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="589-ni-evX"/>
                 <constraint firstAttribute="trailing" secondItem="E3k-ci-5yw" secondAttribute="trailing" constant="16" id="8CC-Cx-MJ1"/>
+                <constraint firstAttribute="bottom" secondItem="xP3-yk-3l2" secondAttribute="bottom" id="ByV-Lx-lUi"/>
                 <constraint firstAttribute="bottom" secondItem="vRH-t1-A94" secondAttribute="bottom" constant="-163" id="DP1-2T-e5L"/>
                 <constraint firstItem="ROY-L0-8ha" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="FeW-JB-uJG"/>
                 <constraint firstItem="x8d-zm-6j4" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="HH5-aS-Yev"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="JLe-MP-6gz" secondAttribute="trailing" constant="20" id="ITF-0F-Y1Y"/>
                 <constraint firstItem="ROY-L0-8ha" firstAttribute="centerY" secondItem="x8d-zm-6j4" secondAttribute="centerY" id="MTZ-gH-zCS"/>
+                <constraint firstItem="xP3-yk-3l2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Mbe-79-v9y"/>
                 <constraint firstItem="2dQ-au-mM9" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="53" id="Q4g-jO-hK5"/>
                 <constraint firstItem="dvg-A8-CUe" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="Tkc-ia-ywO"/>
                 <constraint firstItem="E3k-ci-5yw" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="44" id="UsV-Vn-TzP"/>
                 <constraint firstItem="Swv-d9-VTT" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="XS8-EC-XKb"/>
+                <constraint firstItem="xP3-yk-3l2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="bnZ-Uq-7ya"/>
                 <constraint firstItem="x8d-zm-6j4" firstAttribute="top" secondItem="JLe-MP-6gz" secondAttribute="bottom" constant="8" id="e3q-S1-nES"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="x8d-zm-6j4" secondAttribute="bottom" constant="36" id="gke-w1-bch"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="ROY-L0-8ha" secondAttribute="bottom" constant="50" id="lXU-fH-tO1"/>

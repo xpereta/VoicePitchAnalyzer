@@ -9,3 +9,7 @@
 "Low" = "Low";
 "High" = "High";
 "Done" = "Done";
+"MicAccessExplanation" = "Hey There!\n\nTo be able to analyze your voice pitch, VoicePitchAnalyzer needs access to your microphone.";
+"MicAccessExplanationDenied" = "Hey There!\n\nTo be able to analyze your voice pitch, VoicePitchAnalyzer needs access to your microphone.\n\nPlease open the settings, scroll to VoicePitchAnalzyer and activate microphone access.";
+"OpenSettings" = "Settings";
+"Next" = "Next";
