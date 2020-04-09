@@ -29,7 +29,7 @@ class MicrophoneAccessManager {
     }
 
     public func requestAuthorization() {
-        
+
         print("requestAuthorization")
 
         if microphoneAccessIsDenied {
@@ -38,23 +38,23 @@ class MicrophoneAccessManager {
             requestAccess()
         }
     }
-    
+
     // MARK: - Private
-    
+
     private func requestAccess() {
-        
+
         AVCaptureDevice.requestAccess(for: .audio) { [weak self] granted in
             print("requestAccess granted: ", granted)
             self?.checkAuthorizationStatus()
         }
     }
-    
+
     private func openSettings() {
-        
+
         guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
             return
         }
-        
+
         guard UIApplication.shared.canOpenURL(settingsUrl) else {
             return
         }

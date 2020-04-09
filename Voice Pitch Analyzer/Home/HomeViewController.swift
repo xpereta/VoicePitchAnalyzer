@@ -243,7 +243,7 @@ class HomeViewController: UIViewController {
     private func setMicAccessLabel(to text: Text) {
 
         DispatchQueue.main.async { [weak self] in
-            
+
             guard let strongSelf = self else { return }
             let localized = strongSelf.textManager.getLocalized(text)!
             let textColor = ColorCache.shared.getTextColor()
@@ -254,7 +254,7 @@ class HomeViewController: UIViewController {
     private func setMicAccessButton(to text: Text) {
 
         DispatchQueue.main.async { [weak self] in
-            
+
             guard let strongSelf = self else { return }
             let localized = strongSelf.textManager.getLocalized(text)!
             let textColor = ColorCache.shared.getBackgroundColor()

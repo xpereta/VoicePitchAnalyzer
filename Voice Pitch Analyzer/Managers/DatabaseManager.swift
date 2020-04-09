@@ -8,6 +8,7 @@
 
 import Foundation
 import FirebaseFirestore
+import FirebaseAuth
 import SwiftyJSON
 
 protocol DatabaseManagerDelegate: class {
@@ -28,11 +29,22 @@ class DatabaseManager {
     public func configure() {
 
         /** Using the vendorID to support none registratered users with Firebase */
-        guard let identifierForVendor = UIDevice.current.identifierForVendor else {
+        guard let vendorID = getVendorID() else {
             return
         }
 
-        setResultsObserver(userID: identifierForVendor.uuidString)
+        getAuthState { [weak self] isAuthenticated in
+            guard isAuthenticated else {
+                self?.loginUser(vendorID) { registrationIsMissing in
+                    if registrationIsMissing == true {
+                        self?.signupUser(vendorID)
+                    }
+                }
+                return
+            }
+
+            self?.setResultsObserver(userID: vendorID)
+        }
     }
 
     /** Helper to push the existing results down the delegate. */
@@ -66,9 +78,21 @@ class DatabaseManager {
 
     // MARK: - Private
 
+    /** Using the vendorID to support none registratered users with Firebase */
+    private func getVendorID() -> String? {
+
+        guard let identifierForVendor = UIDevice.current.identifierForVendor else {
+            return nil
+        }
+
+        return identifierForVendor.uuidString
+    }
+
     /** Observer for the result history on Firebase. */
     // MARK: - TODO: Add pagination to support more than 20 results
     private func setResultsObserver(userID: String) {
+
+        print("Setting ResultsObserver")
 
         firestore
             .collection("Results")
@@ -91,5 +115,60 @@ class DatabaseManager {
                 self?.results = results
                 self?.delegate?.databaseManager(didLoadData: results)
             })
+    }
+
+    private func getAuthState(completion: @escaping (Bool) -> Void) {
+
+        Auth.auth().addStateDidChangeListener { (_, user) in
+
+            var isAuthenticated = false
+
+            if let user = user, let email = user.email {
+                isAuthenticated = true
+                print("Auth successfull \(email)")
+            }
+
+            completion(isAuthenticated)
+        }
+    }
+
+    private func signupUser(_ vendorID: String) {
+
+        let email = "\(vendorID)@voicepitchanalyzer.app"
+        let password = vendorID
+
+        Auth.auth().createUser(withEmail: email, password: password) { (_, error) in
+
+            if let error = error {
+                print("error: \(error)")
+            } else {
+                print("SignUp successfull")
+            }
+        }
+    }
+
+    private func loginUser(_ vendorID: String, completion: @escaping (Bool) -> Void) {
+
+        let email = "\(vendorID)@voicepitchanalyzer.app"
+        let password = vendorID
+
+        Auth.auth().signIn(withEmail: email, password: password) { (_, error) in
+
+            var registrationIsMissing: Bool = false
+
+            if let error = error {
+
+                if error.localizedDescription == "There is no user record corresponding to this identifier. The user may have been deleted." {
+                    registrationIsMissing = true
+                } else {
+                    print("Login error: \(error)")
+                }
+
+            } else {
+                print("Login successfull")
+            }
+
+            completion(registrationIsMissing)
+        }
     }
 }

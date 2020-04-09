@@ -10,6 +10,6 @@
 "High" = "Hoch";
 "Done" = "Fertig";
 "MicAccessExplanation" = "Hallo!\n\nUm deine Stimme analysieren zu können, brauchen wir Zugang zu deinem Mikrofon.";
-"MicAccessExplanationDenied" = "Hallo!\n\nUm deine Stimme analysieren zu können, brauchen wir Zugang zu deinem Mikrofon.\n\nBitte öffne die Einstellungen, scroll zu VoicePitchAnalyzer und aktiviere den Mikrofon Zugang.";
+"MicAccessExplanationDenied" = "Hallo!\n\nUm deine Stimme analysieren zu können, brauchen wir Zugang zu deinem Mikrofon.\n\nBitte öffne die Einstellungen, scroll zu VoicePitchAnalyzer und aktiviere den Mikrofonzugang.";
 "OpenSettings" = "Einstellungen";
 "Next" = "Weiter";
