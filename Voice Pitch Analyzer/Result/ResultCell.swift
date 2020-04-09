@@ -13,8 +13,10 @@ class ResultCell: UITableViewCell {
 
     @IBOutlet weak var calendarContainer: UIView!
     @IBOutlet weak var lowLabel: UILabel!
+    @IBOutlet weak var medianLabel: UILabel!
     @IBOutlet weak var highLabel: UILabel!
     @IBOutlet weak var lowResultLabel: UILabel!
+    @IBOutlet weak var medianResultLabel: UILabel!
     @IBOutlet weak var highResultLabel: UILabel!
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var dayLabel: UILabel!
@@ -53,13 +55,19 @@ class ResultCell: UITableViewCell {
         lowLabel.textColor = ColorCache.shared.getSubTextColor()
         lowLabel.text = result.textManager.getLocalized(.low)
 
+        medianLabel.textColor = ColorCache.shared.getSubTextColor()
+        medianLabel.text = result.textManager.getLocalized(.median)
+
         highLabel.textColor = ColorCache.shared.getSubTextColor()
         highLabel.text = result.textManager.getLocalized(.high)
 
         lowResultLabel.textColor = ColorCache.shared.getTimeTextColor()
-        highResultLabel.textColor = ColorCache.shared.getTimeTextColor()
+        lowResultLabel.text = result.result.getFormattedMedian()
 
-        lowResultLabel.text = result.result.getFormattedMin()
+        medianResultLabel.textColor = ColorCache.shared.getTimeTextColor()
+        medianResultLabel.text = result.result.getFormattedMedian()
+
+        highResultLabel.textColor = ColorCache.shared.getTimeTextColor()
         highResultLabel.text = result.result.getFormattedMax()
 
         monthLabel.textColor = ColorCache.shared.getBackgroundColor()

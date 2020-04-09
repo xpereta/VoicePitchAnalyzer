@@ -12,6 +12,7 @@ import Firebase
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    private let microphoneAccessManager = MicrophoneAccessManager()
     var window: UIWindow?
 
     func application(
@@ -35,12 +36,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             databaseManager: databaseManager,
             themeManager: themeManager,
             textManager: textManager,
-            resultCalculator: resultCalculator)
+            resultCalculator: resultCalculator,
+            microphoneAccessManager: microphoneAccessManager)
 
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = home
         window?.makeKeyAndVisible()
 
         return true
+    }
+
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        microphoneAccessManager.checkAuthorizationStatus()
     }
 }

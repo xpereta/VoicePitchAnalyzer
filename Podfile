@@ -21,6 +21,8 @@ def shared_pods
   # Optionally, include the Swift extensions if you're using Swift.
   pod 'FirebaseFirestoreSwift'
   
+  pod 'Firebase/Auth'
+  
   pod 'SwiftyJSON'
   pod 'Wrap', :git => 'https://github.com/JohnSundell/Wrap.git'
   

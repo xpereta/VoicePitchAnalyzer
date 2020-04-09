@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 import Beethoven
 import Pitchy
 
@@ -16,12 +17,16 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var recordButtonInnerView: UIButton!
     @IBOutlet weak var waveformContainer: UIView!
+    @IBOutlet weak var micAccessView: UIView!
+    @IBOutlet weak var micAccessLabel: UILabel!
+    @IBOutlet weak var micAccessButton: UIButton!
 
     private let recordingManager: RecordingManager
     private let databaseManager: DatabaseManager
     private let themeManager: ThemeManager
     private let textManager: TextManager
     private let resultCalculator: ResultCalculator
+    private let microphoneAccessManager: MicrophoneAccessManager
 
     private var pitchArray: [Double] = Array()
     private var link: CADisplayLink?
@@ -55,13 +60,15 @@ class HomeViewController: UIViewController {
          databaseManager: DatabaseManager,
          themeManager: ThemeManager,
          textManager: TextManager,
-         resultCalculator: ResultCalculator) {
+         resultCalculator: ResultCalculator,
+         microphoneAccessManager: MicrophoneAccessManager) {
 
         self.recordingManager = recordingManager
         self.databaseManager = databaseManager
         self.themeManager = themeManager
         self.textManager = textManager
         self.resultCalculator = resultCalculator
+        self.microphoneAccessManager = microphoneAccessManager
 
         super.init(nibName: "HomeViewController", bundle: nil)
     }
@@ -74,7 +81,17 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
 
         recordingManager.delegate = self
+        microphoneAccessManager.delegate = self
+
         setAppearance()
+        setMicAccessLabel(to: .micAccessExplanation)
+        setMicAccessButton(to: .next)
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        microphoneAccessManager.checkAuthorizationStatus()
     }
 
     @IBAction func didPressRecordButton(_ sender: Any) {
@@ -87,6 +104,10 @@ class HomeViewController: UIViewController {
 
         Log.event(.pressHelpButton)
         presentInfoController()
+    }
+
+    @IBAction func didPressMicAccessButton(_ sender: Any) {
+        microphoneAccessManager.requestAuthorization()
     }
 
     // MARK: - Private
@@ -218,6 +239,31 @@ class HomeViewController: UIViewController {
             self.waveformView.update(withLevel: normalizedValue)
         }
     }
+
+    private func setMicAccessLabel(to text: Text) {
+
+        DispatchQueue.main.async { [weak self] in
+
+            guard let strongSelf = self else { return }
+            let localized = strongSelf.textManager.getLocalized(text)!
+            let textColor = ColorCache.shared.getTextColor()
+            strongSelf.micAccessLabel.attributedText = strongSelf.textManager.getAttributed(text: localized, color: textColor)
+        }
+    }
+
+    private func setMicAccessButton(to text: Text) {
+
+        DispatchQueue.main.async { [weak self] in
+
+            guard let strongSelf = self else { return }
+            let localized = strongSelf.textManager.getLocalized(text)!
+            let textColor = ColorCache.shared.getBackgroundColor()
+            strongSelf.micAccessButton.setTitle(localized, for: .normal)
+            strongSelf.micAccessButton.setTitleColor(textColor, for: .normal)
+            strongSelf.micAccessButton.backgroundColor = ColorCache.shared.getInnerRecordButtonColor()
+            strongSelf.micAccessButton.layer.cornerRadius = 8
+        }
+    }
 }
 
 // MARK: - PitchEngineDelegate
@@ -278,14 +324,34 @@ extension HomeViewController: RecordingManagerDelegate {
             moveTextView()
         }
     }
-    
+
     func recordingManager(didReceiveSimulatedPitch pitch: Double) {
-        
+
         /**
          Simulation of:
          pitchEngine(_ pitchEngine: PitchEngine, didReceivePitch pitch: Pitch)
          */
         lastFrequency = pitch
+    }
+}
+
+// MARK: - MicrophoneAccessManagerDelegate
+extension HomeViewController: MicrophoneAccessManagerDelegate {
+
+    func microphoneAccessManager(didChangeAuthorizationStatusTo status: AVAuthorizationStatus, isAuthorized: Bool) {
+
+        print("didChangeAuthorizationStatusTo \(status) isAuthorized: \(isAuthorized)")
+
+        if status == .denied {
+            setMicAccessLabel(to: .micAccessExplanationDenied)
+            setMicAccessButton(to: .openSettings)
+        }
+
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.3) { [weak self] in
+                self?.micAccessView.alpha = isAuthorized ? 0 : 1
+            }
+        }
     }
 }
 

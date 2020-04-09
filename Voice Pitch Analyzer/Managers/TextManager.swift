@@ -117,7 +117,12 @@ enum Text: String {
     case androgynous = "AndrogynousRange"
     case current = "Current"
     case last = "Last"
+    case median = "Median"
     case low = "Low"
     case high = "High"
     case done = "Done"
+    case micAccessExplanation = "MicAccessExplanation"
+    case micAccessExplanationDenied = "MicAccessExplanationDenied"
+    case openSettings = "OpenSettings"
+    case next = "Next"
 }

@@ -60,6 +60,10 @@ class RecorderResult: Serializable {
         return "\(Int(minAverage))hz"
     }
 
+    public func getFormattedMedian() -> String {
+        return "\(Int((Int(minAverage) + Int(maxAverage)) / 2))hz"
+    }
+
     public func getFormattedMax() -> String {
         return "\(Int(maxAverage))hz"
     }
