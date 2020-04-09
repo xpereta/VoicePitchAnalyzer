@@ -19,8 +19,10 @@ struct ColorCache {
     private let cFFD0E1 = #colorLiteral(red: 1, green: 0.8156862745, blue: 0.8823529412, alpha: 1)
     private let cFF93B9 = #colorLiteral(red: 1, green: 0.5764705882, blue: 0.7254901961, alpha: 1)
     private let cFF79A8 = #colorLiteral(red: 1, green: 0.4745098039, blue: 0.6588235294, alpha: 1)
+    private let cD04C7A = #colorLiteral(red: 0.8156862745, green: 0.2980392157, blue: 0.4784313725, alpha: 1)
     private let cB98FFE = #colorLiteral(red: 0.7254901961, green: 0.5607843137, blue: 0.9960784314, alpha: 1)
     private let c7050A5 = #colorLiteral(red: 0.4392156863, green: 0.3137254902, blue: 0.6470588235, alpha: 1)
+    private let c563688 = #colorLiteral(red: 0.337254902, green: 0.2117647059, blue: 0.5333333333, alpha: 1)
     private let c27406E = #colorLiteral(red: 0.1529411765, green: 0.2509803922, blue: 0.431372549, alpha: 1)
     private let c253657 = #colorLiteral(red: 0.1450980392, green: 0.2117647059, blue: 0.3411764706, alpha: 1)
     private let c0E1D3A = #colorLiteral(red: 0.05490196078, green: 0.1137254902, blue: 0.2274509804, alpha: 1)
@@ -39,6 +41,21 @@ struct ColorCache {
                 return self.c061023
             } else {
                 return self.cFFFFFF
+            }
+        }
+    }
+
+    public func getAccentColor() -> UIColor {
+
+        guard #available(iOS 13, *) else {
+            return cD04C7A
+        }
+
+        return UIColor { (traitCollection: UITraitCollection) -> UIColor in
+            if traitCollection.userInterfaceStyle == .dark {
+                return self.c563688
+            } else {
+                return self.cD04C7A
             }
         }
     }

@@ -6,6 +6,7 @@
 "BasedOn" = "Basierend auf: Voice Pitch Analyzer";
 "Current" = "Aktuell";
 "Last" = "Zuvor";
+"Median" = "Mittelwert";
 "Low" = "Tief";
 "High" = "Hoch";
 "Done" = "Fertig";

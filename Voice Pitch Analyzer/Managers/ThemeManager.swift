@@ -45,7 +45,7 @@ class ThemeManager {
         /** Current result layer is on the right hand side */
         let xPosition = view.frame.width - (65 + 32)
         let frame = getVerticalResultFrame(min: minAverage, max: maxAverage, xPosition: xPosition, on: view)
-        return getResultLayer(frame: frame, on: view)
+        return getResultLayer(frame: frame, on: view, isHistoryLayer: false)
     }
 
     public func getLastResultLayer(min minAverage: Double, max maxAverage: Double, on view: UIView) -> CALayer {
@@ -53,14 +53,14 @@ class ThemeManager {
         /** Last result layer is on the left hand side */
         let xPosition = view.frame.width - (147 + 32)
         let frame = getVerticalResultFrame(min: minAverage, max: maxAverage, xPosition: xPosition, on: view)
-        return getResultLayer(frame: frame, on: view)
+        return getResultLayer(frame: frame, on: view, isHistoryLayer: false)
     }
 
     public func getHistoryResultLayer(min minAverage: Double, max maxAverage: Double, on view: UIView) -> CALayer {
 
         /** Horizontally aligned result history */
         let frame = getHorizontalResultFrame(min: minAverage, max: maxAverage, on: view)
-        return getResultLayer(frame: frame, on: view, radius: 4)
+        return getResultLayer(frame: frame, on: view, isHistoryLayer: true)
     }
 
     // MARK: - Private
@@ -120,7 +120,17 @@ class ThemeManager {
             height: 8)
     }
 
-    private func getResultLayer(frame: CGRect, on view: UIView, radius: CGFloat = 16) -> CALayer {
+    /**
+     
+        Returns a layer to display a result
+     
+     - parameters:
+        - frame: CGRect of the layer
+        - view: UIView the layer will be presented on (used to set theming color for dark mode support of iOS below 13)
+        - redius: Border radius of the layer
+        - isHistoryLayer: Used to determine if the middle is marked vertically or horizontally
+     */
+    private func getResultLayer(frame: CGRect, on view: UIView, isHistoryLayer: Bool) -> CALayer {
 
         let shapeLayer = CAShapeLayer()
         shapeLayer.frame = frame
@@ -129,13 +139,30 @@ class ThemeManager {
         shapeLayer.setBorderColor(ColorCache.shared.getInnerRecordButtonColor(), with: view)
         shapeLayer.setShadowColor(ColorCache.shared.getShadowColor(), with: view)
         shapeLayer.setBackgroundColor(ColorCache.shared.getInnerRecordButtonColor(), with: view)
-        shapeLayer.cornerRadius = radius
+        shapeLayer.cornerRadius = isHistoryLayer ? 4 : 16
 
         shapeLayer.applySketchShadow(
             color: ColorCache.shared.getShadowColor(),
             yPosition: 3,
             blur: 14)
 
+        let thickness: CGFloat = 4
+        let centerFrame = CGRect(
+            x: isHistoryLayer ? (frame.width / 2 - thickness / 2) : 0, // half width of parent minus half width of self
+            y: isHistoryLayer ? 0 : (frame.height / 2 - thickness / 2), // half height of parent minus half height of self
+            width: isHistoryLayer ? 5 : frame.width,
+            height: isHistoryLayer ? frame.height : thickness)
+        let centerLayer = getCenterLayer(frame: centerFrame, on: view)
+        shapeLayer.addSublayer(centerLayer)
+
+        return shapeLayer
+    }
+
+    private func getCenterLayer(frame: CGRect, on view: UIView) -> CALayer {
+
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.frame = frame
+        shapeLayer.setBackgroundColor(ColorCache.shared.getAccentColor(), with: view)
         return shapeLayer
     }
 }
