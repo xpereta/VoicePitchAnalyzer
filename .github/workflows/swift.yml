@@ -1,0 +1,26 @@
+name: Release
+
+# Trigger on PR and push to master
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: macos-latest
+  
+    # pipe (|) for a multi-line command
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v1
+          
+    - name: Install dependencies
+      run: |
+        bundle install
+        bundle exec pod install
+          
+    - name: Swift build
+      run: swift build -v
