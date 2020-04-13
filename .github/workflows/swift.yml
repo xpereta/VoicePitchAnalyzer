@@ -24,6 +24,3 @@ jobs:
       run: |
         bundle install
         bundle exec pod install
-          
-    - name: Swift build
-      run: swift build -v
