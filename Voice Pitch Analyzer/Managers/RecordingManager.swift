@@ -105,7 +105,7 @@ class RecordingManager {
             }
 
             if strongSelf.remainingTime <= 0 {
-                strongSelf.stopRecording()
+                strongSelf.toggleRecordingState()
             }
 
             #if targetEnvironment(simulator)

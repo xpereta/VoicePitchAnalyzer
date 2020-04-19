@@ -22,9 +22,9 @@ class ResultCell: UITableViewCell {
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var rangeContainer: UIView!
 
-    var resultCellContent: ResultCellContent?
-    var theLayer: CALayer?
-    var hasBeenReused: Bool = false
+    private weak var theLayer: CALayer?
+    private var resultCellContent: ResultCellContent?
+    private var hasBeenReused: Bool = false
 
     override func awakeFromNib() {
         super.awakeFromNib()
