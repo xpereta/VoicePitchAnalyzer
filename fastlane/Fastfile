@@ -41,9 +41,19 @@ platform :ios do
     # snapshot
     #gym # Build your app - more options available
     #deliver(force: true)
-    build_app(scheme: "Voice Pitch Analyzer",
-            workspace: "Voice Pitch Analyzer.xcworkspace",
-            include_bitcode: true)
+    signing_identity = "Apple Distribution: Carola Nitz (EHS3N33NZL)"
+    build_app(
+      scheme: "Voice Pitch Analyzer",
+      workspace: "Voice Pitch Analyzer.xcworkspace",
+      export_options: {
+        method: "app-store",
+        configuration: "Release",
+        codesigning_identity: signing_identity,
+        provisioningProfiles: { 
+          "com.carolanitz.voice-pitch-analyzer" => "match AppStore com.carolanitz.voice-pitch-analyzer",
+        }
+      }
+    )
     # frameit
   end
 
