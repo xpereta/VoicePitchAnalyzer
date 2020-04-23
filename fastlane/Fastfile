@@ -19,11 +19,21 @@ platform :ios do
   before_all do
     # ENV["SLACK_URL"] = "https://hooks.slack.com/services/..."
     #ENV["APPLEID_PASSWORD"]
-    ENV["APPLEID_USERNAME"] = "nitz.carola@googlemail.com"
+    #ENV["APPLEID_USERNAME"] = "nitz.carola@googlemail.com"
     #ENV["IOS_KEYS"]
     ENV["APP_ID"] = "com.carolanitz.voice-pitch-analyzer"
+    ENV["KEYCHAIN"] = "github_keychain"
     #ENV["FASTLANE_PASSWORD"] = "Test"
     #cocoapods
+
+    create_keychain(
+		  name: ENV["KEYCHAIN"],
+		  password: ENV["APPLEID_PASSWORD"],
+		  default_keychain: true,
+		  unlock: true,
+		  timeout: 3600,
+		  lock_when_sleeps: false
+	  )
     
   end
 
@@ -61,7 +71,16 @@ platform :ios do
 
   desc "Signing iOS App"
   lane :codeSign do  
+
+    match(
+      type: "appstore",
+		  readonly: is_ci,
+	  	keychain_name: ENV["KEYCHAIN"],
+	  	keychain_password: ENV["APPLEID_PASSWORD"]
+  	)
+
     cert(username: ENV["APPLEID_USERNAME"])
+    
     sigh(
       force: true,
       username: ENV["APPLEID_USERNAME"],
