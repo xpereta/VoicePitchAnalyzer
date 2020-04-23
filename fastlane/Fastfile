@@ -18,10 +18,12 @@ default_platform :ios
 platform :ios do
   before_all do
     # ENV["SLACK_URL"] = "https://hooks.slack.com/services/..."
-    ENV["APPLEID_PASSWORD"]
-    ENV["APPLEID_USERNAME"]
-    ENV["IOS_KEYS"]
-    cocoapods
+    #ENV["APPLEID_PASSWORD"]
+    #ENV["APPLEID_USERNAME"] = "nitz.carola@googlemail.com"
+    #ENV["IOS_KEYS"]
+    ENV["APP_ID"] = "com.carolanitz.voice-pitch-analyzer"
+    #ENV["FASTLANE_PASSWORD"] = "Test"
+    #cocoapods
     
   end
 
@@ -55,6 +57,18 @@ platform :ios do
       }
     )
     # frameit
+  end
+
+  desc "Signing iOS App"
+  lane :codeSign do  
+    cert(username: ENV["APPLEID_USERNAME"])
+    sigh(
+      force: true,
+      username: ENV["APPLEID_USERNAME"],
+      team_id: "EHS3N33NZL",
+      #password: ENV["APPLEID_PASSWORD"],
+      app_identifier: ENV["APP_ID"]
+    )
   end
 
   # You can define as many lanes as you want
