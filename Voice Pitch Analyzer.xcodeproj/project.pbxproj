@@ -36,6 +36,7 @@
 		6C3ED11F240C956200D2BF9E /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3ED11E240C956200D2BF9E /* InfoViewController.swift */; };
 		6C6ADED0240DDC0A003F8E88 /* ResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6ADECE240DDC0A003F8E88 /* ResultCell.swift */; };
 		6C6ADED1240DDC0A003F8E88 /* ResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C6ADECF240DDC0A003F8E88 /* ResultCell.xib */; };
+		6C986883245546B200605964 /* UnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C986882245546B200605964 /* UnitTests.swift */; };
 		6CA9D711240CAF4F0000187A /* RecorderResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA9D710240CAF4F0000187A /* RecorderResult.swift */; };
 		6CA9D713240CB1070000187A /* Serializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA9D712240CB1070000187A /* Serializable.swift */; };
 		6CA9D715240CB1810000187A /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA9D714240CB1810000187A /* String.swift */; };
@@ -53,9 +54,21 @@
 		6CE2AAA52411D329003D5C7B /* NSError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE2AAA42411D329003D5C7B /* NSError.swift */; };
 		6CFAC977243CF6370050BC68 /* MicrophoneAccessManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CFAC976243CF6370050BC68 /* MicrophoneAccessManager.swift */; };
 		9505091F45E18BC411AA484F /* Pods_Voice_Pitch_Analyzer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0AD652FF89891087FE76A53 /* Pods_Voice_Pitch_Analyzer.framework */; };
+		D07AD7607996FAD47A63E635 /* Pods_UnitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B45A5ADFD63A258B566460 /* Pods_UnitTests.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		6C986885245546B200605964 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 41C205D11F478E7D0029B39D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 41C205D81F478E7D0029B39D;
+			remoteInfo = "Voice Pitch Analyzer";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		3AA7B7F9DF8FF6C18B17AE4A /* Pods-UnitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-UnitTests/Pods-UnitTests.release.xcconfig"; sourceTree = "<group>"; };
 		412584301F48C15500E1297D /* de.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = de.json; path = "Voice Pitch Analyzer/Resources/de.json"; sourceTree = "<group>"; };
 		412584311F48C15500E1297D /* it.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = it.json; path = "Voice Pitch Analyzer/Resources/it.json"; sourceTree = "<group>"; };
 		412584321F48C15500E1297D /* pt.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = pt.json; path = "Voice Pitch Analyzer/Resources/pt.json"; sourceTree = "<group>"; };
@@ -71,6 +84,7 @@
 		41E5E4151F496A9900B191F5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		41E5E4181F496AB500B191F5 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		41E5E4191F496AB500B191F5 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		48B45A5ADFD63A258B566460 /* Pods_UnitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E8138DCC810D7C2E29B04DC /* Pods-Voice Pitch Analyzer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Voice Pitch Analyzer.release.xcconfig"; path = "Pods/Target Support Files/Pods-Voice Pitch Analyzer/Pods-Voice Pitch Analyzer.release.xcconfig"; sourceTree = "<group>"; };
 		6C148C6C2409F7FF000B387E /* DatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		6C167225241011FA00AFE5BC /* ColorCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCache.swift; sourceTree = "<group>"; };
@@ -91,6 +105,9 @@
 		6C3ED11E240C956200D2BF9E /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		6C6ADECE240DDC0A003F8E88 /* ResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCell.swift; sourceTree = "<group>"; };
 		6C6ADECF240DDC0A003F8E88 /* ResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultCell.xib; sourceTree = "<group>"; };
+		6C986880245546B200605964 /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C986882245546B200605964 /* UnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTests.swift; sourceTree = "<group>"; };
+		6C986884245546B200605964 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6CA9D710240CAF4F0000187A /* RecorderResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderResult.swift; sourceTree = "<group>"; };
 		6CA9D712240CB1070000187A /* Serializable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Serializable.swift; sourceTree = "<group>"; };
 		6CA9D714240CB1810000187A /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -109,6 +126,7 @@
 		6CD42E83241600C4008F78C7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = InfoPlist.strings; sourceTree = "<group>"; };
 		6CE2AAA42411D329003D5C7B /* NSError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSError.swift; sourceTree = "<group>"; };
 		6CFAC976243CF6370050BC68 /* MicrophoneAccessManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicrophoneAccessManager.swift; sourceTree = "<group>"; };
+		6D3E41A797C712C8E2DD7A89 /* Pods-UnitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UnitTests/Pods-UnitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6FAFEE120D5069C22F442CAA /* Pods-Voice Pitch Analyzer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Voice Pitch Analyzer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Voice Pitch Analyzer/Pods-Voice Pitch Analyzer.debug.xcconfig"; sourceTree = "<group>"; };
 		B0AD652FF89891087FE76A53 /* Pods_Voice_Pitch_Analyzer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Voice_Pitch_Analyzer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -123,6 +141,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6C98687D245546B200605964 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D07AD7607996FAD47A63E635 /* Pods_UnitTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -132,6 +158,7 @@
 				6CA9D71C240CC1540000187A /* Bridging-Header.h */,
 				41C205EE1F47930C0029B39D /* Resources */,
 				41C205DB1F478E7D0029B39D /* Voice Pitch Analyzer */,
+				6C986881245546B200605964 /* UnitTests */,
 				41C205DA1F478E7D0029B39D /* Products */,
 				41C205F91F479BDA0029B39D /* Frameworks */,
 				8BB3F525C656EDD6C0114D7A /* Pods */,
@@ -142,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				41C205D91F478E7D0029B39D /* Voice Pitch Analyzer.app */,
+				6C986880245546B200605964 /* UnitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -188,6 +216,7 @@
 				41C206001F4822D20029B39D /* CoreGraphics.framework */,
 				41C205FA1F479BDA0029B39D /* AVFoundation.framework */,
 				B0AD652FF89891087FE76A53 /* Pods_Voice_Pitch_Analyzer.framework */,
+				48B45A5ADFD63A258B566460 /* Pods_UnitTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -259,6 +288,15 @@
 			path = Info;
 			sourceTree = "<group>";
 		};
+		6C986881245546B200605964 /* UnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				6C986882245546B200605964 /* UnitTests.swift */,
+				6C986884245546B200605964 /* Info.plist */,
+			);
+			path = UnitTests;
+			sourceTree = "<group>";
+		};
 		6CA9D71D240CC1D70000187A /* SCSiriWaveformView */ = {
 			isa = PBXGroup;
 			children = (
@@ -309,6 +347,8 @@
 			children = (
 				6FAFEE120D5069C22F442CAA /* Pods-Voice Pitch Analyzer.debug.xcconfig */,
 				4E8138DCC810D7C2E29B04DC /* Pods-Voice Pitch Analyzer.release.xcconfig */,
+				6D3E41A797C712C8E2DD7A89 /* Pods-UnitTests.debug.xcconfig */,
+				3AA7B7F9DF8FF6C18B17AE4A /* Pods-UnitTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -338,13 +378,33 @@
 			productReference = 41C205D91F478E7D0029B39D /* Voice Pitch Analyzer.app */;
 			productType = "com.apple.product-type.application";
 		};
+		6C98687F245546B200605964 /* UnitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6C986889245546B200605964 /* Build configuration list for PBXNativeTarget "UnitTests" */;
+			buildPhases = (
+				C8D1A3672C0B25298A97F881 /* [CP] Check Pods Manifest.lock */,
+				6C98687C245546B200605964 /* Sources */,
+				6C98687D245546B200605964 /* Frameworks */,
+				6C98687E245546B200605964 /* Resources */,
+				ED8A63509EFA9233F233FC20 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6C986886245546B200605964 /* PBXTargetDependency */,
+			);
+			name = UnitTests;
+			productName = UnitTests;
+			productReference = 6C986880245546B200605964 /* UnitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		41C205D11F478E7D0029B39D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0830;
+				LastSwiftUpdateCheck = 1140;
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "Carola Nitz";
 				TargetAttributes = {
@@ -353,6 +413,12 @@
 						DevelopmentTeam = 69XUZ6HBUE;
 						LastSwiftMigration = 1130;
 						ProvisioningStyle = Automatic;
+					};
+					6C98687F245546B200605964 = {
+						CreatedOnToolsVersion = 11.4;
+						DevelopmentTeam = 69XUZ6HBUE;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 41C205D81F478E7D0029B39D;
 					};
 				};
 			};
@@ -371,6 +437,7 @@
 			projectRoot = "";
 			targets = (
 				41C205D81F478E7D0029B39D /* Voice Pitch Analyzer */,
+				6C98687F245546B200605964 /* UnitTests */,
 			);
 		};
 /* End PBXProject section */
@@ -399,6 +466,13 @@
 				6CD42E84241600C4008F78C7 /* LaunchScreen.storyboard in Resources */,
 				6C3ED11D240C955C00D2BF9E /* InfoViewController.xib in Resources */,
 				6C3ED0F8240C2C9D00D2BF9E /* HomeViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6C98687E245546B200605964 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,6 +550,72 @@
 			shellPath = /bin/sh;
 			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${INFOPLIST_FILE}\"\n";
 		};
+		C8D1A3672C0B25298A97F881 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-UnitTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ED8A63509EFA9233F233FC20 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-UnitTests/Pods-UnitTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Beethoven-iOS13.4/Beethoven.framework",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC-iOS13.4/openssl_grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher-iOS13.4/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities-iOS13.4/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Pitchy-iOS13.4/Pitchy.framework",
+				"${BUILT_PRODUCTS_DIR}/PromisesObjC-iOS13.4/FBLPromises.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON-iOS13.4/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/Wrap-iOS13.4/Wrap.framework",
+				"${BUILT_PRODUCTS_DIR}/XYColor-iOS13.4/XYColor.framework",
+				"${BUILT_PRODUCTS_DIR}/abseil-iOS13.4/absl.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++-iOS13.4/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core-iOS13.4/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library-iOS13.4/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb-iOS13.4/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Beethoven.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Pitchy.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Wrap.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XYColor.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/absl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UnitTests/Pods-UnitTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		EF2C5DC34665B843B2AD39A5 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -483,20 +623,20 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Voice Pitch Analyzer/Pods-Voice Pitch Analyzer-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Beethoven/Beethoven.framework",
-				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/Pitchy/Pitchy.framework",
-				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
-				"${BUILT_PRODUCTS_DIR}/Wrap/Wrap.framework",
-				"${BUILT_PRODUCTS_DIR}/XYColor/XYColor.framework",
-				"${BUILT_PRODUCTS_DIR}/abseil/absl.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
-				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${BUILT_PRODUCTS_DIR}/Beethoven-iOS10.0/Beethoven.framework",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC-iOS10.0/openssl_grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher-iOS10.0/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities-iOS10.0/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Pitchy-iOS10.0/Pitchy.framework",
+				"${BUILT_PRODUCTS_DIR}/PromisesObjC-iOS10.0/FBLPromises.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON-iOS10.0/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/Wrap-iOS10.0/Wrap.framework",
+				"${BUILT_PRODUCTS_DIR}/XYColor-iOS10.0/XYColor.framework",
+				"${BUILT_PRODUCTS_DIR}/abseil-iOS10.0/absl.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++-iOS10.0/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core-iOS10.0/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library-iOS10.0/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb-iOS10.0/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -555,7 +695,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6C98687C245546B200605964 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6C986883245546B200605964 /* UnitTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6C986886245546B200605964 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 41C205D81F478E7D0029B39D /* Voice Pitch Analyzer */;
+			targetProxy = 6C986885245546B200605964 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		41C205E51F478E7D0029B39D /* LaunchScreen.storyboard */ = {
@@ -776,6 +932,53 @@
 			};
 			name = Release;
 		};
+		6C986887245546B200605964 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6D3E41A797C712C8E2DD7A89 /* Pods-UnitTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 69XUZ6HBUE;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = UnitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pnewsoft.UnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Voice Pitch Analyzer.app/Voice Pitch Analyzer";
+			};
+			name = Debug;
+		};
+		6C986888245546B200605964 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3AA7B7F9DF8FF6C18B17AE4A /* Pods-UnitTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 69XUZ6HBUE;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = UnitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pnewsoft.UnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Voice Pitch Analyzer.app/Voice Pitch Analyzer";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -793,6 +996,15 @@
 			buildConfigurations = (
 				41C205EC1F478E7D0029B39D /* Debug */,
 				41C205ED1F478E7D0029B39D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6C986889245546B200605964 /* Build configuration list for PBXNativeTarget "UnitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6C986887245546B200605964 /* Debug */,
+				6C986888245546B200605964 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

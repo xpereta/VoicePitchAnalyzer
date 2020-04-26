@@ -32,6 +32,10 @@ def shared_pods
 
 end
 
+target 'UnitTests' do
+    shared_pods
+end
+
 target 'Voice Pitch Analyzer' do
   
   shared_pods

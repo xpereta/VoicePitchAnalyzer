@@ -20,6 +20,8 @@ protocol DatabaseManagerDelegate: class {
 class DatabaseManager {
 
     private let firestore = Firestore.firestore()
+    private var authObserver: ((String?) -> Void)?
+    private var user: User?
 
     public weak var delegate: DatabaseManagerDelegate?
     public var results: [RecorderResult] = []
@@ -76,10 +78,8 @@ class DatabaseManager {
         }
     }
 
-    // MARK: - Private
-
     /** Using the vendorID to support none registratered users with Firebase */
-    private func getVendorID() -> String? {
+    public func getVendorID() -> String? {
 
         guard let identifierForVendor = UIDevice.current.identifierForVendor else {
             return nil
@@ -87,6 +87,12 @@ class DatabaseManager {
 
         return identifierForVendor.uuidString
     }
+
+    public func setAuthObserver(_ observer: @escaping (String?) -> Void) {
+        self.authObserver = observer
+    }
+
+    // MARK: - Private
 
     /** Observer for the result history on Firebase. */
     // MARK: - TODO: Add pagination to support more than 20 results
@@ -119,11 +125,13 @@ class DatabaseManager {
 
     private func getAuthState(completion: @escaping (Bool) -> Void) {
 
-        Auth.auth().addStateDidChangeListener { (_, user) in
+        Auth.auth().addStateDidChangeListener { [weak self] (_, user) in
 
             var isAuthenticated = false
 
             if let user = user, let email = user.email {
+                self?.user = user
+                self?.authObserver?(user.email)
                 isAuthenticated = true
                 print("Auth successfull \(email)")
             }
