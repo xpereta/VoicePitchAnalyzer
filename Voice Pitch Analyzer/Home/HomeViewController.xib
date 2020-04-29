@@ -79,9 +79,20 @@
                         <constraint firstAttribute="height" constant="40" id="mlP-2x-B4K"/>
                         <constraint firstAttribute="width" constant="40" id="pls-O8-lrK"/>
                     </constraints>
-                    <state key="normal" image="helpButton"/>
+                    <state key="normal" image="question"/>
                     <connections>
                         <action selector="didPressHelpButton:" destination="-1" eventType="touchUpInside" id="Bux-Hc-G19"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GTt-SE-JbX">
+                    <rect key="frame" x="16" y="44" width="40" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="bgH-Me-SBh"/>
+                        <constraint firstAttribute="height" constant="40" id="lnJ-t5-Gxn"/>
+                    </constraints>
+                    <state key="normal" image="user"/>
+                    <connections>
+                        <action selector="didPressUserLoginButton:" destination="-1" eventType="touchUpInside" id="kI5-Af-cab"/>
                     </connections>
                 </button>
                 <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xP3-yk-3l2">
@@ -125,11 +136,13 @@
                 <constraint firstItem="Swv-d9-VTT" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="topMargin" constant="-44" id="4dm-EH-aEz"/>
                 <constraint firstItem="xP3-yk-3l2" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="589-ni-evX"/>
                 <constraint firstAttribute="trailing" secondItem="E3k-ci-5yw" secondAttribute="trailing" constant="16" id="8CC-Cx-MJ1"/>
+                <constraint firstItem="GTt-SE-JbX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="44" id="8Rt-M7-x81"/>
                 <constraint firstAttribute="bottom" secondItem="xP3-yk-3l2" secondAttribute="bottom" id="ByV-Lx-lUi"/>
                 <constraint firstAttribute="bottom" secondItem="vRH-t1-A94" secondAttribute="bottom" constant="-163" id="DP1-2T-e5L"/>
                 <constraint firstItem="ROY-L0-8ha" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="FeW-JB-uJG"/>
                 <constraint firstItem="x8d-zm-6j4" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="HH5-aS-Yev"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="JLe-MP-6gz" secondAttribute="trailing" constant="20" id="ITF-0F-Y1Y"/>
+                <constraint firstItem="GTt-SE-JbX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="KY2-ZF-3Ej"/>
                 <constraint firstItem="ROY-L0-8ha" firstAttribute="centerY" secondItem="x8d-zm-6j4" secondAttribute="centerY" id="MTZ-gH-zCS"/>
                 <constraint firstItem="xP3-yk-3l2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Mbe-79-v9y"/>
                 <constraint firstItem="2dQ-au-mM9" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="53" id="Q4g-jO-hK5"/>
@@ -151,10 +164,11 @@
         </view>
     </objects>
     <resources>
-        <image name="helpButton" width="26" height="26"/>
         <image name="maskBottom" width="375" height="314"/>
         <image name="maskTop" width="375" height="268"/>
+        <image name="question" width="50" height="50"/>
         <image name="recordButton" width="80" height="80"/>
         <image name="recordButtonInner" width="52" height="52"/>
+        <image name="user" width="50" height="50"/>
     </resources>
 </document>

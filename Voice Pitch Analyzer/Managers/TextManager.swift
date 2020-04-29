@@ -125,4 +125,6 @@ enum Text: String {
     case micAccessExplanationDenied = "MicAccessExplanationDenied"
     case openSettings = "OpenSettings"
     case next = "Next"
+    case login = "Login"
+    case learnMoreLogin = "LearnMoreLogin"
 }

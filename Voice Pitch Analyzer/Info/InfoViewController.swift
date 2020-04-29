@@ -31,6 +31,23 @@ class InfoViewController: UIViewController {
 
         setAppearance()
     }
+    
+    // MARK: - Public
+    
+    @IBAction func didPressDoneButton(_ sender: Any) {
+        dismiss(animated: true)
+    }
+
+    @objc func didPressAboutLabel(sender: UITapGestureRecognizer) {
+
+        Log.event(.githubInfo)
+        let urlString = "https://github.com/purrprogramming/voice-pitch-analyzer/"
+        guard let url = URL(string: urlString) else {
+            return
+        }
+
+        UIApplication.shared.open(url)
+    }
 
     // MARK: - Private
 
@@ -58,19 +75,5 @@ class InfoViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(didPressAboutLabel))
         aboutLabel.isUserInteractionEnabled = true
         aboutLabel.addGestureRecognizer(tap)
-    }
-
-    @IBAction func didPressDoneButton(_ sender: Any) {
-
-        dismiss(animated: true)
-    }
-
-    @objc func didPressAboutLabel(sender: UITapGestureRecognizer) {
-
-        guard let url = URL(string: "https://github.com/purrprogramming/voice-pitch-analyzer/") else {
-            return
-        }
-
-        UIApplication.shared.open(url)
     }
 }
