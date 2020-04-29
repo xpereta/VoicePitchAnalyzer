@@ -26,7 +26,7 @@ jobs:
         bundle exec pod install
         
     - name: Fastlane release
-      run: bundle exec fastlane codeSign
+      run: bundle exec fastlane release
       env:
         APPLEID_PASSWORD: ${{ secrets.APPLEID_PASSWORD }}
         APPLEID_USERNAME: ${{ secrets.APPLEID_USERNAME }}
