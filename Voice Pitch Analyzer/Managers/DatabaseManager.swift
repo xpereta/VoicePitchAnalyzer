@@ -36,16 +36,20 @@ class DatabaseManager {
         }
 
         getAuthState { [weak self] isAuthenticated in
+
+            guard let strongSelf = self else { return }
+
             guard isAuthenticated else {
-                self?.loginUser(vendorID) { registrationIsMissing in
+                strongSelf.loginUser(vendorID) { registrationIsMissing in
                     if registrationIsMissing == true {
-                        self?.signupUser(vendorID)
+                        strongSelf.signupUser(vendorID)
                     }
                 }
                 return
             }
 
-            self?.setResultsObserver(userID: vendorID)
+            guard let userID = strongSelf.getUserID() else { return }
+            self?.setResultsObserver(userID: userID)
         }
     }
 
@@ -78,14 +82,22 @@ class DatabaseManager {
         }
     }
 
-    /** Using the vendorID to support none registratered users with Firebase */
-    public func getVendorID() -> String? {
+    /**
+     For Presistent user database, we want to use the background
+     registered firebase userID if available.
+     If no User has been registered, we want to use the vendorID
+     */
+    public func getUserID() -> String? {
 
-        guard let identifierForVendor = UIDevice.current.identifierForVendor else {
-            return nil
+        if let user = user, let email = user.email {
+            return getIdentifierFrom(userEmail: email)
         }
 
-        return identifierForVendor.uuidString
+        return getVendorID()
+    }
+
+    public func getIdentifierFrom(userEmail email: String) -> String {
+        return email.replacingOccurrences(of: "@voicepitchanalyzer.app", with: "")
     }
 
     public func setAuthObserver(_ observer: @escaping (String?) -> Void) {
@@ -93,6 +105,16 @@ class DatabaseManager {
     }
 
     // MARK: - Private
+
+    /** Using the vendorID to support none registrated users with Firebase */
+    private func getVendorID() -> String? {
+
+        guard let identifierForVendor = UIDevice.current.identifierForVendor else {
+            return nil
+        }
+
+        return identifierForVendor.uuidString
+    }
 
     /** Observer for the result history on Firebase. */
     // MARK: - TODO: Add pagination to support more than 20 results

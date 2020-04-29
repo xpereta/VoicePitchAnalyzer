@@ -116,16 +116,13 @@ class ResultViewController: UIViewController {
      Might be 0 if the user dismisses the recording process to soon. */
     private func storeResult(min minAverage: Double, max maxAverage: Double) {
 
-        guard let identifierForVendor = UIDevice.current.identifierForVendor,
-            minAverage > 0,
-            maxAverage > 0 else {
-                return
-        }
+        guard let userID = databaseManager.getUserID() else { return }
+        guard minAverage > 0, maxAverage > 0 else { return }
 
         let result = RecorderResult(
             minAverage: minAverage,
             maxAverage: maxAverage,
-            userID: identifierForVendor.uuidString)
+            userID: userID)
 
         currentResult = result
         databaseManager.setLastResult(result)
