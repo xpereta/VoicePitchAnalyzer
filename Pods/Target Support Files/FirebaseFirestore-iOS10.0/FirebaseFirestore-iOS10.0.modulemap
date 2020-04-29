@@ -1,0 +1,6 @@
+framework module FirebaseFirestore {
+  umbrella header "FirebaseFirestore-iOS10.0-umbrella.h"
+
+  export *
+  module * { export * }
+}

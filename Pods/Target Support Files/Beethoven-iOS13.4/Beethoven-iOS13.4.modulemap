@@ -1,0 +1,6 @@
+framework module Beethoven {
+  umbrella header "Beethoven-iOS13.4-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,6 @@
+framework module Wrap {
+  umbrella header "Wrap-iOS10.0-umbrella.h"
+
+  export *
+  module * { export * }
+}
