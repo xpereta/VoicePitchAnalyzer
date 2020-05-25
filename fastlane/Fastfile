@@ -79,7 +79,7 @@ platform :ios do
     )
 
     update_project_provisioning(
-      xcodeproj: xcode_project_path,
+      xcodeproj: ENV["PROJECT_PATH"],
       profile: ENV["sigh_com.carolanitz.voice-pitch-analyzer_appstore_profile-path"],
       build_configuration: "Release",
       code_signing_identity: ENV["SIGNING_IDENTITY"]
