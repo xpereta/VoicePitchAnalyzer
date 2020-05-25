@@ -27,7 +27,7 @@ platform :ios do
     ENV["PROJECT_WORKSPACE"] = "Voice Pitch Analyzer.xcworkspace"
     ENV["TEAM_ID"] = "EHS3N33NZL"
     ENV["SCHEME"] = "Voice Pitch Analyzer"
-    #ENV["MATCH_PASSWORD"] = ENV["APPLEID_PASSWORD"]
+    #ENV["MATCH_PASSWORD"] = ENV["FASTLANE_MATCH"]
     #ENV["Signing_Identity"]
     #ENV["FASTLANE_PASSWORD"] = "Test"
     #cocoapods
@@ -63,7 +63,7 @@ platform :ios do
 
     sync_code_signing(
       type: "appstore",
-      #git_basic_authorization: Base64.strict_encode64(ENV["TOKEN_GITHUB"]),
+      git_basic_authorization: Base64.strict_encode64(ENV["TOKEN_GITHUB"]),
       readonly: true,
       keychain_name: ENV["KEYCHAIN"],
       keychain_password: ENV["APPLEID_PASSWORD"]
