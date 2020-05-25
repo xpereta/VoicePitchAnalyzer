@@ -11,7 +11,7 @@
 
 # This is the minimum version number required.
 # Update this, if you use features of a newer version
-fastlane_version "2.53.1"
+fastlane_version "2.87"
 
 default_platform :ios
 
@@ -27,7 +27,7 @@ platform :ios do
     ENV["PROJECT_WORKSPACE"] = "Voice Pitch Analyzer.xcworkspace"
     ENV["TEAM_ID"] = "EHS3N33NZL"
     ENV["SCHEME"] = "Voice Pitch Analyzer"
-    ENV["MATCH_PASSWORD"]
+    #ENV["MATCH_PASSWORD"] = ENV["APPLEID_PASSWORD"]
     #ENV["Signing_Identity"]
     #ENV["FASTLANE_PASSWORD"] = "Test"
     #cocoapods

@@ -21,11 +21,6 @@ or alternatively using `brew cask install fastlane`
 fastlane ios release
 ```
 Submit to App Store
-### ios codeSign
-```
-fastlane ios codeSign
-```
-Signing iOS App
 
 ----
 
