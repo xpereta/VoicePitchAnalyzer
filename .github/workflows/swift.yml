@@ -33,4 +33,4 @@ jobs:
         IOS_KEYS: ${{ secrets.IOS_KEYS }}
         FASTLANE_PASSWORD: ${{ secrets.APPLEID_PASSWORD }}
         MATCH_PASSWORD: ${{ secrets.APPLEID_PASSWORD }}
-        GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
+        TOKEN_GITHUB: ${{ secrets.TOKEN_GITHUB }}
