@@ -63,7 +63,7 @@ platform :ios do
 
     sync_code_signing(
       type: "appstore",
-      git_basic_authorization: Base64.strict_encode64(ENV["GITHUB_TOKEN"]),
+      git_basic_authorization: Base64.strict_encode64(ENV["TOKEN_GITHUB"]),
       readonly: true,
       keychain_name: ENV["KEYCHAIN"],
       keychain_password: ENV["APPLEID_PASSWORD"]
