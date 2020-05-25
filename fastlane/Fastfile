@@ -27,6 +27,7 @@ platform :ios do
     ENV["PROJECT_WORKSPACE"] = "Voice Pitch Analyzer.xcworkspace"
     ENV["TEAM_ID"] = "EHS3N33NZL"
     ENV["SCHEME"] = "Voice Pitch Analyzer"
+    ENV["MATCH_PASSWORD"]
     #ENV["Signing_Identity"]
     #ENV["FASTLANE_PASSWORD"] = "Test"
     #cocoapods
