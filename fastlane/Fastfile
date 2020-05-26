@@ -101,7 +101,7 @@ platform :ios do
       workspace: ENV["PROJECT_WORKSPACE"],
       scheme: ENV["SCHEME"],
       clean: true,
-      xcargs: "-UseNewBuildSystem=NO"
+      xcargs: "-UseNewBuildSystem=NO",
       export_options: {
         method: "app-store",
         configuration: "Release",
