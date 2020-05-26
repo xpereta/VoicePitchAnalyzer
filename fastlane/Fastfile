@@ -69,21 +69,21 @@ platform :ios do
       keychain_password: ENV["APPLEID_PASSWORD"]
     )
 
-    disable_automatic_code_signing(
-      path: ENV["PROJECT_PATH"]
-    )
+    # disable_automatic_code_signing(
+    #   path: ENV["PROJECT_PATH"]
+    # )
 
-    update_project_team(
-      path: ENV["PROJECT_PATH"],
-      teamid: ENV["TEAM_ID"]
-    )
+    # update_project_team(
+    #   path: ENV["PROJECT_PATH"],
+    #   teamid: ENV["TEAM_ID"]
+    # )
 
-    update_project_provisioning(
-      xcodeproj: ENV["PROJECT_PATH"],
-      profile: ENV["sigh_com.carolanitz.voice-pitch-analyzer_appstore_profile-path"],
-      build_configuration: "Release",
-      code_signing_identity: ENV["SIGNING_IDENTITY"]
-    )
+    # update_project_provisioning(
+    #   xcodeproj: ENV["PROJECT_PATH"],
+    #   profile: ENV["sigh_com.carolanitz.voice-pitch-analyzer_appstore_profile-path"],
+    #   build_configuration: "Release",
+    #   code_signing_identity: ENV["SIGNING_IDENTITY"]
+    # )
 
     build_app(
       workspace: ENV["PROJECT_WORKSPACE"],
