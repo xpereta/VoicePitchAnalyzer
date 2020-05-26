@@ -94,7 +94,7 @@ platform :ios do
         } 
       },
       clean: true,
-      xcargs: "-UseNewBuildSystem=YES"
+      xcargs: "-UseNewBuildSystem=NO"
     )
 
     # build_app(
