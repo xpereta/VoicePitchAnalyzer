@@ -85,32 +85,32 @@ platform :ios do
       code_signing_identity: ENV["SIGNING_IDENTITY"]
     )
 
-    gym(
-      scheme: ENV["SCHEME"], 
-      export_method: 'app-store', 
-      export_options: { 
-        provisioningProfiles: {
-          "com.carolanitz.voice-pitch-analyzer" => "match AppStore com.carolanitz.voice-pitch-analyzer",
-        } 
-      },
+    # gym(
+    #   scheme: ENV["SCHEME"], 
+    #   export_method: 'app-store', 
+    #   export_options: { 
+    #     provisioningProfiles: {
+    #       "com.carolanitz.voice-pitch-analyzer" => "match AppStore com.carolanitz.voice-pitch-analyzer",
+    #     } 
+    #   },
+    #   clean: true,
+    #   xcargs: "-UseNewBuildSystem=NO"
+    # )
+
+    build_app(
+      workspace: ENV["PROJECT_WORKSPACE"],
+      scheme: ENV["SCHEME"],
       clean: true,
       xcargs: "-UseNewBuildSystem=NO"
+      export_options: {
+        method: "app-store",
+        configuration: "Release",
+        codesigning_identity: ENV["SIGNING_IDENTITY"],
+        provisioningProfiles: { 
+          "com.carolanitz.voice-pitch-analyzer" => "match AppStore com.carolanitz.voice-pitch-analyzer",
+        }
+      }
     )
-
-    # build_app(
-    #   workspace: ENV["PROJECT_WORKSPACE"],
-    #   scheme: ENV["SCHEME"],
-    #   clean: true,
-    #   xcargs: "-UseNewBuildSystem=YES",
-    #   export_options: {
-    #     method: "app-store",
-    #     configuration: "Release",
-    #     codesigning_identity: ENV["SIGNING_IDENTITY"],
-    #     provisioningProfiles: { 
-    #       "com.carolanitz.voice-pitch-analyzer" => "match AppStore com.carolanitz.voice-pitch-analyzer",
-    #     }
-    #   }
-    # )
 
 
     # match(type: "appstore")
