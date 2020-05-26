@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+platform :ios, '10.0'
 use_frameworks!
 
 
@@ -24,7 +24,7 @@ def shared_pods
   pod 'Firebase/Auth'
   
   pod 'SwiftyJSON'
-  pod 'Wrap', :git => 'https://github.com/JohnSundell/Wrap.git'
+  pod 'Wrap'
   
   # Package to polyfil CALayer with traitCollection.userInterfaceStyle to adapt color as UIView does.
   pod 'XYColor'
