@@ -88,6 +88,8 @@ platform :ios do
     build_app(
       workspace: ENV["PROJECT_WORKSPACE"],
       scheme: ENV["SCHEME"],
+      clean: true,
+      xcargs: "-UseNewBuildSystem=YES",
       export_options: {
         method: "app-store",
         configuration: "Release",
