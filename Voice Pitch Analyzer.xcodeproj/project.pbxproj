@@ -410,9 +410,8 @@
 				TargetAttributes = {
 					41C205D81F478E7D0029B39D = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 69XUZ6HBUE;
 						LastSwiftMigration = 1130;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					6C98687F245546B200605964 = {
 						CreatedOnToolsVersion = 11.4;
@@ -902,9 +901,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Distribution";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 69XUZ6HBUE;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "Voice Pitch Analyzer/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -926,9 +925,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Distribution";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 69XUZ6HBUE;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "Voice Pitch Analyzer/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
