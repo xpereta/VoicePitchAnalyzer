@@ -85,6 +85,11 @@ platform :ios do
       code_signing_identity: ENV["SIGNING_IDENTITY"]
     )
 
+    update_provisioning_profile_specifier(
+      new_specifier: 'match AppStore com.carolanitz.voice-pitch-analyzer',
+      configuration: 'Release'
+    )
+
     # gym(
     #   scheme: ENV["SCHEME"], 
     #   export_method: 'app-store', 
