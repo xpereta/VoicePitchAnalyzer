@@ -80,7 +80,7 @@ platform :ios do
 
     update_project_provisioning(
       xcodeproj: ENV["PROJECT_PATH"],
-      profile: ENV["sigh_com.carolanitz.voice-pitch-analyzer_appstore_profile-name"],
+      profile: ENV["sigh_com.carolanitz.voice-pitch-analyzer_appstore_profile-path"],
       build_configuration: "Release",
       code_signing_identity: ENV["SIGNING_IDENTITY"]
     )
@@ -107,7 +107,7 @@ platform :ios do
         configuration: "Release",
         codesigning_identity: ENV["SIGNING_IDENTITY"],
         provisioningProfiles: { 
-          "com.carolanitz.voice-pitch-analyzer" => "match AppStore com.carolanitz.voice-pitch-analyzer",
+          "com.carolanitz.voice-pitch-analyzer" => ENV["sigh_com.carolanitz.voice-pitch-analyzer_appstore_profile-name"],
         }
       }
     )
