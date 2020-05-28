@@ -61,6 +61,10 @@ platform :ios do
   desc "Submit to App Store"
   lane :release do
 
+    disable_automatic_code_signing(
+      path: ENV["PROJECT_PATH"]
+    )
+
     sync_code_signing(
       type: "appstore",
       git_basic_authorization: Base64.strict_encode64(ENV["TOKEN_GITHUB"]),
@@ -69,10 +73,7 @@ platform :ios do
       keychain_password: ENV["APPLEID_PASSWORD"]
     )
 
-    disable_automatic_code_signing(
-      path: ENV["PROJECT_PATH"]
-    )
-
+  
     update_project_team(
       path: ENV["PROJECT_PATH"],
       teamid: ENV["TEAM_ID"]
@@ -82,7 +83,6 @@ platform :ios do
       xcodeproj: ENV["PROJECT_PATH"],
       profile: ENV["sigh_com.carolanitz.voice-pitch-analyzer_appstore_profile-path"],
       build_configuration: "Release",
-      target_filter: "Voice Pitch Analyzer",
       code_signing_identity: ENV["SIGNING_IDENTITY"]
     )
 
