@@ -82,6 +82,7 @@ platform :ios do
       xcodeproj: ENV["PROJECT_PATH"],
       profile: ENV["sigh_com.carolanitz.voice-pitch-analyzer_appstore_profile-path"],
       build_configuration: "Release",
+      target_filter: "Voice Pitch Analyzer",
       code_signing_identity: ENV["SIGNING_IDENTITY"]
     )
 
