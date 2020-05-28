@@ -78,12 +78,12 @@ platform :ios do
       teamid: ENV["TEAM_ID"]
     )
 
-    update_project_provisioning(
-      xcodeproj: ENV["PROJECT_PATH"],
-      profile: ENV["sigh_com.carolanitz.voice-pitch-analyzer_appstore_profile-path"],
-      build_configuration: "Release",
-      code_signing_identity: ENV["SIGNING_IDENTITY"]
-    )
+    # update_project_provisioning(
+    #   xcodeproj: ENV["PROJECT_PATH"],
+    #   profile: ENV["sigh_com.carolanitz.voice-pitch-analyzer_appstore_profile-path"],
+    #   build_configuration: "Release",
+    #   code_signing_identity: ENV["SIGNING_IDENTITY"]
+    # )
 
     # gym(
     #   scheme: ENV["SCHEME"], 
