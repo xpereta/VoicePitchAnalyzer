@@ -108,7 +108,7 @@ platform :ios do
       scheme: ENV["SCHEME"],
       clean: true,
       xcargs: "-UseNewBuildSystem=NO",
-      skip_profile_detectionl: true,
+      skip_profile_detection: true,
       export_options: {
         method: "app-store",
         configuration: "Release",
