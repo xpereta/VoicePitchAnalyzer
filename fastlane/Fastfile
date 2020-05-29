@@ -20,7 +20,6 @@ platform :ios do
     # ENV["SLACK_URL"] = "https://hooks.slack.com/services/..."
     #ENV["APPLEID_PASSWORD"]
     #ENV["APPLEID_USERNAME"] = "nitz.carola@googlemail.com"
-    #ENV["IOS_KEYS"]
     ENV["APP_ID"] = "com.carolanitz.voice-pitch-analyzer"
     ENV["KEYCHAIN"] = "github_keychain"
     ENV["PROJECT_PATH"] = "Voice Pitch Analyzer.xcodeproj"
