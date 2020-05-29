@@ -27,6 +27,9 @@ jobs:
 
     - name: Fastlane plugin install
       run: bundle exec fastlane add_plugin update_provisioning_profile_specifier
+
+    - name: Fastlane Update
+      run: bundle update fastlane
         
     - name: Fastlane release
       run: bundle exec fastlane release
