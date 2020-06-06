@@ -24,7 +24,7 @@ platform :ios do
     ENV["KEYCHAIN"] = "github_keychain"
     ENV["PROJECT_PATH"] = "Voice Pitch Analyzer.xcodeproj"
     ENV["PROJECT_WORKSPACE"] = "Voice Pitch Analyzer.xcworkspace"
-    ENV["TEAM_ID"] = "EHS3N33NZL"
+    # ENV["TEAM_ID"] = "EHS3N33NZL"
     ENV["SCHEME"] = "Voice Pitch Analyzer"
     #ENV["MATCH_PASSWORD"] = ENV["FASTLANE_MATCH"]
     ENV["SIGNING_IDENTITY"] = "Apple Distribution: Carola Nitz (EHS3N33NZL)"

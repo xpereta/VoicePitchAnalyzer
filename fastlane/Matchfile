@@ -1,4 +1,4 @@
-git_url("https://github.com/davidseek/VoicePitchAnalyzerCodeSignature")
+git_url("https://github.com/VoicePitchAnalyzer/VoicePitchAnalyzerCodeSignature")
 
 storage_mode("git")
 
