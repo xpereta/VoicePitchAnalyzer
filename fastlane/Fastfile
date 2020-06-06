@@ -106,7 +106,7 @@ platform :ios do
       workspace: ENV["PROJECT_WORKSPACE"],
       scheme: ENV["SCHEME"],
       #clean: true,
-      xcargs: "-UseNewBuildSystem=NO",
+      # xcargs: "-UseNewBuildSystem=NO",
       skip_profile_detection: true,
       export_options: {
         method: "app-store",
