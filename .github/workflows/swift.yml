@@ -41,3 +41,4 @@ jobs:
         MATCH_PASSWORD: ${{ secrets.APPLEID_PASSWORD }}
         TOKEN_GITHUB: ${{ secrets.TOKEN_GITHUB }}
         TEAM_ID: ${{ secrets.TEAM_ID }}
+        SIGNING_IDENTITY: ${{ secrets.SIGNING_IDENTITY }}

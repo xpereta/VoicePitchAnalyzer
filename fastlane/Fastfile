@@ -27,7 +27,7 @@ platform :ios do
     # ENV["TEAM_ID"] = "EHS3N33NZL"
     ENV["SCHEME"] = "Voice Pitch Analyzer"
     #ENV["MATCH_PASSWORD"] = ENV["FASTLANE_MATCH"]
-    ENV["SIGNING_IDENTITY"] = "Apple Distribution: Carola Nitz (EHS3N33NZL)"
+    # ENV["SIGNING_IDENTITY"] = "Apple Distribution: Carola Nitz (EHS3N33NZL)"
     #ENV["FASTLANE_PASSWORD"] = "Test"
     #cocoapods
 
