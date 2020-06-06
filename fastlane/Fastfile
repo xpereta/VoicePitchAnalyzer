@@ -17,19 +17,11 @@ default_platform :ios
 
 platform :ios do
   before_all do
-    # ENV["SLACK_URL"] = "https://hooks.slack.com/services/..."
-    #ENV["APPLEID_PASSWORD"]
-    #ENV["APPLEID_USERNAME"] = "nitz.carola@googlemail.com"
     ENV["APP_ID"] = "com.carolanitz.voice-pitch-analyzer"
     ENV["KEYCHAIN"] = "github_keychain"
     ENV["PROJECT_PATH"] = "Voice Pitch Analyzer.xcodeproj"
     ENV["PROJECT_WORKSPACE"] = "Voice Pitch Analyzer.xcworkspace"
-    # ENV["TEAM_ID"] = "EHS3N33NZL"
     ENV["SCHEME"] = "Voice Pitch Analyzer"
-    #ENV["MATCH_PASSWORD"] = ENV["FASTLANE_MATCH"]
-    # ENV["SIGNING_IDENTITY"] = "Apple Distribution: Carola Nitz (EHS3N33NZL)"
-    #ENV["FASTLANE_PASSWORD"] = "Test"
-    #cocoapods
 
     create_keychain(
 		  name: ENV["KEYCHAIN"],
@@ -47,16 +39,6 @@ platform :ios do
     
   end
 
-  #desc "Submit to TestFlight"
-  #lane :beta do
-    # match(type: "appstore") # more information: https://codesigning.guide
-    #gym # Build your app - more options available
-    #pilot
-
-    # sh "your_script.sh"
-    # You can also use other beta testing services here (run `fastlane actions`)
-  #end
-
   desc "Submit to App Store"
   lane :release do
 
@@ -71,7 +53,6 @@ platform :ios do
       keychain_name: ENV["KEYCHAIN"],
       keychain_password: ENV["APPLEID_PASSWORD"]
     )
-
   
     update_project_team(
       path: ENV["PROJECT_PATH"],
@@ -90,23 +71,9 @@ platform :ios do
       configuration: 'Release'
     )
 
-    # gym(
-    #   scheme: ENV["SCHEME"], 
-    #   export_method: 'app-store', 
-    #   export_options: { 
-    #     provisioningProfiles: {
-    #       "com.carolanitz.voice-pitch-analyzer" => "match AppStore com.carolanitz.voice-pitch-analyzer",
-    #     } 
-    #   },
-    #   clean: true,
-    #   xcargs: "-UseNewBuildSystem=NO"
-    # )
-
     build_app(
       workspace: ENV["PROJECT_WORKSPACE"],
       scheme: ENV["SCHEME"],
-      #clean: true,
-      # xcargs: "-UseNewBuildSystem=NO",
       skip_profile_detection: true,
       export_options: {
         method: "app-store",
@@ -118,64 +85,10 @@ platform :ios do
       }
     )
 
+    upload_to_app_store
 
-    # match(type: "appstore")
-    # snapshot
-    #gym # Build your app - more options available
-    #deliver(force: true)
-    #signing_identity = "Apple Distribution: Carola Nitz (EHS3N33NZL)"
-    #build_app(
-    #  scheme: "Voice Pitch Analyzer",
-    #  workspace: "Voice Pitch Analyzer.xcworkspace",
-    #  export_options: {
-    #    method: "app-store",
-    #    configuration: "Release",
-    #    codesigning_identity: signing_identity,
-    #    provisioningProfiles: { 
-    #      "com.carolanitz.voice-pitch-analyzer" => "match AppStore com.carolanitz.voice-pitch-analyzer",
-    #    }
-    #  }
-    #)
-    # frameit
   end
 
-  # desc "Signing iOS App"
-  # lane :codeSign do  
-
-  #   match(
-  #     type: "appstore",
-	# 	  readonly: is_ci,
-	#   	keychain_name: ENV["KEYCHAIN"],
-	#   	keychain_password: ENV["APPLEID_PASSWORD"]
-  # 	)
-
-  #   cert(username: ENV["APPLEID_USERNAME"])
-    
-  #   sigh(
-  #     force: true,
-  #     username: ENV["APPLEID_USERNAME"],
-  #     team_id: "EHS3N33NZL",
-  #     #password: ENV["APPLEID_PASSWORD"],
-  #     app_identifier: ENV["APP_ID"]
-  #   )
-  # end
-
-  # You can define as many lanes as you want
-
-  after_all do |lane|
-    # This block is called, only if the executed lane was successful
-
-    # slack(
-    #   message: "Successfully deployed new App Update."
-    # )
-  end
-
-  error do |lane, exception|
-    # slack(
-    #   message: exception.message,
-    #   success: false
-    # )
-  end
 end
 
 
