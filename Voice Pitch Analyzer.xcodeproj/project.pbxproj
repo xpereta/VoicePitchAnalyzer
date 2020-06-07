@@ -913,6 +913,7 @@
 				INFOPLIST_FILE = "Voice Pitch Analyzer/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 2.1.1;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.carolanitz.voice-pitch-analyzer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -938,6 +939,7 @@
 				INFOPLIST_FILE = "Voice Pitch Analyzer/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 2.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.carolanitz.voice-pitch-analyzer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = vpaDev;
