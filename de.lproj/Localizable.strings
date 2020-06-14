@@ -14,3 +14,5 @@
 "MicAccessExplanationDenied" = "Hallo!\n\nUm deine Stimme analysieren zu können, brauchen wir Zugang zu deinem Mikrofon.\n\nBitte öffne die Einstellungen, scroll zu VoicePitchAnalyzer und aktiviere den Mikrofonzugang.";
 "OpenSettings" = "Einstellungen";
 "Next" = "Weiter";
+"Login" = "Wenn du deinen Verlauf auch nach Updates und neuen Installationen behalten möchtest, kannst du dich mit Apple einzuloggen.\n\nApple Login ist komplett anonym und du kannst deine Daten jeder Zeit löschen.";
+"LearnMoreLogin" = "Lern mehr über Apple Login";

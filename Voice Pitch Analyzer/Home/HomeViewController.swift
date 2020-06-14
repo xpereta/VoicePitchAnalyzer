@@ -110,6 +110,12 @@ class HomeViewController: UIViewController {
         microphoneAccessManager.requestAuthorization()
     }
 
+    @IBAction func didPressUserLoginButton(_ sender: Any) {
+        
+        Log.event(.userLoginButton)
+        presentLoginController()
+    }
+    
     // MARK: - Private
 
     private func setAppearance() {
@@ -204,6 +210,12 @@ class HomeViewController: UIViewController {
     private func presentInfoController() {
 
         let controller = InfoViewController(textManager: textManager)
+        present(controller, animated: true)
+    }
+    
+    private func presentLoginController() {
+        
+        let controller = LoginViewController(textManager: textManager)
         present(controller, animated: true)
     }
 

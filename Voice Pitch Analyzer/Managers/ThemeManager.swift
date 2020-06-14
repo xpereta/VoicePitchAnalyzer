@@ -145,11 +145,18 @@ class ThemeManager {
             color: ColorCache.shared.getShadowColor(),
             yPosition: 3,
             blur: 14)
-
+        
         let thickness: CGFloat = 4
+        
+        // half width of parent minus half width of self
+        let xPosition = isHistoryLayer ? (frame.width / 2 - thickness / 2) : 0
+        
+        // half height of parent minus half height of self
+        let yPosition = isHistoryLayer ? 0 : (frame.height / 2 - thickness / 2)
+
         let centerFrame = CGRect(
-            x: isHistoryLayer ? (frame.width / 2 - thickness / 2) : 0, // half width of parent minus half width of self
-            y: isHistoryLayer ? 0 : (frame.height / 2 - thickness / 2), // half height of parent minus half height of self
+            x: xPosition,
+            y: yPosition,
             width: isHistoryLayer ? 5 : frame.width,
             height: isHistoryLayer ? frame.height : thickness)
         let centerLayer = getCenterLayer(frame: centerFrame, on: view)

@@ -46,4 +46,7 @@ enum LogEvent: String {
     case recordStart = "recordStart"
     case recordStop = "recordStop"
     case pressHelpButton = "pressHelpButton"
+    case userLoginButton = "userLoginButton"
+    case githubInfo = "githubInfo"
+    case appleLoginInfo = "appleLoginInfo"
 }

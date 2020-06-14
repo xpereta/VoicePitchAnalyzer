@@ -14,3 +14,5 @@
 "MicAccessExplanationDenied" = "Hey There!\n\nTo be able to analyze your voice pitch, VoicePitchAnalyzer needs access to your microphone.\n\nPlease open the settings, scroll to VoicePitchAnalzyer and activate microphone access.";
 "OpenSettings" = "Settings";
 "Next" = "Next";
+"Login" = "If you'd like to keep your history even after updates or clean installations, you can login with Apple.\n\nApple Login is completely anonymous and you can delete your data any time.";
+"LearnMoreLogin" = "Learn more about Apple Login";

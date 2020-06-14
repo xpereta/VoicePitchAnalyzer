@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="Voice_Pitch_Analyzer" customModuleProvider="target">
+            <connections>
+                <outlet property="doneButton" destination="rrw-T0-kiq" id="7SY-Ve-1IQ"/>
+                <outlet property="learnMoreButton" destination="486-gl-WaZ" id="JPJ-GZ-T7L"/>
+                <outlet property="loginButton" destination="iR8-qs-cM8" id="vmz-Kh-tOu"/>
+                <outlet property="textView" destination="Y97-kY-FCR" id="aRm-tN-Z97"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rrw-T0-kiq">
+                    <rect key="frame" x="338" y="52" width="52" height="38"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                    <state key="normal" title="Done"/>
+                    <connections>
+                        <action selector="didPressDoneButton:" destination="-1" eventType="touchUpInside" id="xme-ES-q4u"/>
+                    </connections>
+                </button>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Y97-kY-FCR">
+                    <rect key="frame" x="20" y="98" width="374" height="389"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="389" id="rF9-la-qoa"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="389" id="wVO-Pg-M5q"/>
+                    </constraints>
+                    <string key="text">Hey There! To properly analyse your pitch, we need about one minute of audio recording of your voice. For this purpose, we’ll provide you with a text of a length approximate to this time frame. Of course you’re free to say anything else, too, as long as it’s in your natural voice.</string>
+                    <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iR8-qs-cM8">
+                    <rect key="frame" x="57" y="754" width="300" height="44"/>
+                    <state key="normal" image="apple"/>
+                    <connections>
+                        <action selector="didPressLoginButton:" destination="-1" eventType="touchUpInside" id="QaY-40-bJK"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="486-gl-WaZ">
+                    <rect key="frame" x="104" y="832" width="206" height="30"/>
+                    <state key="normal" title="Learn more about Apple Login"/>
+                    <connections>
+                        <action selector="learnMoreButtonPressed:" destination="-1" eventType="touchUpInside" id="E67-JM-BRc"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="Y97-kY-FCR" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="42n-Gq-jdi"/>
+                <constraint firstItem="486-gl-WaZ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="JBn-4A-6jX"/>
+                <constraint firstItem="486-gl-WaZ" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="Yv5-Ro-NPF"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="rrw-T0-kiq" secondAttribute="trailing" constant="24" id="Z9D-YA-0AW"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Y97-kY-FCR" secondAttribute="trailing" constant="20" id="aFg-nh-Zse"/>
+                <constraint firstItem="iR8-qs-cM8" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="d8a-N1-Nly"/>
+                <constraint firstItem="rrw-T0-kiq" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="8" id="ebk-zn-c3Q"/>
+                <constraint firstItem="Y97-kY-FCR" firstAttribute="top" secondItem="rrw-T0-kiq" secondAttribute="bottom" constant="8" id="mSJ-4o-qpe"/>
+                <constraint firstItem="iR8-qs-cM8" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" constant="-64" id="tcJ-VV-cml"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="139" y="131"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="apple" width="300" height="44"/>
+    </resources>
+</document>
