@@ -30,7 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let themeManager = ThemeManager()
         let textManager = TextManager()
         let resultCalculator = ResultCalculator()
-        let loginManager = LoginManager()
+        let cloudFunctionsManager = CloudFunctionsManager()
+        let loginManager = LoginManager(cloudFunctionsManager: cloudFunctionsManager)
 
         let home = HomeViewController(
             recordingManager: recordingManager,

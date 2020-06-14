@@ -10,6 +10,22 @@ import Foundation
 import Firebase
 
 class CloudFunctionsManager {
-    
-    lazy var functions = Functions.functions()
+
+    private let functions = Functions.functions()
+
+    // MARK: - Public
+
+    public func getHash(completion: @escaping (String) -> Void) {
+
+        functions.httpsCallable("getHash").call { result, error in
+
+            if let error = error {
+                Log.record(error, at: #function)
+            }
+
+            if let result = result {
+                print("result: \(result.data)")
+            }
+        }
+    }
 }

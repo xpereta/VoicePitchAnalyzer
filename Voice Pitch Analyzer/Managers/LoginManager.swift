@@ -14,12 +14,17 @@ protocol LoginManagerDelegate: class {
 }
 
 class LoginManager: NSObject {
-    
+
+    private let cloudFunctionsManager: CloudFunctionsManager
     // Unhashed nonce.
     private var currentNonce: String?
 
     public weak var delegate: LoginManagerDelegate?
     public var parentController: UIViewController?
+
+    init(cloudFunctionsManager: CloudFunctionsManager) {
+        self.cloudFunctionsManager = cloudFunctionsManager
+    }
 
     // MARK: - Public
 
@@ -28,26 +33,29 @@ class LoginManager: NSObject {
         guard #available(iOS 13, *) else {
             return
         }
-        
-        //let nonce = randomNonceString()
-        //currentNonce = nonce
 
-        let provider = ASAuthorizationAppleIDProvider()
-        let request = provider.createRequest()
-        request.requestedScopes = [.fullName, .email]
-        //request.nonce = sha256(nonce)
+        cloudFunctionsManager.getHash { hash in
+            print(hash)
+        }
 
-        let controller = ASAuthorizationController(authorizationRequests: [request])
-
-        controller.delegate = self
-        controller.presentationContextProvider = self
-
-        controller.performRequests()
+//        let nonce = randomNonceString()
+//        currentNonce = nonce
+//
+//        let provider = ASAuthorizationAppleIDProvider()
+//        let request = provider.createRequest()
+//        request.requestedScopes = [.fullName, .email]
+//        request.nonce = sha256(nonce)
+//
+//        let controller = ASAuthorizationController(authorizationRequests: [request])
+//
+//        controller.delegate = self
+//        controller.presentationContextProvider = self
+//
+//        controller.performRequests()
     }
-    
+
     // MARK: - Private
-    
-    
+
 }
 
 // MARK: - ASAuthorizationControllerDelegate
