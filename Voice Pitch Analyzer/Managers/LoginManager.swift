@@ -29,13 +29,13 @@ class LoginManager: NSObject {
             return
         }
         
-        let nonce = randomNonceString()
-        currentNonce = nonce
+        //let nonce = randomNonceString()
+        //currentNonce = nonce
 
         let provider = ASAuthorizationAppleIDProvider()
         let request = provider.createRequest()
         request.requestedScopes = [.fullName, .email]
-        request.nonce = sha256(nonce)
+        //request.nonce = sha256(nonce)
 
         let controller = ASAuthorizationController(authorizationRequests: [request])
 
