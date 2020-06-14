@@ -111,11 +111,11 @@ class HomeViewController: UIViewController {
     }
 
     @IBAction func didPressUserLoginButton(_ sender: Any) {
-        
+
         Log.event(.userLoginButton)
         presentLoginController()
     }
-    
+
     // MARK: - Private
 
     private func setAppearance() {
@@ -212,9 +212,9 @@ class HomeViewController: UIViewController {
         let controller = InfoViewController(textManager: textManager)
         present(controller, animated: true)
     }
-    
+
     private func presentLoginController() {
-        
+
         let controller = LoginViewController(textManager: textManager)
         present(controller, animated: true)
     }

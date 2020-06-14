@@ -31,9 +31,9 @@ class InfoViewController: UIViewController {
 
         setAppearance()
     }
-    
+
     // MARK: - Public
-    
+
     @IBAction func didPressDoneButton(_ sender: Any) {
         dismiss(animated: true)
     }
