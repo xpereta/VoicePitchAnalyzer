@@ -16,9 +16,13 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var learnMoreButton: UIButton!
 
     private let textManager: TextManager
+    private let loginManager: LoginManager
 
-    init(textManager: TextManager) {
+    init(textManager: TextManager,
+         loginManager: LoginManager) {
+
         self.textManager = textManager
+        self.loginManager = loginManager
         super.init(nibName: "LoginViewController", bundle: nil)
     }
 
@@ -29,6 +33,8 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        loginManager.delegate = self
+        loginManager.parentController = self
         setAppearance()
     }
 
@@ -39,6 +45,7 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func didPressLoginButton(_ sender: Any) {
+        loginManager.requestLogin()
     }
 
     @IBAction func learnMoreButtonPressed(_ sender: Any) {
@@ -75,5 +82,13 @@ class LoginViewController: UIViewController {
         }
 
         UIApplication.shared.open(url)
+    }
+}
+
+// MARK: - LoginManagerDelegate
+extension LoginViewController: LoginManagerDelegate {
+
+    func loginManager(didComplete userIdentifier: String?) {
+        print("userIdentifier: \(userIdentifier)")
     }
 }

@@ -30,6 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let themeManager = ThemeManager()
         let textManager = TextManager()
         let resultCalculator = ResultCalculator()
+        let loginManager = LoginManager()
 
         let home = HomeViewController(
             recordingManager: recordingManager,
@@ -37,7 +38,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             themeManager: themeManager,
             textManager: textManager,
             resultCalculator: resultCalculator,
-            microphoneAccessManager: microphoneAccessManager)
+            microphoneAccessManager: microphoneAccessManager,
+            loginManager: loginManager
+        )
 
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = home
