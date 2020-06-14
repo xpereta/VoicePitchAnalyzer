@@ -14,6 +14,9 @@ protocol LoginManagerDelegate: class {
 }
 
 class LoginManager: NSObject {
+    
+    // Unhashed nonce.
+    private var currentNonce: String?
 
     public weak var delegate: LoginManagerDelegate?
     public var parentController: UIViewController?
@@ -25,9 +28,14 @@ class LoginManager: NSObject {
         guard #available(iOS 13, *) else {
             return
         }
+        
+        let nonce = randomNonceString()
+        currentNonce = nonce
 
-        let request = ASAuthorizationAppleIDProvider().createRequest()
+        let provider = ASAuthorizationAppleIDProvider()
+        let request = provider.createRequest()
         request.requestedScopes = [.fullName, .email]
+        request.nonce = sha256(nonce)
 
         let controller = ASAuthorizationController(authorizationRequests: [request])
 
@@ -36,13 +44,18 @@ class LoginManager: NSObject {
 
         controller.performRequests()
     }
+    
+    // MARK: - Private
+    
+    
 }
 
 // MARK: - ASAuthorizationControllerDelegate
 extension LoginManager: ASAuthorizationControllerDelegate {
 
     @available(iOS 13.0, *)
-    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+    func authorizationController(controller: ASAuthorizationController,
+                                 didCompleteWithAuthorization authorization: ASAuthorization) {
 
         switch authorization.credential {
         case let appleIDCredential as ASAuthorizationAppleIDCredential:

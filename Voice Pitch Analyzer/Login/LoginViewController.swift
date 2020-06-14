@@ -89,6 +89,6 @@ class LoginViewController: UIViewController {
 extension LoginViewController: LoginManagerDelegate {
 
     func loginManager(didComplete userIdentifier: String?) {
-        print("userIdentifier: \(userIdentifier)")
+        print("userIdentifier: \(userIdentifier ?? "")")
     }
 }

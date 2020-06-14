@@ -11,6 +11,9 @@ def shared_pods
   # Pods for Voice Pitch Analyzer
 	pod 'Beethoven', '~> 4.0.2'
   
+  pod 'Firebase/Auth'
+  pod 'Firebase/Functions'
+  
   # add the Firebase pod for Google Analytics
   pod 'Firebase/Crashlytics'
   pod 'Firebase/Analytics'
@@ -20,8 +23,6 @@ def shared_pods
   pod 'Firebase/Firestore'
   # Optionally, include the Swift extensions if you're using Swift.
   pod 'FirebaseFirestoreSwift'
-  
-  pod 'Firebase/Auth'
   
   pod 'SwiftyJSON'
   pod 'Wrap'
