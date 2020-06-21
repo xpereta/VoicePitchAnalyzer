@@ -14,15 +14,16 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var learnMoreButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
     private let textManager: TextManager
-    private let loginManager: LoginManager
+    private let appleLoginManager: AppleLoginManager
 
     init(textManager: TextManager,
-         loginManager: LoginManager) {
+         appleLoginManager: AppleLoginManager) {
 
         self.textManager = textManager
-        self.loginManager = loginManager
+        self.appleLoginManager = appleLoginManager
         super.init(nibName: "LoginViewController", bundle: nil)
     }
 
@@ -33,8 +34,8 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        loginManager.delegate = self
-        loginManager.parentController = self
+        appleLoginManager.delegate = self
+        appleLoginManager.parentController = self
         setAppearance()
     }
 
@@ -45,7 +46,12 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func didPressLoginButton(_ sender: Any) {
-        loginManager.requestLogin()
+
+        activityIndicator.startAnimating()
+        appleLoginManager.requestLogin { [weak self] _ in
+
+            self?.activityIndicator.stopAnimating()
+        }
     }
 
     @IBAction func learnMoreButtonPressed(_ sender: Any) {
@@ -85,10 +91,10 @@ class LoginViewController: UIViewController {
     }
 }
 
-// MARK: - LoginManagerDelegate
-extension LoginViewController: LoginManagerDelegate {
+// MARK: - AppleLoginManagerDelegate
+extension LoginViewController: AppleLoginManagerDelegate {
 
-    func loginManager(didComplete userIdentifier: String?) {
-        print("userIdentifier: \(userIdentifier ?? "")")
+    func appleLoginManager(didFailWith errorMessage: String) {
+        // MARK: - TODO -> Handle properly
     }
 }

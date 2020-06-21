@@ -24,14 +24,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Log.event(.appStart)
 
         let recordingManager = RecordingManager()
-        let databaseManager = DatabaseManager()
+        let authManager = AuthManager()
+        let databaseManager = DatabaseManager(authManager: authManager)
         databaseManager.configure()
 
         let themeManager = ThemeManager()
         let textManager = TextManager()
         let resultCalculator = ResultCalculator()
         let cloudFunctionsManager = CloudFunctionsManager()
-        let loginManager = LoginManager(cloudFunctionsManager: cloudFunctionsManager)
+
+        let appleLoginManager = AppleLoginManager(
+            cloudFunctionsManager: cloudFunctionsManager,
+            authManager: authManager
+        )
 
         let home = HomeViewController(
             recordingManager: recordingManager,
@@ -40,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             textManager: textManager,
             resultCalculator: resultCalculator,
             microphoneAccessManager: microphoneAccessManager,
-            loginManager: loginManager
+            appleLoginManager: appleLoginManager
         )
 
         window = UIWindow(frame: UIScreen.main.bounds)

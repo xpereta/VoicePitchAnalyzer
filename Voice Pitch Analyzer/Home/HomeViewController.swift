@@ -27,7 +27,7 @@ class HomeViewController: UIViewController {
     private let textManager: TextManager
     private let resultCalculator: ResultCalculator
     private let microphoneAccessManager: MicrophoneAccessManager
-    private let loginManager: LoginManager
+    private let appleLoginManager: AppleLoginManager
 
     private var pitchArray: [Double] = Array()
     private var link: CADisplayLink?
@@ -63,7 +63,7 @@ class HomeViewController: UIViewController {
          textManager: TextManager,
          resultCalculator: ResultCalculator,
          microphoneAccessManager: MicrophoneAccessManager,
-         loginManager: LoginManager) {
+         appleLoginManager: AppleLoginManager) {
 
         self.recordingManager = recordingManager
         self.databaseManager = databaseManager
@@ -71,7 +71,7 @@ class HomeViewController: UIViewController {
         self.textManager = textManager
         self.resultCalculator = resultCalculator
         self.microphoneAccessManager = microphoneAccessManager
-        self.loginManager = loginManager
+        self.appleLoginManager = appleLoginManager
 
         super.init(nibName: "HomeViewController", bundle: nil)
     }
@@ -220,7 +220,7 @@ class HomeViewController: UIViewController {
 
         let controller = LoginViewController(
             textManager: textManager,
-            loginManager: loginManager
+            appleLoginManager: appleLoginManager
         )
 
         present(controller, animated: true)

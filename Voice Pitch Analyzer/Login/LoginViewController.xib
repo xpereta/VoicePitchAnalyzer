@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="Voice_Pitch_Analyzer" customModuleProvider="target">
             <connections>
+                <outlet property="activityIndicator" destination="66w-ea-DHI" id="9xW-Ij-gVp"/>
                 <outlet property="doneButton" destination="rrw-T0-kiq" id="7SY-Ve-1IQ"/>
                 <outlet property="learnMoreButton" destination="486-gl-WaZ" id="JPJ-GZ-T7L"/>
                 <outlet property="loginButton" destination="iR8-qs-cM8" id="vmz-Kh-tOu"/>
@@ -56,12 +57,17 @@
                         <action selector="learnMoreButtonPressed:" destination="-1" eventType="touchUpInside" id="E67-JM-BRc"/>
                     </connections>
                 </button>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="66w-ea-DHI">
+                    <rect key="frame" x="197" y="726" width="20" height="20"/>
+                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
                 <constraint firstItem="Y97-kY-FCR" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="42n-Gq-jdi"/>
+                <constraint firstItem="66w-ea-DHI" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="C6I-X5-5Uu"/>
                 <constraint firstItem="486-gl-WaZ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="JBn-4A-6jX"/>
                 <constraint firstItem="486-gl-WaZ" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="Yv5-Ro-NPF"/>
+                <constraint firstItem="iR8-qs-cM8" firstAttribute="top" secondItem="66w-ea-DHI" secondAttribute="bottom" constant="8" id="Yzq-Zz-5mL"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="rrw-T0-kiq" secondAttribute="trailing" constant="24" id="Z9D-YA-0AW"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Y97-kY-FCR" secondAttribute="trailing" constant="20" id="aFg-nh-Zse"/>
                 <constraint firstItem="iR8-qs-cM8" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="d8a-N1-Nly"/>

@@ -19,12 +19,16 @@ protocol DatabaseManagerDelegate: class {
 
 class DatabaseManager {
 
+    private let authManager: AuthManager
     private let firestore = Firestore.firestore()
-    private var authObserver: ((String?) -> Void)?
     private var user: User?
 
     public weak var delegate: DatabaseManagerDelegate?
     public var results: [RecorderResult] = []
+
+    init(authManager: AuthManager) {
+        self.authManager = authManager
+    }
 
     // MARK: - Public
 
@@ -35,21 +39,11 @@ class DatabaseManager {
             return
         }
 
-        getAuthState { [weak self] isAuthenticated in
+        authManager.login(vendorID) { [weak self] isMissingRegistration in
 
-            guard let strongSelf = self else { return }
-
-            guard isAuthenticated else {
-                strongSelf.loginUser(vendorID) { registrationIsMissing in
-                    if registrationIsMissing == true {
-                        strongSelf.signupUser(vendorID)
-                    }
-                }
-                return
+            if isMissingRegistration == true {
+                self?.authManager.signup(vendorID) {_ in}
             }
-
-            guard let userID = strongSelf.getUserID() else { return }
-            self?.setResultsObserver(userID: userID)
         }
     }
 
@@ -100,10 +94,6 @@ class DatabaseManager {
         return email.replacingOccurrences(of: "@voicepitchanalyzer.app", with: "")
     }
 
-    public func setAuthObserver(_ observer: @escaping (String?) -> Void) {
-        self.authObserver = observer
-    }
-
     // MARK: - Private
 
     /** Using the vendorID to support none registrated users with Firebase */
@@ -144,61 +134,19 @@ class DatabaseManager {
                 self?.delegate?.databaseManager(didLoadData: results)
             })
     }
+}
 
-    private func getAuthState(completion: @escaping (Bool) -> Void) {
+// MARK: - AuthManagerDelegate
+extension DatabaseManager: AuthManagerDelegate {
 
-        Auth.auth().addStateDidChangeListener { [weak self] (_, user) in
+    func authManager(stateDidChange user: User?) {
 
-            var isAuthenticated = false
-
-            if let user = user, let email = user.email {
-                self?.user = user
-                self?.authObserver?(user.email)
-                isAuthenticated = true
-                print("Auth successfull \(email)")
-            }
-
-            completion(isAuthenticated)
-        }
+        self.user = user
+        guard let userID = getUserID() else { return }
+        setResultsObserver(userID: userID)
     }
 
-    private func signupUser(_ vendorID: String) {
+    func authManager(didFailWith errorMessage: String) {
 
-        let email = "\(vendorID)@voicepitchanalyzer.app"
-        let password = vendorID
-
-        Auth.auth().createUser(withEmail: email, password: password) { (_, error) in
-
-            if let error = error {
-                print("error: \(error)")
-            } else {
-                print("SignUp successfull")
-            }
-        }
-    }
-
-    private func loginUser(_ vendorID: String, completion: @escaping (Bool) -> Void) {
-
-        let email = "\(vendorID)@voicepitchanalyzer.app"
-        let password = vendorID
-
-        Auth.auth().signIn(withEmail: email, password: password) { (_, error) in
-
-            var registrationIsMissing: Bool = false
-
-            if let error = error {
-
-                if error.localizedDescription == "There is no user record corresponding to this identifier. The user may have been deleted." {
-                    registrationIsMissing = true
-                } else {
-                    print("Login error: \(error)")
-                }
-
-            } else {
-                print("Login successfull")
-            }
-
-            completion(registrationIsMissing)
-        }
     }
 }

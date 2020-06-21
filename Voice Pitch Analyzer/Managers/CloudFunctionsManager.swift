@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import SwiftyJSON
 
 class CloudFunctionsManager {
 
@@ -24,7 +25,10 @@ class CloudFunctionsManager {
             }
 
             if let result = result {
-                print("result: \(result.data)")
+                let data: JSON = JSON(result.data)
+                let hash: String = data["hash"].stringValue
+                print("getHash result: \(hash)")
+                completion(hash)
             }
         }
     }

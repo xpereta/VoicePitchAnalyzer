@@ -47,6 +47,7 @@
 		6CA9D720240CC1E00000187A /* SCSiriWaveformView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CA9D71E240CC1E00000187A /* SCSiriWaveformView.m */; };
 		6CBA79B82495B0D1006BB73C /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CBA79B62495B0D0006BB73C /* LoginViewController.xib */; };
 		6CBA79B92495B0D1006BB73C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CBA79B72495B0D0006BB73C /* LoginViewController.swift */; };
+		6CBB905324A00E3A00576E8E /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CBB905224A00E3A00576E8E /* AuthManager.swift */; };
 		6CC2F21E2409EEBB0009FBEB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6CC2F21D2409EEBB0009FBEB /* GoogleService-Info.plist */; };
 		6CD42E84241600C4008F78C7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6CD42E76241600C4008F78C7 /* LaunchScreen.storyboard */; };
 		6CD42E85241600C4008F78C7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6CD42E79241600C4008F78C7 /* Localizable.strings */; };
@@ -55,7 +56,7 @@
 		6CD42E88241600C4008F78C7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6CD42E80241600C4008F78C7 /* Localizable.strings */; };
 		6CD42E89241600C4008F78C7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6CD42E82241600C4008F78C7 /* InfoPlist.strings */; };
 		6CE2AAA52411D329003D5C7B /* NSError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE2AAA42411D329003D5C7B /* NSError.swift */; };
-		6CE520562495B3A700B6B65C /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE520552495B3A700B6B65C /* LoginManager.swift */; };
+		6CE520562495B3A700B6B65C /* AppleLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE520552495B3A700B6B65C /* AppleLoginManager.swift */; };
 		6CFAC977243CF6370050BC68 /* MicrophoneAccessManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CFAC976243CF6370050BC68 /* MicrophoneAccessManager.swift */; };
 		9505091F45E18BC411AA484F /* Pods_Voice_Pitch_Analyzer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0AD652FF89891087FE76A53 /* Pods_Voice_Pitch_Analyzer.framework */; };
 		D07AD7607996FAD47A63E635 /* Pods_UnitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B45A5ADFD63A258B566460 /* Pods_UnitTests.framework */; };
@@ -124,6 +125,7 @@
 		6CA9D71F240CC1E00000187A /* SCSiriWaveformView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSiriWaveformView.h; sourceTree = "<group>"; };
 		6CBA79B62495B0D0006BB73C /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		6CBA79B72495B0D0006BB73C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		6CBB905224A00E3A00576E8E /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		6CC2F21D2409EEBB0009FBEB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6CD42E77241600C4008F78C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6CD42E7A241600C4008F78C7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
@@ -133,7 +135,7 @@
 		6CD42E83241600C4008F78C7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = InfoPlist.strings; sourceTree = "<group>"; };
 		6CE2AAA42411D329003D5C7B /* NSError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSError.swift; sourceTree = "<group>"; };
 		6CE520542495B32B00B6B65C /* Voice Pitch Analyzer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Voice Pitch Analyzer.entitlements"; sourceTree = "<group>"; };
-		6CE520552495B3A700B6B65C /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
+		6CE520552495B3A700B6B65C /* AppleLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginManager.swift; sourceTree = "<group>"; };
 		6CFAC976243CF6370050BC68 /* MicrophoneAccessManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicrophoneAccessManager.swift; sourceTree = "<group>"; };
 		6D3E41A797C712C8E2DD7A89 /* Pods-UnitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UnitTests/Pods-UnitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6FAFEE120D5069C22F442CAA /* Pods-Voice Pitch Analyzer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Voice Pitch Analyzer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Voice Pitch Analyzer/Pods-Voice Pitch Analyzer.debug.xcconfig"; sourceTree = "<group>"; };
@@ -275,8 +277,9 @@
 				6CA9D71A240CBB500000187A /* Log.swift */,
 				6C167227241017D000AFE5BC /* RecordingManager.swift */,
 				6CFAC976243CF6370050BC68 /* MicrophoneAccessManager.swift */,
-				6CE520552495B3A700B6B65C /* LoginManager.swift */,
+				6CE520552495B3A700B6B65C /* AppleLoginManager.swift */,
 				6C260DCA2495D5AE007D8CCD /* CloudFunctionsManager.swift */,
+				6CBB905224A00E3A00576E8E /* AuthManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -692,10 +695,11 @@
 			files = (
 				6CA9D717240CB1950000187A /* Formatter.swift in Sources */,
 				6C3ED111240C471E00D2BF9E /* TextManager.swift in Sources */,
+				6CBB905324A00E3A00576E8E /* AuthManager.swift in Sources */,
 				6C3ED10E240C45CB00D2BF9E /* FeedbackManager.swift in Sources */,
 				6C3ED11F240C956200D2BF9E /* InfoViewController.swift in Sources */,
 				6C167226241011FA00AFE5BC /* ColorCache.swift in Sources */,
-				6CE520562495B3A700B6B65C /* LoginManager.swift in Sources */,
+				6CE520562495B3A700B6B65C /* AppleLoginManager.swift in Sources */,
 				6CA9D713240CB1070000187A /* Serializable.swift in Sources */,
 				6C6ADED0240DDC0A003F8E88 /* ResultCell.swift in Sources */,
 				415E53F01F498A93009E33BC /* UIColor.swift in Sources */,
@@ -935,7 +939,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = PB7Y6QU5LD;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "Voice Pitch Analyzer/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
